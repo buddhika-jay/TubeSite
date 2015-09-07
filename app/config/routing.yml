@@ -1,0 +1,8 @@
+siplo_video:
+    resource: "@SiploVideoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
