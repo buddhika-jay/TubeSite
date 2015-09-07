@@ -1,0 +1,39 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {#for video player#}
+<link href={{ asset('bundles/siplomedia/video-js.css')}} rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+{#for video player#}
+<script src={{ asset('bundles/siplomedia/video.js')}}></script>
+
+<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+<script>videojs.options.flash.swf = {{ asset('bundles/siplomedia/video-js.swf')}};</script>
+{% endblock %}
+
+
+    {% block videoplayer %}
+        {{ path }}
+        <div class = "vid-container">
+            <video id="video" class="video-js vjs-default-skin" controls preload="none" width="640" height="450"
+            {#poster="http://video-js.zencoder.com/oceans-clip.png"#}
+            {#poster='canvas'#}
+           poster=" "
+           data-setup="{}">
+                {#<source src="{{ asset('videos/sample.mp4')}}" type='video/mp4' />#}
+                <source src="{{ asset(path)}}" type='video/mp4' />
+        {#<source src="file:///home/me/PhpstormProjects/videoSite/videosite/web/test.mp4" type='video/mp4' />#}
+        {#<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />#}
+        {#<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />#}
+        {#<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />#}
+        {#<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->#}
+        {#<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->#}
+                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+        {#<video controls="" autoplay="" name="media"><source src="file:///home/me/PhpstormProjects/videoSite/videosite/web/test.mp4" type="video/mp4"></video>#}
+
+            </div>
+    {% endblock %}
+
