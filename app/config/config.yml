@@ -83,7 +83,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Siplo\UserBundle\Entity\User
+    user_class: Siplo\UserBundle\Entity\SiploUser
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
     mappings:

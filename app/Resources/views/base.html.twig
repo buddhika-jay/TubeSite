@@ -7,11 +7,17 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>{% block title %}Tuorism On Net{% endblock %}</title>
 
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset("bundles/app/bootstrap/dist/css/bootstrap.min.css") }}" rel="stylesheet">
+            <link href="{{ asset("bundles/app/css/dashboard.css") }}" rel="stylesheet">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset("bundles/app/jquery/dist/jquery.min.js") }}"></script>
+            <script src="{{ asset("bundles/app/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+        {% endblock %}
     </body>
 </html>
