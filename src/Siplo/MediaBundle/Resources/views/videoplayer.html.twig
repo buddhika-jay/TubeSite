@@ -3,11 +3,13 @@
 {% block stylesheets %}
     {#for video player#}
 <link href={{ asset('bundles/siplomedia/video-js.css')}} rel="stylesheet" type="text/css">
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
 {#for video player#}
 <script src={{ asset('bundles/siplomedia/video.js')}}></script>
+    {{ parent() }}
 
 <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
 <script>videojs.options.flash.swf = {{ asset('bundles/siplomedia/video-js.swf')}};</script>
