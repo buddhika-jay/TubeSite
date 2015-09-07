@@ -30,3 +30,7 @@ fos_user_change_password:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+#upload_save:
+#    path:     /upload/save
+#    defaults: { _controller: Siplo/MediaBundle:Upload:save}

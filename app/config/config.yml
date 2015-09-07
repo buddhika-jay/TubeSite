@@ -87,7 +87,7 @@ fos_user:
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
     mappings:
-            product_image:
+            uploaded_video:
                 uri_prefix:         /uploads/videos
                 upload_destination: %kernel.root_dir%/../web/uploads/videos
                 inject_on_load:     false
