@@ -13,9 +13,9 @@
 <script>videojs.options.flash.swf = {{ asset('bundles/siplomedia/video-js.swf')}};</script>
 {% endblock %}
 
-{% block body %}
-    {{ path }}
+
     {% block videoplayer %}
+        {{ path }}
         <div class = "vid-container">
             <video id="video" class="video-js vjs-default-skin" controls preload="none" width="640" height="450"
             {#poster="http://video-js.zencoder.com/oceans-clip.png"#}
@@ -36,4 +36,4 @@
 
             </div>
     {% endblock %}
-{% endblock %}
+
