@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Siplo\VideoBundle\SiploVideoBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Siplo\UserBundle\SiploUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

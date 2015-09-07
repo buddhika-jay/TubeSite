@@ -1,6 +1,6 @@
 <?php
 
-namespace Siplo\VideoBundle\Entity;
+namespace Siplo\UserBundle\Entity;
 
 
 use FOS\UserBundle\Entity\User as BaseUser;
