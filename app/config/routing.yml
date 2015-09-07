@@ -1,3 +1,8 @@
+siplo_media:
+    resource: "@SiploMediaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 siplo_user:
     resource: "@SiploUserBundle/Controller/"
     type:     annotation
@@ -21,11 +26,6 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
-siplo_video:
-    resource: "@SiploVideoBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
