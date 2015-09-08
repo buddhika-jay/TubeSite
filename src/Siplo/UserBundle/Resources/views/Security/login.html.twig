@@ -1,5 +1,5 @@
 {% extends "@SiploUser/siplo_user_form_layout.html.twig" %}
-{% block form_fields %}
+{% block form%}
     {% block fos_user_content %}
         {% if error %}
             <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
@@ -10,7 +10,7 @@
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
                             <label for="username" class="sr-only">User Name</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" autofocus="" placeholder="Email address" >
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" autofocus="" placeholder="User Name" >
 
                             <label for="inputPassword" class="sr-only">Password</label>
                             <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password" >
@@ -29,4 +29,4 @@
                             </a>
                         </form>
     {% endblock fos_user_content %}
-{% endblock form_fields %}
+{% endblock form%}

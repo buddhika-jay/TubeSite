@@ -1,5 +1,5 @@
-{#{% extends "FOSUserBundle::layout.html.twig" %}#}
+{% extends "@SiploUser/siplo_user_form_layout.html.twig" %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content1.html.twig" %}
-{% endblock fos_user_content %}
+{% block form %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock form %}
