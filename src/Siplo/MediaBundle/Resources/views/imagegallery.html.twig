@@ -1,7 +1,8 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
     {{ parent() }}
 
 {% endblock %}
@@ -46,10 +47,35 @@
 <div id="links" class="links">
     {%set i=1 %}
     {% for image in images %}
-        <a id = i class= "thumbnail" href="{{ asset(image)}}" title="Elephants">
-        <img src="{{ asset(thumbs[i])}}" alt="Elephants">
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+        <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
         </a>
         {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
     {% endfor %}
     {#<a href="{{ asset('uploads/images/elephants.jpg')}}" title="Elephants">#}
         {#<img src="{{ asset('uploads/images/elephants_thumb.jpg')}}" alt="Elephants">#}

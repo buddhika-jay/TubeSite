@@ -225,9 +225,7 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   position: relative;
 }
 
-.thumbnail:hover {
-  width:500px;
+.thumbs:hover {
+  width:300px;
   height:auto;
-  margin-top: 0;
-  margin-bottom: 0;
 }
