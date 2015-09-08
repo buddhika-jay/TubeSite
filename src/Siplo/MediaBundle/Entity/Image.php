@@ -9,7 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Video
+class Image
 {
     /**
      * @ORM\Id
@@ -23,18 +23,18 @@ class Video
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="uploaded_video", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="uploaded_image", fileNameProperty="imageName")
      *
      * @var File
      */
-    private $videoFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
-    private $videoName;
+    private $imageName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -50,13 +50,13 @@ class Video
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      */
-    public function setVideoFile(File $video = null)
+    public function setImageFile(File $image = null)
     {
-        $this->videoFile = $video;
+        $this->imageFile = $image;
 
-        if ($video) {
+        if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTime('now');
@@ -66,24 +66,24 @@ class Video
     /**
      * @return File
      */
-    public function getVideoFile()
+    public function getImageFile()
     {
-        return $this->videoFile;
+        return $this->imageFile;
     }
 
     /**
-     * @param string $videoName
+     * @param string $imageName
      */
-    public function setVideoName($videoName)
+    public function setImageName($imageName)
     {
-        $this->videoName = $videoName;
+        $this->imageName = $imageName;
     }
 
     /**
      * @return string
      */
-    public function getVideoName()
+    public function getImageName()
     {
-        return $this->videoName;
+        return $this->imageName;
     }
 }
