@@ -46,7 +46,7 @@
 <div id="links" class="links">
     {%set i=1 %}
     {% for image in images %}
-        <a href="{{ asset(image)}}" title="Elephants">
+        <a id = i class= "thumbnail" href="{{ asset(image)}}" title="Elephants">
         <img src="{{ asset(thumbs[i])}}" alt="Elephants">
         </a>
         {% set i=i+1 %}
