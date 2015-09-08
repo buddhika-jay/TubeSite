@@ -1,12 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets%}
-    <link href="{{ asset("bundles/app/bootstrap/dist/css/bootstrap.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("bundles/app/css/dashboard.css") }}" rel="stylesheet">
-{% endblock %}
-{% block javascripts %}
-    <script src="{{ asset("bundles/app/jquery/dist/jquery.min.js") }}"></script>
-    <script src="{{ asset("bundles/app/bootstrap/dist/js/bootstrap.min.js") }}"></script>
-{% endblock %}
 
 {% block body %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -18,10 +10,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">Tourism On Net</a>
+                <form class="navbar-form navbar-right">
+                    <input class="form-control" placeholder="Search..." type="text">
+                </form>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Videos</a></li>
                     <li><a href="#">Photos</a></li>
@@ -29,9 +24,10 @@
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-                <form class="navbar-form navbar-right">
-                    <input class="form-control" placeholder="Search..." type="text">
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" ><span class="glyphicon glyphicon-user" ></span> Sign Up</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -56,4 +52,75 @@
             </div>
         </div>
     </div>
+    {% block login_modal %}
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title">Login</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- The form is placed inside the body of modal -->
+                        <form id="loginForm" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Username</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="username" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Password</label>
+                                <div class="col-xs-5">
+                                    <input type="password" class="form-control" name="password" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-5 col-xs-offset-3">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#loginForm').formValidation({
+                    framework: 'bootstrap',
+                    excluded: ':disabled',
+                    icon: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        username: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The username is required'
+                                }
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The password is required'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+    {% endblock login_modal %}
 {% endblock body %}
