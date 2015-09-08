@@ -16,4 +16,13 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('@App/default/index.html.twig');
     }
+
+    /**
+     * @Route("/map", name="Map")
+     */
+    public function mapAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle::map.html.twig');
+    }
 }

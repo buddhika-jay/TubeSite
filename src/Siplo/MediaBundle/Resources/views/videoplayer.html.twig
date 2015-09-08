@@ -25,6 +25,7 @@
            poster=" "
            data-setup="{}">
                 {#<source src="{{ asset('videos/sample.mp4')}}" type='video/mp4' />#}
+                {#<source src="{{ vich_uploader_asset(path, 'image') }}" type='video/mp4' />#}
                 <source src="{{ asset(path)}}" type='video/mp4' />
         {#<source src="file:///home/me/PhpstormProjects/videoSite/videosite/web/test.mp4" type='video/mp4' />#}
         {#<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />#}
@@ -37,5 +38,8 @@
         {#<video controls="" autoplay="" name="media"><source src="file:///home/me/PhpstormProjects/videoSite/videosite/web/test.mp4" type="video/mp4"></video>#}
 
             </div>
+
+        <div>{% include 'AppBundle::map.html.twig' %}</div>
+
     {% endblock %}
 
