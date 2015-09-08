@@ -26,12 +26,5 @@ class DefaultController extends Controller
         return $this->render('AppBundle::map.html.twig');
     }
 
-    /**
-     * @Route("/images", name="Images")
-     */
-    public function imageAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('SiploMediaBundle::imagegallery.html.twig');
-    }
+
 }

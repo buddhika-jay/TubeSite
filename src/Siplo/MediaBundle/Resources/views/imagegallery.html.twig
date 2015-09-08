@@ -1,7 +1,8 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
     {{ parent() }}
 
 {% endblock %}
@@ -9,7 +10,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-<script src="js/blueimp-gallery.min.js"></script>
+<script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js')}}"></script>
 <script>
     document.getElementById('links').onclick = function (event) {
         event = event || window.event;
@@ -19,12 +20,21 @@
                 links = this.getElementsByTagName('a');
         blueimp.Gallery(links, options);
     };
+
+    {#var gallery = blueimp.Gallery([#}
+        {#{#}
+            {#title: 'Elephants',#}
+            {#href: '{{ asset('uploads/images/elephants.jpg')}}',#}
+            {#type: 'image/jpeg',#}
+            {#thumbnail: '{{ asset('uploads/images/elephants_thumb.jpg')}}'#}
+        {#},#}
+    {#]);#}
 </script>
 {% endblock %}
 
-{% block body %}
-    {{ parent() }}
-<div id="blueimp-gallery" class="blueimp-gallery">
+{% block media_content %}
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
     <div class="slides"></div>
     <h3 class="title"></h3>
     <a class="prev">‹</a>
@@ -34,16 +44,66 @@
     <ol class="indicator"></ol>
 </div>
 
-<div id="links">
-    <a href="{{ asset('uploads/images/elephants.jpg')}}" title="Elephants">
-        <img src="{{ asset('uploads/images/elephants_thumb.jpg')}}" alt="Elephants">
-    </a>
-    <a href="../img/apple.jpg" title="Apple">
-        <img src="../img/thumbnails/apple.jpg" alt="Apple">
-    </a>
-    <a href="../img/orange.jpg" title="Orange">
-        <img src="../img/thumbnails/orange.jpg" alt="Orange">
-    </a>
+<div id="links" class="links">
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+        <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {%set i=1 %}
+    {% for image in images %}
+        <a id = i  href="{{ asset(image)}}" title="Elephants">
+            <img src="{{ asset(thumbs[i])}}" alt="Elephants" class= "thumbs" width=200px height=""auto>
+        </a>
+        {% set i=i+1 %}
+
+    {% endfor %}
+    {#<a href="{{ asset('uploads/images/elephants.jpg')}}" title="Elephants">#}
+        {#<img src="{{ asset('uploads/images/elephants_thumb.jpg')}}" alt="Elephants">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/Nature.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/Nature_thumb.jpg')}}" alt=" ">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/Sigiriya.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/Sigiriya_thumb.jpg')}}" alt=" ">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/sinharaja.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/sinharaja_thumb.jpg')}}" alt=" ">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/elephants.jpg')}}" title="Elephants">#}
+        {#<img src="{{ asset('uploads/images/elephants_thumb.jpg')}}" alt="Elephants">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/Nature.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/Nature_thumb.jpg')}}" alt=" ">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/elephants.jpg')}}" title="Elephants">#}
+        {#<img src="{{ asset('uploads/images/elephants_thumb.jpg')}}" alt="Elephants">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/Sigiriya.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/Sigiriya_thumb.jpg')}}" alt=" ">#}
+    {#</a>#}
+    {#<a href="{{ asset('uploads/images/sinharaja.jpg')}}" title=" ">#}
+        {#<img src="{{ asset('uploads/images/sinharaja_thumb.jpg')}}" alt=" ">#}
+
 </div>
 
 {% endblock %}
