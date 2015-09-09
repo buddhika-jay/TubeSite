@@ -26,5 +26,14 @@ class DefaultController extends Controller
         return $this->render('AppBundle::map.html.twig');
     }
 
+//    public function uploadAction()
+//    {
+//        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+//            return $this->redirectToRoute('siplo_media_video_upload');
+//        }
+//        else{
+//            return $this->redirectToRoute('fos_user_security_login');
+//        }
+//    }
 
 }
