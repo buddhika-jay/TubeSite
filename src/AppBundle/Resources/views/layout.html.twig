@@ -18,9 +18,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Videos</a></li>
-                    <li><a href="#">Photos</a></li>
-                    <li><a href="#">Upload</a></li>
+                    <li><a href="play">Videos</a></li>
+                    <li><a href="images">Photos</a></li>
+                    <li><a href="upload">Upload</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -45,12 +45,18 @@
                 {#<ul class="nav nav-sidebar">#}
                     {#<li><a href="">Nav item again</a></li>#}
                 {#</ul>#}
-                <ul class="list-unstyled">
-                    <li class="text-center"><h1><span class="label label-primary" style="width: 600px">Locations</span></h1></li>
-                    <li class="text-center"><h1><span class="label label-primary">Sustainable Tourism</span></h1></li>
-                    <li class="text-center"><h1><span class="label label-primary">Echo Tourism</span></h1></li>
-                    <li class="text-center"><h1><span class="label label-primary">Articles</span></h1></li>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#">Locations</a></li>
+                    <li class="active"><a href="#">Sustainable Tourism</a></li>
+                    <li class="active"><a href="#">Echo Tourism</a></li>
+                    <li class="active"><a href="#">Articles</a></li>
                 </ul>
+                {#<ul class="list-unstyled">#}
+                    {#<li class="text-center"><h2><span class="label label-primary" style="width: 300px" style="length: 200px">Locations</span></h2></li>#}
+                    {#<li class="text-center"><h2><span class="label label-primary">Sustainable Tourism</span></h2></li>#}
+                    {#<li class="text-center"><h2><span class="label label-primary">Echo Tourism</span></h2></li>#}
+                    {#<li class="text-center"><h2><span class="label label-primary">Articles</span></h2></li>#}
+                {#</ul>#}
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 {% block media_content %}
