@@ -32,6 +32,7 @@ class VideoController extends Controller
         $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
         $path = $helper->asset($video, 'videoFile');
 
+
         //$path = "videos/sample.mp4";
         return $this->render('SiploMediaBundle::videoplayer.html.twig',array(
             'path' => $path));
@@ -73,7 +74,11 @@ class VideoController extends Controller
             $em->persist($uploader->getVideo());
             $em->flush();
 
-            return $this->redirectToRoute("/play/");
+            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+            $path = $helper->asset($uploader->getVideo(), 'videoFile');
+//            return $this->redirectToRoute('play');
+            return $this->render('SiploMediaBundle::videoplayer.html.twig',array(
+                'path' => $path));
         }
 
         return $this->render(
