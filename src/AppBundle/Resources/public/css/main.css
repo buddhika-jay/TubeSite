@@ -190,7 +190,17 @@ section {
   right: 0;
   background: rgba(0,0,0,.26);
 }
-
+#country-image{
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+#country-name{
+  z-index: 100;
+  position: absolute;
+  left: 150px;
+  top: 350px;
+}
 .carousel-fade .carousel-inner .active {
   opacity: 1;
 }
