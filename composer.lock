@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab6eb50b4e475d4ae7bb80272783d836",
+    "hash": "cd768ade92c84cabfdda1dfe1c13c1ca",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -768,6 +768,100 @@
                 "User management"
             ],
             "time": "2015-06-01 00:57:03"
+        },
+        {
+            "name": "google/apiclient",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "2adb5ba90612858d4add0342eee6b8b9aaca398d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/2adb5ba90612858d4add0342eee6b8b9aaca398d",
+                "reference": "2adb5ba90612858d4add0342eee6b8b9aaca398d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "time": "2015-05-21 19:35:32"
+        },
+        {
+            "name": "happyr/google-api-bundle",
+            "version": "2.1.0",
+            "target-dir": "HappyR/Google/ApiBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Happyr/GoogleApiBundle.git",
+                "reference": "6d7a9a70ae90bab6ddeae0d9a5492f8bd81a142c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Happyr/GoogleApiBundle/zipball/6d7a9a70ae90bab6ddeae0d9a5492f8bd81a142c",
+                "reference": "6d7a9a70ae90bab6ddeae0d9a5492f8bd81a142c",
+                "shasum": ""
+            },
+            "require": {
+                "google/apiclient": "1.*",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "2.*",
+                "symfony/yaml": "2.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "HappyR\\Google\\ApiBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias@happyr.com"
+                }
+            ],
+            "description": "A Symfony2 Wrapper for the Google APIs Client Library for PHP",
+            "homepage": "http://developer.happyr.com/symfony2-bundles/google-api-bundle",
+            "keywords": [
+                "google api"
+            ],
+            "time": "2015-01-07 09:23:28"
         },
         {
             "name": "incenteev/composer-parameter-handler",

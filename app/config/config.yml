@@ -96,3 +96,13 @@ vich_uploader:
                 inject_on_load:     false
                 delete_on_update:   true
                 delete_on_remove:   true
+
+
+# you will get these parameters form https://code.google.com/apis/console/"
+happy_r_google_api:
+  application_name: TourismOnNet
+  oauth2_client_id: 758651250413-kcs13o7hre1bomb2rfs4mgnengknklae.apps.googleusercontent.com
+  oauth2_client_secret: bKVhmAqV5fin2NBrgXblG1Eo
+  oauth2_redirect_uri: https://accounts.google.com/o/oauth2/auth
+  developer_key: ""
+  site_name: mysite.com
