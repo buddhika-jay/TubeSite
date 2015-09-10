@@ -1,0 +1,56 @@
+{#{% extends '@App/layout.html.twig' %}#}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
+    {#{{ parent() }}#}
+{% endblock %}
+
+{% block media_content %}
+
+    <div id="links">
+
+        <a
+                href="{{ asset('bundles/siplomedia/videos/1.MP4') }}"
+                title="Fruits"
+                type="video/mp4"
+                data-poster="https://example.org/images/fruits.jpg"
+                data-sources='[{"href": "{{ asset('bundles/siplomedia/videos/1.MP4') }}", "type": "video/mp4"}]'
+                >Fruits</a>
+
+        {#<a href="{{ asset('bundles/siplomedia/images/1.jpg') }}" title="Banana">#}
+            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}" alt="Banana">&#35;&#125;#}
+        {#</a>#}
+        {#<a href="{{ asset('bundles/siplomedia/images/2.jpg') }}" title="Apple">#}
+            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}"  alt="Apple">&#35;&#125;#}
+        {#</a>#}
+        {#<a href="{{ asset('bundles/siplomedia/images/3.jpg') }}" title="Orange">#}
+            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}"  alt="Orange">&#35;&#125;#}
+        {#</a>#}
+    </div>
+
+    <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
+    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+{% endblock media_content %}
+
+{% block javascripts %}
+    {#{{ parent() }}#}
+    <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
+    <script>
+        blueimp.Gallery(
+                document.getElementById('links').getElementsByTagName('a'),
+                {
+                    container: '#blueimp-gallery-carousel',
+                    carousel: true
+                }
+        );
+
+    </script>
+{% endblock javascripts %}

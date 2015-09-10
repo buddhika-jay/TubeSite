@@ -16,7 +16,7 @@ class UploaderType extends AbstractType
 //            'checkbox',
 //            array('property_path' => 'termsAccepted')
 //        );
-        $builder->add('Upload', 'submit');
+        $builder->add('upload', 'submit');
     }
 
     public function getName()
