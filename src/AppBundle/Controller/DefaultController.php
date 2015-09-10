@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('@App/default/index.html.twig');
+        return $this->render('@App/menu.html.twig');
     }
 
     /**
@@ -24,6 +24,15 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('AppBundle::map.html.twig');
+    }
+
+    /**
+     * @Route("/video")
+     */
+    public function videoAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle::videopage.html.twig');
     }
 
 //    public function uploadAction()
