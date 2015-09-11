@@ -35,6 +35,15 @@ class DefaultController extends Controller
         return $this->render('SiploMediaBundle::country.html.twig');
     }
 
+    /**
+     * @Route("/srilanka")
+     */
+    public function srilankaAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle::homepage.html.twig');
+    }
+
 //    public function uploadAction()
 //    {
 //        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
