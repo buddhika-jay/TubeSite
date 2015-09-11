@@ -190,16 +190,64 @@ section {
   right: 0;
   background: rgba(0,0,0,.26);
 }
-#country-image{
-  position: absolute;
-  left: 0;
-  right: 0;
+
+#container {
+  -webkit-transition: height 0.5s, width 0.5s; /* Safari */
+  transition: height 0.5s, width 0.5s;
+  margin-left: 2%;
+  height: 200px;
+  width: 300px;
+  position: relative;
 }
-#country-name{
+#container:hover {
+  height: 220px;
+  width: 320px;
+}
+#inner-container {
+  position: relative;
+  height: inherit;
+  width: inherit;
+  background: rgba(0,0,0,.2)
+}
+#image {
+
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  left: 0;
+  top: 0;
+}
+
+#text {
+  -webkit-transition: font-size 0.5s; /* Safari */
+  transition: font-size 0.5s;
   z-index: 100;
   position: absolute;
-  left: 150px;
-  top: 350px;
+  text-align: center;
+  color: rgba(250,250,255,1);
+  font-size: 24px;
+  font-weight: bold;
+  left: 100px;
+  top: 120px;
+}
+#text:hover {
+  font-size: 28px;
+
+}
+#flag {
+  -webkit-transition: height 0.5s; /* Safari */
+  transition: height 0.5s;
+  z-index: 100;
+  position: absolute;
+  left: 120px;
+  top: 80px;
+  width: auto;
+  height:35px;
+  transition-timing-function: ease-out;
+
+}
+#flag:hover {
+  height: 40px;
 }
 .carousel-fade .carousel-inner .active {
   opacity: 1;

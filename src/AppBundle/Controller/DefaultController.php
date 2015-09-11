@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/test", name="homepage")
+     * @Route("/")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         // replace this example code with whatever you need
         return $this->render('@App/menu.html.twig');
@@ -32,13 +32,13 @@ class DefaultController extends Controller
     public function videoAction()
     {
         // replace this example code with whatever you need
-        return $this->render('AppBundle::videopage.html.twig');
+        return $this->render('SiploMediaBundle::country.html.twig');
     }
 
 //    public function uploadAction()
 //    {
 //        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-//            return $this->redirectToRoute('siplo_media_video_upload');
+//           return $this->redirectToRoute('siplo_media_video_upload');
 //        }
 //        else{
 //            return $this->redirectToRoute('fos_user_security_login');

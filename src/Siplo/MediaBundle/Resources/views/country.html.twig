@@ -1,22 +1,31 @@
-{#{% extends '@App/layout.html.twig' %}#}
+{% extends '@App/menu.html.twig' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
     <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
-    {#{{ parent() }}#}
+    {{ parent() }}
 {% endblock %}
 
 {% block media_content %}
-
+  <div style="padding-top: 80px;margin-top: 2px">
     <div id="links">
 
         <a
-                href="{{ asset('bundles/siplomedia/videos/1.MP4') }}"
-                title="Fruits"
-                type="video/mp4"
-                data-poster="https://example.org/images/fruits.jpg"
-                data-sources='[{"href": "{{ asset('bundles/siplomedia/videos/1.MP4') }}", "type": "video/mp4"}]'
-                >Fruits</a>
+                href="{{ asset('/uploads/videos/vid.webm')}}"
+                title=""
+                type="video/webm"
+                data-poster=""
+                {#data-sources='[{"href": "{{ asset('/uploads/videos/vid.mp4')}}", "type": "video/mp4"}]'#}
+                data-sources='[{"href": "{{ asset('/uploads/videos/vid.webm')}}", "type": "video/webm"}]'
+                ></a>
+        <a
+                href="{{ asset('/uploads/videos/vid.webm')}}"
+                title=""
+                type="video/webm"
+                data-poster=""
+                {#data-sources='[{"href": "{{ asset('/uploads/videos/vid.mp4')}}", "type": "video/mp4"}]'#}
+                data-sources='[{"href": "{{ asset('/uploads/videos/vid.webm')}}", "type": "video/webm"}]'
+                ></a>
 
         {#<a href="{{ asset('bundles/siplomedia/images/1.jpg') }}" title="Banana">#}
             {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}" alt="Banana">&#35;&#125;#}
@@ -29,8 +38,10 @@
         {#</a>#}
     </div>
 
+  </div>
+
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls" style="margin-top: 0;height:500px">
         <div class="slides"></div>
         <h3 class="title"></h3>
         <a class="prev">‹</a>
@@ -41,7 +52,7 @@
 {% endblock media_content %}
 
 {% block javascripts %}
-    {#{{ parent() }}#}
+    {{ parent() }}
     <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
     <script>
         blueimp.Gallery(
