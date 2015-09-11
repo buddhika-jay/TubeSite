@@ -1,4 +1,25 @@
-{% extends 'AppBundle::layout.html.twig' %}
-{% block media_content %}
-    {{ form(form) }}
+{% extends '@SiploMedia/siplo_media_form_layout.html.twig' %}
+{% block form %}
+    {#{{ form(form) }}#}
+
+    <form action="{{ path('siplo_media_video_upload') }}" {{ form_enctype(form) }} method="POST">
+        <div>
+            {{ form_start(form) }}
+            {{ form_widget(form.video.VideoName, { 'attr': {'type':'file', 'autofocus':"", 'placeholder':'Video Name','class': 'form-control'} }) }}
+            {{ form_widget(form.video.VideoFile.file, { 'attr': {'autofocus':"", 'placeholder':'Video Name'} }) }}
+            {#{{ form_errors(form.username) }}#}
+            {#{{ form_widget(form.email, { 'attr': {'type':'text', 'autofocus':"", 'placeholder':'Email','class': 'form-control'} }) }}#}
+            {#{{ form_errors(form.email) }}#}
+            {#{{ form_widget(form.plainPassword.first, { 'attr': {'type':'password',  'placeholder':'Password','class': 'form-control'} }) }}#}
+            {#{{ form_errors(form.plainPassword.first) }}#}
+            {#{{ form_widget(form.plainPassword.second, { 'attr': {'type':'password',  'placeholder':'Password','class': 'form-control'} }) }}#}
+            {#{{ form_widget(form.plainPassword.second) }}#}
+            <div>
+                {#<button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block">Register</button>#}
+            {{ form_widget(form.upload, { 'attr': {'type':"submit", 'autofocus':"",'class': "btn btn-lg btn-primary btn-block"} }) }}
+            </div>
+            {#{{ form_rest(form) }}#}
+        </div>
+    </form>
+
 {% endblock %}
