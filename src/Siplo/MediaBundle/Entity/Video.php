@@ -42,6 +42,29 @@ class Video
      *
      * @var string
      */
+    private $VideoTitle;
+
+    /**
+     * @return string
+     */
+    public function getVideoTitle()
+    {
+        return $this->VideoTitle;
+    }
+
+    /**
+     * @param string $VideoTitle
+     */
+    public function setVideoTitle($VideoTitle)
+    {
+        $this->VideoTitle = $VideoTitle;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
     private $thumbName='thumb';
 
     /**
