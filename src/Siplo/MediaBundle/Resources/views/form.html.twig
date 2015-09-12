@@ -1,17 +1,17 @@
 {% extends '@SiploMedia/siplo_media_form_layout.html.twig' %}
 {% block form %}
-    {#{{ form(form) }}#}
+    {{ form(form) }}
 
-        <div>
-            {{ form_start(form) }}
+        {#<div>#}
+            {#{{ form_start(form) }}#}
 
-                {{ form_widget(form.video.VideoName, { 'attr': {'type':'file', 'autofocus':"", 'placeholder':'Video Name','class': 'form-control'} }) }}
-                {{ form_widget(form.video.VideoFile.file, { 'attr': {'autofocus':"", 'placeholder':'Video Name'} }) }}
-                <div>
-                    {{ form_widget(form.upload, { 'attr': {'type':"submit", 'autofocus':"",'class': "btn btn-lg btn-primary btn-block"} }) }}
-                </div>
-            {{ form_end(form) }}
-            {#{{ form_rest(form) }}#}
-        </div>
+                {#{{ form_widget(form.video.VideoName, { 'attr': {'type':'file', 'autofocus':"", 'placeholder':'Video Name','class': 'form-control'} }) }}#}
+                {#{{ form_widget(form.video.VideoFile.file, { 'attr': {'autofocus':"", 'placeholder':'Video Name'} }) }}#}
+                {#<div>#}
+                    {#{{ form_widget(form.upload, { 'attr': {'type':"submit", 'autofocus':"",'class': "btn btn-lg btn-primary btn-block"} }) }}#}
+                {#</div>#}
+            {#{{ form_end(form) }}#}
+            {#&#123;&#35;{{ form_rest(form) }}&#35;&#125;#}
+        {#</div>#}
 
 {% endblock %}
