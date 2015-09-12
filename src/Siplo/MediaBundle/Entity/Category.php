@@ -27,6 +27,28 @@ class Category
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="background_filename", type="string", length=255)
+     */
+    private $backgroundFileName;
+
+    /**
+     * @return string
+     */
+    public function getBackgroundFileName()
+    {
+        return $this->backgroundFileName;
+    }
+
+    /**
+     * @param string $backgroundFileName
+     */
+    public function setBackgroundFileName($backgroundFileName)
+    {
+        $this->backgroundFileName = $backgroundFileName;
+    }
 
     /**
      * @var string
@@ -46,7 +68,7 @@ class Category
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="category_background", fileNameProperty="title")
+     * @Vich\UploadableField(mapping="category_background", fileNameProperty="background_filename")
      *
      * @var File
      */
