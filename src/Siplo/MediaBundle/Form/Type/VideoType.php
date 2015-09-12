@@ -11,6 +11,7 @@ class VideoType extends AbstractType
     {
         $builder->add('VideoFile', 'vich_file');
         $builder->add('VideoName', 'text');
+        $builder->add('Thumbnail', 'vich_file');
 
     }
 

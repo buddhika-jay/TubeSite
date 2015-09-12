@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         // replace this example code with whatever you need
-        return $this->render('@App/menu.html.twig');
+        return $this->render('@App/countries.html.twig');
     }
 
     /**
@@ -42,6 +42,15 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('AppBundle::homepage.html.twig');
+    }
+
+    /**
+     * @Route("/test")
+     */
+    public function testAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle::countryselector.html.twig');
     }
 
 //    public function uploadAction()

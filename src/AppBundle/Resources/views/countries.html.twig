@@ -1,0 +1,117 @@
+{% extends '@App/menu.html.twig' %}
+{% block media_content %}
+    <div id="contact-us" class="parallax" >
+        <div  class="container-fluid"style="background: rgba(0,0,0,.46)">
+
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                </div>
+
+
+            <div class="row" style="padding-left:10%;padding-right:10%;padding-bottom: 10%">
+
+                <div  class="col-sm-3 col-lg-4" >
+                    <a href="/video" >
+                    <div id="container">
+                        <img id="image" src={{ asset('bundles/app/images/country/sn-img.jpg')}}/>
+                           <div id="inner-container">
+
+                                <img id="flag" src={{ asset('bundles/app/images/flags/sn.gif')}}>
+                                <p href = "#" id="text">
+                                Singapore
+                                </p>
+                           </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3 col-lg-4">
+                    <a href="/srilanka" >
+                    <div id="container">
+
+                        <img id="image" src={{ asset('bundles/app/images/country/sl-img.jpg')}}/>
+                        <div id="inner-container">
+                             <img id="flag" src={{ asset('bundles/app/images/flags/ce.gif')}}/>
+                             <p id="text">
+                               SriLanka
+                             </p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3 col-lg-4">
+                    <a href="#" >
+                    <div id="container">
+
+                        <img id="image" src={{ asset('bundles/app/images/country/ml-img.jpg')}}/>
+                        <div id="inner-container">
+                             <img id="flag" src={{ asset('bundles/app/images/flags/ml.png')}}/>
+                             <p id="text">
+                               Malaysia
+                             </p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="row" style="padding-left:10%;padding-right:10%;padding-bottom: 10%">
+
+                <div  class="col-sm-3 col-lg-4" >
+                    <a href="/video" >
+                    <div id="container">
+                        <img id="image" src={{ asset('bundles/app/images/country/pr-img.jpg')}}/>
+                           <div id="inner-container">
+
+                                <img id="flag" src={{ asset('bundles/app/images/flags/fr.gif')}}>
+                                <p href = "#" id="text">
+                                France
+                                </p>
+                           </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3 col-lg-4">
+                    <a href="#" >
+                    <div id="container">
+
+                        <img id="image" src={{ asset('bundles/app/images/country/tl-img.jpg')}}/>
+                        <div id="inner-container">
+                             <img id="flag" src={{ asset('bundles/app/images/flags/tl.gif')}}/>
+                             <p id="text">
+                               Thailand
+                             </p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3 col-lg-4">
+                    <a href="#" >
+                    <div id="container">
+
+                        <img id="image" src={{ asset('bundles/app/images/country/it-img.jpg')}}/>
+                        <div id="inner-container">
+                             <img id="flag" src={{ asset('bundles/app/images/flags/it.gif')}}/>
+                             <p id="text">
+                               Italy
+                             </p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+
+            </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}
