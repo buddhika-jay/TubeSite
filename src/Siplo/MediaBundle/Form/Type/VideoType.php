@@ -10,7 +10,8 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('VideoFile', 'vich_file');
-        $builder->add('VideoName', 'text');
+//        $builder->add('VideoName', 'text');
+        $builder->add('VideoTitle', 'text');
         $builder->add('Thumbnail', 'vich_file');
 
     }

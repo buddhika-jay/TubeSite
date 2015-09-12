@@ -97,8 +97,8 @@ vich_uploader:
                 delete_on_update:   true
                 delete_on_remove:   true
             video_thumbnail:
-                uri_prefix:         /uploads/videos/thumbnails
-                upload_destination: %kernel.root_dir%/../web/uploads/videos/thumbnails
+                uri_prefix:         /uploads/video_thumbnails
+                upload_destination: %kernel.root_dir%/../web/uploads/video_thumbnails
                 inject_on_load:     false
                 delete_on_update:   true
                 delete_on_remove:   true
@@ -120,6 +120,13 @@ vich_uploader:
             uploaded_photo:
                 uri_prefix:         /uploads/photos
                 upload_destination: %kernel.root_dir%/../web/uploads/photos
+                inject_on_load:     false
+                delete_on_update:   true
+                delete_on_remove:   true
+
+            category_background:
+                uri_prefix:         /thumbs/category_backgrounds
+                upload_destination: %kernel.root_dir%/../web/thumbs/category_backgrounds
                 inject_on_load:     false
                 delete_on_update:   true
                 delete_on_remove:   true
