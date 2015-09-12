@@ -40,3 +40,8 @@
 .vagrant
 .DS_Store
 Vagrantfile
+
+
+
+#Added by Buddhike
+/web/tumbs/
