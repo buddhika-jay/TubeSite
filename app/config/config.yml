@@ -105,7 +105,14 @@ vich_uploader:
 
             country_background:
                 uri_prefix:         /thumbs/country_backgrounds
-                upload_destination: %kernel.root_dir%/../web/thumbs/county_backgrounds
+                upload_destination: %kernel.root_dir%/../web/thumbs/country_backgrounds
+                inject_on_load:     false
+                delete_on_update:   true
+                delete_on_remove:   true
+
+            country_flag:
+                uri_prefix:         /thumbs/country_flags
+                upload_destination: %kernel.root_dir%/../web/thumbs/country_flags
                 inject_on_load:     false
                 delete_on_update:   true
                 delete_on_remove:   true
