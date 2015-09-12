@@ -117,6 +117,13 @@ vich_uploader:
                 delete_on_update:   true
                 delete_on_remove:   true
 
+            uploaded_photo:
+                uri_prefix:         /uploads/photos
+                upload_destination: %kernel.root_dir%/../web/uploads/photos
+                inject_on_load:     false
+                delete_on_update:   true
+                delete_on_remove:   true
+
 # you will get these parameters form https://code.google.com/apis/console/"
 happy_r_google_api:
   application_name: TourismOnNet

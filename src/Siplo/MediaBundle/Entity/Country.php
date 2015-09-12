@@ -46,6 +46,14 @@ class Country
     private $backgroundImage;
 
     /**
+     *
+     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="name")
+     *
+     * @var File
+     */
+    private $flag;
+
+    /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
@@ -135,5 +143,47 @@ class Country
     public function getBackgroundImage()
     {
         return $this->backgroundImage;
+    }
+
+    public function setFlag(File $flag = null)
+    {
+        $this->flag = $flag;
+
+        if ($flag) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getFlag()
+    {
+        return $this->flag;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Country
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

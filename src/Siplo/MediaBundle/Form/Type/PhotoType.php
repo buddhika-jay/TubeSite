@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CountryType extends AbstractType
+class PhotoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -14,10 +14,8 @@ class CountryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text');
-        $builder->add('code', 'text');
-        $builder->add('background_image', 'vich_file');
-        $builder->add('flag', 'vich_file');
+        $builder->add('title');
+        $builder->add('photo', 'vich_file');
     }
     
     /**
@@ -26,7 +24,7 @@ class CountryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Siplo\MediaBundle\Entity\Country'
+            'data_class' => 'Siplo\MediaBundle\Entity\Photo'
         ));
     }
 
@@ -35,6 +33,6 @@ class CountryType extends AbstractType
      */
     public function getName()
     {
-        return 'siplo_mediabundle_country';
+        return 'siplo_mediabundle_photo';
     }
 }

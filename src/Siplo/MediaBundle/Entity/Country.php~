@@ -8,10 +8,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * Country
- *
- * @ORM\Table()
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Country
 {
@@ -41,11 +39,26 @@ class Country
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="uploaded_video", fileNameProperty="videoName")
+     * @Vich\UploadableField(mapping="country_background", fileNameProperty="name")
      *
      * @var File
      */
-    private $videoFile;
+    private $backgroundImage;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="name")
+     *
+     * @var File
+     */
+    private $flag;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
 
     /**
@@ -102,5 +115,52 @@ class Country
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     */
+    public function setBackgroundImage(File $image = null)
+    {
+        $this->backgroundImage = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getBackgroundImage()
+    {
+        return $this->backgroundImage;
+    }
+
+    public function setFlag(File $flag = null)
+    {
+        $this->flag = $flag;
+
+        if ($flag) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getFlag()
+    {
+        return $this->flag;
     }
 }

@@ -76,27 +76,4 @@ class Photo
         return $this->photo;
     }
 
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Photo
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
 }
