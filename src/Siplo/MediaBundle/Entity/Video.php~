@@ -42,6 +42,29 @@ class Video
      *
      * @var string
      */
+    private $VideoTitle;
+
+    /**
+     * @return string
+     */
+    public function getVideoTitle()
+    {
+        return $this->VideoTitle;
+    }
+
+    /**
+     * @param string $VideoTitle
+     */
+    public function setVideoTitle($VideoTitle)
+    {
+        $this->VideoTitle = $VideoTitle;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
     private $thumbName='thumb';
 
     /**
@@ -144,5 +167,38 @@ class Video
     public function getVideoName()
     {
         return $this->videoName;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Video
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

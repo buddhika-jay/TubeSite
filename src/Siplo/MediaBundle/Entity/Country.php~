@@ -39,19 +39,33 @@ class Country
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="country_background", fileNameProperty="name")
+     * @Vich\UploadableField(mapping="country_background", fileNameProperty="backgroundImageFileName")
      *
      * @var File
      */
     private $backgroundImage;
 
     /**
+     * @var string
      *
-     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="name")
+     * @ORM\Column(name="backgroundImage_filename", type="string", length=255)
+     */
+    private $backgroundImageFileName;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="flagFileName")
      *
      * @var File
      */
     private $flag;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flag_filename", type="string", length=255)
+     */
+    private $flagFileName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -162,5 +176,28 @@ class Country
     public function getFlag()
     {
         return $this->flag;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Country
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

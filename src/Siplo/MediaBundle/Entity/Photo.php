@@ -31,12 +31,18 @@ class Photo
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="uploaded_photo", fileNameProperty="title")
+     * @Vich\UploadableField(mapping="uploaded_photo", fileNameProperty="photoFileName")
      *
      * @var File
      */
     private $photo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo_filename", type="string", length=255)
+     */
+    private $photoFileName;
 
     /**
      * Get id
@@ -98,5 +104,28 @@ class Photo
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set photoFileName
+     *
+     * @param string $photoFileName
+     * @return Photo
+     */
+    public function setPhotoFileName($photoFileName)
+    {
+        $this->photoFileName = $photoFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get photoFileName
+     *
+     * @return string 
+     */
+    public function getPhotoFileName()
+    {
+        return $this->photoFileName;
     }
 }

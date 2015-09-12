@@ -39,19 +39,33 @@ class Country
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="country_background", fileNameProperty="name")
+     * @Vich\UploadableField(mapping="country_background", fileNameProperty="backgroundImageFileName")
      *
      * @var File
      */
     private $backgroundImage;
 
     /**
+     * @var string
      *
-     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="name")
+     * @ORM\Column(name="backgroundImage_filename", type="string", length=255)
+     */
+    private $backgroundImageFileName;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="country_flag", fileNameProperty="flagFileName")
      *
      * @var File
      */
     private $flag;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flag_filename", type="string", length=255)
+     */
+    private $flagFileName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -185,5 +199,51 @@ class Country
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set backgroundImageFileName
+     *
+     * @param string $backgroundImageFileName
+     * @return Country
+     */
+    public function setBackgroundImageFileName($backgroundImageFileName)
+    {
+        $this->backgroundImageFileName = $backgroundImageFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get backgroundImageFileName
+     *
+     * @return string 
+     */
+    public function getBackgroundImageFileName()
+    {
+        return $this->backgroundImageFileName;
+    }
+
+    /**
+     * Set flagFileName
+     *
+     * @param string $flagFileName
+     * @return Country
+     */
+    public function setFlagFileName($flagFileName)
+    {
+        $this->flagFileName = $flagFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get flagFileName
+     *
+     * @return string 
+     */
+    public function getFlagFileName()
+    {
+        return $this->flagFileName;
     }
 }
