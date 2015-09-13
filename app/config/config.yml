@@ -139,3 +139,40 @@ happy_r_google_api:
   oauth2_redirect_uri: https://accounts.google.com/o/oauth2/auth
   developer_key: "bhh"
   site_name: mysite.com
+
+easy_admin:
+    entities:
+        User:
+                class: Siplo\UserBundle\Entity\SiploUser
+                label: 'Users'
+        Country:
+                class: Siplo\MediaBundle\Entity\Country
+                label: 'Countries'
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'name'}
+                        - { property: 'backgroundImageFileName', type: 'image', base_path: '/thumbs/country_backgrounds/' }
+                form:
+                    fields:
+                        - name
+                        - code
+                        - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
+                        - { property: 'flag', type: 'file', label: 'Upload Flag', help: 'Select file to upload / change logo'}
+
+        Category:
+                class: Siplo\MediaBundle\Entity\Category
+                label: 'Categories'
+                form:
+                    fields:
+                        - title
+                        - code
+                        - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
+        Photo:
+                class: Siplo\MediaBundle\Entity\Photo
+                label: 'Photos'
+        Video:
+                class: Siplo\MediaBundle\Entity\Video
+                label: 'Videos'
+
+    site_name: 'Tourism On Net'

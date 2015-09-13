@@ -31,6 +31,10 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
 #upload_save:
 #    path:     /upload/save
 #    defaults: { _controller: Siplo/MediaBundle:Upload:save}

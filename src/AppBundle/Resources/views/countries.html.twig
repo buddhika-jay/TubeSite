@@ -7,7 +7,7 @@
                 </div>
             <div class="col-sm-10 col-lg-10">
                 {% set count=0 %}
-                {%  for country in countries %}
+                {%  for country in countries|sort %}
                     {#create a new row for 3 countries#}
                     {% if count is divisibleby(3) %}
                         {% if count>0 %}
@@ -36,7 +36,7 @@
             </div>
             <div class="col-sm-2 col-lg-2">
                 <div id="country_list" class="list-group">
-                    {%  for country in countries|sort %}
+                    {%  for country in countries %}
                         <a href="" id="country_list_item" class="list-group-item">
 
                             <img id="flag_list" src="{{ vich_uploader_asset(country, 'flag') }}"/>
