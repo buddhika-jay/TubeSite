@@ -327,4 +327,8 @@ class Country
     {
         return $this->videos;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
 }
