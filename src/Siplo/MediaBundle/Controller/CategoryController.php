@@ -15,6 +15,27 @@ class CategoryController extends Controller
 
 
     /**
+     * @Route("/{country}")
+     *
+     */
+    public function viewCategoryAction($country)
+    {
+        $categories = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findAll();
+
+        if (!$categories) {
+            throw $this->createNotFoundException(
+                'No categories found'
+            );
+        }
+
+        return $this->render('AppBundle::categories.html.twig',array(
+            'categories' => $categories,'country'=>$country));
+    }
+
+
+
+    /**
      * @Route("/category/create")
      *
      */

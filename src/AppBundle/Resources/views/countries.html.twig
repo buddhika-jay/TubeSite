@@ -20,13 +20,14 @@
                          <a href="{{ country.code }}">
                             <div id="container">
 
-                                <img id="image" src="{{ vich_uploader_asset(country, 'backgroundImage') }}" alt="{{ country.name }}" />
-                                <div id="inner-container">
+                                 <div id="inner-container">
                                     <img id="flag" src="{{ vich_uploader_asset(country, 'flag') }}"/>
                                     <p id="text">
                                         {{ country.name }}
                                     </p>
                                 </div>
+                                <img id="image" src="{{ vich_uploader_asset(country, 'backgroundImage') }}" alt="{{ country.name }}" />
+
                             </div>
                          </a>
                      </div>

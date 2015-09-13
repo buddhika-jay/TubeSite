@@ -192,34 +192,40 @@ section {
 }
 
 #container {
-  -webkit-transition: height 0.5s, width 0.5s; /* Safari */
-  transition: height 0.5s, width 0.5s;
+  -webkit-transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s; /* Safari */
+  transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s;
   margin-left: 2%;
   height: 180px;
   width: 280px;
   position: relative;
 }
-#container:hover {
-  /*height: 200px;*/
-  /*width: 300px;*/
 
-}
 #inner-container {
   -webkit-transition:background 0.5s; /* Safari */
-  transition:background 0.5s
-  position: relative;
-  height: inherit;
+  transition:background 0.5s;
+  position: absolute;
+  margin-top: 140px;
+  height: 40px;
   width: inherit;
-  background: rgba(0,0,0,.2)
+  background: rgba(0,0,0,.7);
+  z-index: 100;
 }
-#inner-container:hover{
-  background: rgba(0,0,0,.8);
+
+#container:hover > #inner-container {
+  background: rgba(0,100,155,.7);
 }
+
+#text:hover {
+  font-size: 28px;
+}
+
+
 #image {
 
-  position: absolute;
+  position:absolute;
   width: inherit;
   height: inherit;
+  z-index: 1;
   left: 0;
   top: 0;
 }
@@ -234,19 +240,17 @@ section {
   font-size: 24px;
   font-weight: bold;
   left: 100px;
-  top: 120px;
+  top: 5px;
+  margin: 0 auto;
 }
-#text:hover {
-  font-size: 28px;
 
-}
 #flag {
   -webkit-transition: height 0.5s; /* Safari */
   transition: height 0.5s;
   z-index: 100;
   position: absolute;
-  left: 120px;
-  top: 80px;
+  left: 10px;
+  top: 2px;
   width: auto;
   height:35px;
   transition-timing-function: ease-out;
@@ -271,7 +275,7 @@ section {
   background: rgba(255,255,245,.4);
 }
 #country_list_item:hover{
-  background: rgba(255,255,245,.9);
+  background: rgba(15,155,175,.9);
 }
 .carousel-fade .carousel-inner .active {
   opacity: 1;
