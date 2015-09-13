@@ -3,8 +3,8 @@
     <div id="contact-us" class="parallax" >
         <div  class="container-fluid"style="background: rgba(0,0,0,.46)">
 
-                <div style="margin-left: 0" class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h1>{{ country }} country</h1>
+                <div style="margin-left:20px;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;background: rgba(0,0,0,.6);width: 200px;margin-bottom: 20px">
+                 <h1>{{ countryname }}</h1>
                 </div>
                 {% set count=0 %}
                 {%  for category in categories %}
@@ -13,7 +13,7 @@
                         {% if count>0 %}
                             </div>
                         {% endif %}
-                        <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
+                        <div class="row" style="padding-left:7%;padding-right: ;        ght:5%;padding-bottom: 2%">
                     {% endif %}
                     {#show category#}
                     <div class="col-sm-3 col-lg-4">

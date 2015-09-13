@@ -8,32 +8,39 @@
 
 {% block media_content %}
     <div style="margin-top: 90px">
-        <h4>{{ country }} {{ category }}</h4>
+        <h1>{{ country }} {{ category }}</h1>
     </div>
-    <div style="padding-top: 10px;margin-top: 2px;margin-left: 10%;margin-right: 10%">
+    <div>
         <div id="links">
-            {% for Video in videos %}
-            <a
+            {% set count=1 %}
+            {% for Video in videos if count<3%}
+                {% set count = loop.index %}
+                  <a
                     href="{{ vich_uploader_asset(Video, 'videoFile') }}"
                     title=""
+                    {#{{ Video.getVideoTitle() }}#}
                     type="video/webm"
                     data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
                     data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
                     ></a>
+
             {% endfor %}
         </div>
 
     </div>
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-    <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls" style="margin-top: 0;height:500px">
-        <div class="slides"></div>
+    <div style="height:635px;padding-top: 0px;padding-bottom:0px;margin-left: 8%;margin-right: 8%" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+        <div style="height:inherit" class="slides"></div>
         <h3 class="title"></h3>
         <a class="prev">‹</a>
         <a class="next">›</a>
         <a class="play-pause"></a>
         <ol class="indicator"></ol>
     </div>
+
+    {#video thumbnails#}
+
 {% endblock media_content %}
 
 {% block javascripts %}

@@ -22,6 +22,8 @@ class CategoryController extends Controller
      */
     public function viewCategoryAction($country)
     {
+        $countryname=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
         $categories = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Category')->findAll();
 
@@ -32,7 +34,7 @@ class CategoryController extends Controller
         }
 
         return $this->render('AppBundle::categories.html.twig',array(
-            'categories' => $categories,'country'=>$country));
+            'categories' => $categories,'country'=>$country,'countryname'=>$countryname));
     }
 
 

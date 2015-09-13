@@ -22,13 +22,18 @@ class VideoController extends Controller
     {
 
         //        find country id
-        $countryID=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country)->getId();
+        $countryEntiy=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
+        $countryID=$countryEntiy->getId();
+        $countryName=$countryEntiy->getName();
 
 
 //        find categroy id
-        $categoryID=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category)->getId();
+        $categoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category);
+        $categoryID=$categoryEntity->getId();
+
+        $categoryName=$categoryEntity->getTitle();
 
 
 
@@ -43,7 +48,7 @@ class VideoController extends Controller
         }
 
         return $this->render('AppBundle::videos.html.twig',array(
-            'videos' => $videos,'country'=>$countryID,'category'=>$categoryID));
+            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName));
     }
     /**
      * @Route("/play/{id}")

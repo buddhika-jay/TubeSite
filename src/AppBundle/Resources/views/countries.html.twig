@@ -13,7 +13,7 @@
                         {% if count>0 %}
                             </div>
                         {% endif %}
-                        <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
+                        <div class="row" style="padding-left:7%;padding-right:4%;padding-bottom: 4%">
                     {% endif %}
                     {#show country#}
                     <div class="col-sm-3 col-lg-4">
@@ -29,8 +29,7 @@
                                 <img id="image" src="{{ vich_uploader_asset(country, 'backgroundImage') }}" alt="{{ country.name }}" />
 
                             </div>
-                         </a>
-                     </div>
+                         </a>       </div>
                 {% set count=count+1 %}
                 {% endfor %}
             </div>
@@ -38,7 +37,7 @@
             <div class="col-sm-2 col-lg-2">
                 <div id="country_list" class="list-group">
                     {%  for country in countries %}
-                        <a href="" id="country_list_item" class="list-group-item">
+                        <a href="{{ country.code }}" id="country_list_item" class="list-group-item">
 
                             <img id="flag_list" src="{{ vich_uploader_asset(country, 'flag') }}"/>
 
