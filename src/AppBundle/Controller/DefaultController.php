@@ -8,14 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function indexAction()
-    {
-        // replace this example code with whatever you need
-        return $this->render('@App/countries.html.twig');
-    }
+//    /**
+//     * @Route("/")
+//     */
+//    public function indexAction()
+//    {
+//        // replace this example code with whatever you need
+//        return $this->render('@App/countries.html.twig');
+//    }
 
     /**
      * @Route("/map", name="Map")

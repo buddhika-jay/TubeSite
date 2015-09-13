@@ -13,6 +13,30 @@ use Siplo\MediaBundle\Form\Model\CountryUpload;
 class CountryController extends Controller
 {
 
+    /**
+     * @Route("/")
+     *
+     */
+    public function viewCountryAction()
+    {
+        $countries = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findAll();
+
+        if (!$countries) {
+            throw $this->createNotFoundException(
+                'No countries found'
+            );
+        }
+//        $path= $video;//->getVideoFile();//.mozFullPath;
+
+//        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+//        $path = $helper->asset($countries, 'videoFile');
+
+
+        //$path = "videos/sample.mp4";
+        return $this->render('AppBundle::countries.html.twig',array(
+            'countries' => $countries));
+    }
 
     /**
      * @Route("/country/create")
@@ -53,8 +77,7 @@ class CountryController extends Controller
             $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
             $path = $helper->asset($uploader->getCountry(), 'backgroundImage');
 //            return $this->redirectToRoute('play');
-            return $this->render('SiploMediaBundle::videoplayer.html.twig',array(
-                'path' => $path));
+            return $this->viewCountryAction();
         }
 
         return $this->render(
