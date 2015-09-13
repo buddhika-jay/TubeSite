@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new Siplo\UserBundle\SiploUserBundle(),
             new Siplo\MediaBundle\SiploMediaBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new HappyR\Google\ApiBundle\HappyRGoogleApiBundle()
+            new HappyR\Google\ApiBundle\HappyRGoogleApiBundle(),
+            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

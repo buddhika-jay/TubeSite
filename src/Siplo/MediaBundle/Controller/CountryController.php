@@ -20,7 +20,10 @@ class CountryController extends Controller
     public function viewCountryAction()
     {
         $countries = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findAll();
+            ->getRepository('SiploMediaBundle:Country')->findBy(
+                array(),
+                array('name' => 'ASC')
+            );
 
         if (!$countries) {
             throw $this->createNotFoundException(
