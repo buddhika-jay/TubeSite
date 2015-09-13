@@ -11,11 +11,6 @@ class PhotoUploaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('photo', new PhotoType());
-//        $builder->add(
-//            'terms',
-//            'checkbox',
-//            array('property_path' => 'termsAccepted')
-//        );
         $builder->add('upload', 'submit');
     }
 

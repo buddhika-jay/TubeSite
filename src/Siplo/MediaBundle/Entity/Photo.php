@@ -79,7 +79,7 @@ class Photo
      */
     public function setPhoto(File $photo = null)
     {
-        $this->photo = $photo;
+        $this->$photo = $photo;
 
         if ($photo) {
             // It is required that at least one field changes if you are using doctrine

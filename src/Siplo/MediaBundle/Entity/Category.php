@@ -263,4 +263,8 @@ class Category
     {
         return $this->videos;
     }
+
+    public function __toString() {
+        return $this->title;
+    }
 }
