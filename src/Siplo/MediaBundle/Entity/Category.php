@@ -35,6 +35,12 @@ class Category
     private $backgroundFileName;
 
     /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="category")
+     **/
+    private $photos;
+
+
+    /**
      * @return string
      */
     public function getBackgroundFileName()
@@ -178,5 +184,45 @@ class Category
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     * @return Category
+     */
+    public function addPhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     */
+    public function removePhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }

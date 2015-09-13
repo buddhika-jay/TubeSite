@@ -45,6 +45,20 @@ class Photo
     private $photoFileName;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="photos")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     **/
+    private $country;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="photos")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     **/
+    private $category;
+
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -127,5 +141,51 @@ class Photo
     public function getPhotoFileName()
     {
         return $this->photoFileName;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Siplo\MediaBundle\Entity\Country $country
+     * @return Photo
+     */
+    public function setCountry(\Siplo\MediaBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Siplo\MediaBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Siplo\MediaBundle\Entity\Category $category
+     * @return Photo
+     */
+    public function setCategory(\Siplo\MediaBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Siplo\MediaBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

@@ -5,6 +5,7 @@ namespace Siplo\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -73,6 +74,11 @@ class Country
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="country")
+     **/
+    private $photos;
 
 
     /**
@@ -199,5 +205,88 @@ class Country
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set backgroundImageFileName
+     *
+     * @param string $backgroundImageFileName
+     * @return Country
+     */
+    public function setBackgroundImageFileName($backgroundImageFileName)
+    {
+        $this->backgroundImageFileName = $backgroundImageFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get backgroundImageFileName
+     *
+     * @return string 
+     */
+    public function getBackgroundImageFileName()
+    {
+        return $this->backgroundImageFileName;
+    }
+
+    /**
+     * Set flagFileName
+     *
+     * @param string $flagFileName
+     * @return Country
+     */
+    public function setFlagFileName($flagFileName)
+    {
+        $this->flagFileName = $flagFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get flagFileName
+     *
+     * @return string 
+     */
+    public function getFlagFileName()
+    {
+        return $this->flagFileName;
+    }
+
+    public function __construct() {
+        $this->photos = new ArrayCollection();
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     * @return Country
+     */
+    public function addPhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     */
+    public function removePhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }

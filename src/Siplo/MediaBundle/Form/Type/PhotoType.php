@@ -16,6 +16,14 @@ class PhotoType extends AbstractType
     {
         $builder->add('title');
         $builder->add('photo', 'vich_file');
+        $builder->add('country', 'entity', array(
+            'class' => 'SiploMediaBundle:Country',
+            'choice_label' => 'name',
+        ));
+        $builder->add('category', 'entity', array(
+            'class' => 'SiploMediaBundle:Category',
+            'choice_label' => 'title',
+        ));
     }
     
     /**

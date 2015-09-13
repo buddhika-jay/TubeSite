@@ -5,6 +5,7 @@ namespace Siplo\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -73,6 +74,11 @@ class Country
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="country")
+     **/
+    private $photos;
 
 
     /**
@@ -245,5 +251,42 @@ class Country
     public function getFlagFileName()
     {
         return $this->flagFileName;
+    }
+
+    public function __construct() {
+        $this->photos = new ArrayCollection();
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     * @return Country
+     */
+    public function addPhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \Siplo\MediaBundle\Entity\Photo $photos
+     */
+    public function removePhoto(\Siplo\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }
