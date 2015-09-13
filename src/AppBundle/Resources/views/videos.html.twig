@@ -41,6 +41,34 @@
     </div>
 
     {#video thumbnails#}
+        <div style="background: rgba(55,55,55,.4);height: 50px;width: 200px">
+            <h1>All Videos</h1>
+        </div>
+    {% set count=0 %}
+    {%  for video in videos %}
+        {#create a new row for 3 categories#}
+        {% if count is divisibleby(3) %}
+            {% if count>0 %}
+                </div>
+            {% endif %}
+            <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
+        {% endif %}
+        {#show category#}
+        <div class="col-sm-3 col-lg-4">
+            <a href="">
+                <div id="container">
+
+                    <img id="image" src="{{ vich_uploader_asset(video, 'thumbnail') }}" alt="" />
+                    {#<div id="inner-container">#}
+                        {#<p id="text">#}
+                            {#&#123;&#35;{{  }}&#35;&#125;#}
+                        {#</p>#}
+                    {#</div>#}
+                </div>
+            </a>
+        </div>
+        {% set count=count+1 %}
+    {% endfor %}
     </div>
 {% endblock media_content %}
 
