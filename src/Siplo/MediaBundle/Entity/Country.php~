@@ -80,6 +80,11 @@ class Country
      **/
     private $photos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Video", mappedBy="country")
+     **/
+    private $videos;
+
 
     /**
      * Get id

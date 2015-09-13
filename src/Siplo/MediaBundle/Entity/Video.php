@@ -45,6 +45,18 @@ class Video
     private $VideoTitle;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="videos")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     **/
+    private $country;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="videos")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     **/
+    private $category;
+
+    /**
      * @return string
      */
     public function getVideoTitle()
@@ -200,5 +212,51 @@ class Video
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Siplo\MediaBundle\Entity\Country $country
+     * @return Video
+     */
+    public function setCountry(\Siplo\MediaBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Siplo\MediaBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Siplo\MediaBundle\Entity\Category $category
+     * @return Video
+     */
+    public function setCategory(\Siplo\MediaBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Siplo\MediaBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

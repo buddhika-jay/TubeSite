@@ -165,4 +165,27 @@ class Photo
     {
         return $this->country;
     }
+
+    /**
+     * Set category
+     *
+     * @param \Siplo\MediaBundle\Entity\Category $category
+     * @return Photo
+     */
+    public function setCategory(\Siplo\MediaBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Siplo\MediaBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

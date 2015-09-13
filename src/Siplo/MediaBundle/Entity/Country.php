@@ -80,6 +80,11 @@ class Country
      **/
     private $photos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Video", mappedBy="country")
+     **/
+    private $videos;
+
 
     /**
      * Get id
@@ -288,5 +293,38 @@ class Country
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     * @return Country
+     */
+    public function addVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }
