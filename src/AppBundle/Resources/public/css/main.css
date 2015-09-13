@@ -261,7 +261,11 @@ section {
 }
 
 #country_list_item{
+  -webkit-transition: background 0.5s;
   background: rgba(255,255,245,.4);
+}
+#country_list_item:hover{
+  background: rgba(255,255,245,.9);
 }
 .carousel-fade .carousel-inner .active {
   opacity: 1;

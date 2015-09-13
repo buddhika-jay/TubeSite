@@ -36,14 +36,15 @@
             </div>
             <div class="col-sm-2 col-lg-2">
                 <div id="country_list" class="list-group">
-                    {%  for country in countries %}
+                    {%  for country in countries|sort %}
                         <a href="" id="country_list_item" class="list-group-item">
 
                             <img id="flag_list" src="{{ vich_uploader_asset(country, 'flag') }}"/>
 
-                            {{ country.name }}
-
+                            <li style="padding-left: 12%">{{ country.name }}</li>
                         </a>
+
+
                     {% endfor %}
 
                 </div>

@@ -30,12 +30,14 @@ class Country
      */
     private $name;
 
+
     /**
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=255)
      */
     private $code;
+    //get country code from: http://www.worldatlas.com/aatlas/ctycodes.htm
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
