@@ -1,10 +1,10 @@
 {% extends '@App/menu.html.twig' %}
 {% block media_content %}
-    <div id="contact-us" class="parallax" >
-        <div  class="container-fluid"style="background: rgba(0,0,0,.46)">
+    <div style="background-image: url({{ vich_uploader_asset(country, 'backgroundImage') }})" class="parallax" >
+        <div  class="container-fluid" style="background: rgba(0,0,0,.7);padding-bottom: 300px">
 
-                <div style="margin-left:20px;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;background: rgba(0,0,0,.6);width: 200px;margin-bottom: 20px">
-                 <h1>{{ countryname }}</h1>
+                <div style="margin-left:7%;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;background: rgba(0,23,56,.4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     );width: 200px;margin-bottom: 20px">
+                 <h1>{{ country.name }}</h1>
                 </div>
                 {% set count=0 %}
                 {%  for category in categories %}
@@ -13,11 +13,11 @@
                         {% if count>0 %}
                             </div>
                         {% endif %}
-                        <div class="row" style="padding-left:7%;padding-right: ;        ght:5%;padding-bottom: 2%">
+                        <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
                     {% endif %}
                     {#show category#}
                     <div class="col-sm-3 col-lg-4">
-                         <a href="{{country~'/'~category.code }}">
+                         <a href="{{country.code~'/'~category.code }}">
                             <div id="container">
 
                                 <img id="image" src="{{ vich_uploader_asset(category, 'backgroundImage') }}" alt="{{ category.title }}" />

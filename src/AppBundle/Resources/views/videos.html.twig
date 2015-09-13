@@ -7,8 +7,9 @@
 {% endblock %}
 
 {% block media_content %}
-    <div style="margin-top: 90px">
-        <h1>{{ country }} {{ category }}</h1>
+    <div style="background:rgba(0,0,0,.9)">
+    <div style="margin-top: 80px">
+        <h1>{{ country }}</h1>
     </div>
     <div>
         <div id="links">
@@ -30,7 +31,7 @@
     </div>
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-    <div style="height:635px;padding-top: 0px;padding-bottom:0px;margin-left: 8%;margin-right: 8%" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+    <div style="height:635px;padding-top: 0px;padding-bottom:0px;margin-left: 8%;margin-right: 8%;margin-bottom:0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
         <div style="height:inherit" class="slides"></div>
         <h3 class="title"></h3>
         <a class="prev">‹</a>
@@ -40,7 +41,7 @@
     </div>
 
     {#video thumbnails#}
-
+    </div>
 {% endblock media_content %}
 
 {% block javascripts %}
