@@ -7,35 +7,20 @@
 {% endblock %}
 
 {% block media_content %}
-    <div style="padding-top: 80px;margin-top: 2px">
+    <div style="margin-top: 90px">
+        <h4>{{ country }} {{ category }}</h4>
+    </div>
+    <div style="padding-top: 10px;margin-top: 2px;margin-left: 10%;margin-right: 10%">
         <div id="links">
-
+            {% for Video in videos %}
             <a
-                    href="{{ asset('/uploads/videos/vid.webm')}}"
+                    href="{{ vich_uploader_asset(Video, 'videoFile') }}"
                     title=""
                     type="video/webm"
-                    data-poster="{{ asset('/uploads/thumbs/1.png')}}"
-                    {#data-sources='[{"href": "{{ asset('/uploads/videos/vid.mp4')}}", "type": "video/mp4"}]'#}
-                    data-sources='[{"href": "{{ asset('/uploads/videos/vid.webm')}}", "type": "video/webm"}]'
+                    data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
+                    data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
                     ></a>
-            <a
-                    href="{{ asset('/uploads/videos/vid2.webm')}}"
-                    title=""
-                    type="video/webm"
-                    data-poster="{{ asset('/uploads/thumbs/2.png')}}"
-                    {#data-sources='[{"href": "{{ asset('/uploads/videos/vid.mp4')}}", "type": "video/mp4"}]'#}
-                    data-sources='[{"href": "{{ asset('/uploads/videos/vid2.webm')}}", "type": "video/webm"}]'
-                    ></a>
-
-            {#<a href="{{ asset('bundles/siplomedia/images/1.jpg') }}" title="Banana">#}
-            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}" alt="Banana">&#35;&#125;#}
-            {#</a>#}
-            {#<a href="{{ asset('bundles/siplomedia/images/2.jpg') }}" title="Apple">#}
-            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}"  alt="Apple">&#35;&#125;#}
-            {#</a>#}
-            {#<a href="{{ asset('bundles/siplomedia/images/3.jpg') }}" title="Orange">#}
-            {#&#123;&#35;<img src="{{ asset('bundles/siplomedia/images/thumbnails/thumbnail.jpg') }}"  alt="Orange">&#35;&#125;#}
-            {#</a>#}
+            {% endfor %}
         </div>
 
     </div>

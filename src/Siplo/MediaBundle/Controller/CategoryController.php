@@ -15,7 +15,9 @@ class CategoryController extends Controller
 
 
     /**
-     * @Route("/{country}")
+     * @Route("/{country}",requirements={
+     *     "country": "^[A-Z]{2}"
+     * }))
      *
      */
     public function viewCategoryAction($country)

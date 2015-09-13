@@ -13,22 +13,37 @@ use Siplo\MediaBundle\Form\Model\Upload;
 class VideoController extends Controller
 {
     /**
-     * @Route("/{country}/{category}")
+     * @Route("/{country}/{category}",requirements={
+     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}"
+     * }))
      *
      */
     public function showVideosAction($country,$category)
     {
+
+        //        find country id
+        $countryID=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country)->getId();
+
+
+//        find categroy id
+        $categoryID=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category)->getId();
+
+
+
         $videos = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Video')->findAll();
+            ->getRepository('SiploMediaBundle:Video')->findBy(
+                array('country' => $countryID,'category' => $categoryID)
+            );;
 
         if (!$videos) {
-            throw $this->createNotFoundException(
-                'No videos found'
+            return $this->render('AppBundle::emptycontent.html.twig'
             );
         }
 
         return $this->render('AppBundle::videos.html.twig',array(
-            'videos' => $videos));
+            'videos' => $videos,'country'=>$countryID,'category'=>$categoryID));
     }
     /**
      * @Route("/play/{id}")
