@@ -50,7 +50,6 @@ class PhotoController extends Controller
 
             $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
             $path = $helper->asset($uploader->getPhoto(), 'photo');
-//            return $this->redirectToRoute('play');
             return $this->render('SiploMediaBundle::videoplayer.html.twig',array(
                 'path' => $path));
         }

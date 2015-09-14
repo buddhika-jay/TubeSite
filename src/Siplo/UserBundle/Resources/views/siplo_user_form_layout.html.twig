@@ -1,6 +1,8 @@
-{% extends "base.html.twig" %}
-{% block body %}
-    {% block form_block %}
+{% extends "@App/menu.html.twig" %}
+
+{% block media_content %}
+    <div style="margin-top: 200px">
+        {% block form_block %}
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -10,5 +12,6 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-    {% endblock form_block %}
-{% endblock body %}
+        {% endblock form_block %}
+    </div>
+{% endblock media_content %}
