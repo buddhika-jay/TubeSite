@@ -30,12 +30,14 @@ class Country
      */
     private $name;
 
+
     /**
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=255)
      */
     private $code;
+    //get country code from: http://www.worldatlas.com/aatlas/ctycodes.htm
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -74,6 +76,13 @@ class Country
      * @var \DateTime
      */
     private $updatedAt;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="countries")
+     * @ORM\JoinTable(name="countries_categories")
+     **/
+    private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="country")
@@ -260,6 +269,8 @@ class Country
 
     public function __construct() {
         $this->photos = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -293,5 +304,42 @@ class Country
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     * @return Country
+     */
+    public function addVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 }
