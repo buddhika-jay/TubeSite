@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use Siplo\MediaBundle\Form\Type\UploaderType;
 use Siplo\MediaBundle\Form\Model\Upload;
@@ -123,5 +124,36 @@ class VideoController extends Controller
             'SiploMediaBundle::form.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+    /**
+     * @Route("/download/video/{id}")
+     *
+     */
+    public function downloadAction($id)
+    {
+
+        $video = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Video')
+            ->find($id);
+
+        if (!$video) {
+            throw $this->createNotFoundException(
+                'No photo found for id '.$id
+            );
+        }
+
+
+        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+        $path = $this->get('kernel')->getRootDir(). "/../web/".$helper->asset($video, 'videoFile');
+        $content = file_get_contents($path);
+
+        $response = new Response();
+
+//        $response->headers->set('Content-Type', '');
+        $response->headers->set('Content-Disposition', 'attachment;filename="'.$video->getVideoName());
+
+        $response->setContent($content);
+        return $response;
     }
 }

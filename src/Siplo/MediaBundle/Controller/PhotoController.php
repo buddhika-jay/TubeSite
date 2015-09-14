@@ -78,12 +78,6 @@ class PhotoController extends Controller
             );
         }
 
-//        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-//        $path = $this->get('kernel')->getRootDir();#.$helper->asset($photo, 'photo');
-//        $path = $this->container->getParameter('vich_uploader.mappings');
-//        $path = $path['uploaded_video'];
-//        $path = $path['upload_destination'];
-//        $path = $path.'dsfasf';
 
         $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
         $path = $this->get('kernel')->getRootDir(). "/../web/".$helper->asset($photo, 'photo');
@@ -96,15 +90,5 @@ class PhotoController extends Controller
 
         $response->setContent($content);
         return $response;
-    }
-
-    /**
-     * @Route("/test/test")
-     *
-     */
-    public function testPhotoAction()
-    {
-        $testPath = $this->container->getParameter('vich_uploader.mappings[uploaded_video]. [uri_prefix]');
-        return $this->render('@SiploMedia/Default/index.html.twig', array('name'=>$testPath));
     }
 }
