@@ -154,6 +154,7 @@ easy_admin:
                         - id
                         - username
                         - email
+                        - locked
                 form:
                     fields:
                         - username
@@ -192,6 +193,13 @@ easy_admin:
         Photo:
                 class: Siplo\MediaBundle\Entity\Photo
                 label: 'Photos'
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'title'}
+                        - { property: 'photoFileName', type: 'image', base_path: '/uploads/photos/' }
+                        - { property: 'country'}
+                        - { property: 'category'}
         Video:
                 class: Siplo\MediaBundle\Entity\Video
                 label: 'Videos'

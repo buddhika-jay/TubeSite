@@ -18,6 +18,12 @@ class CountryType extends AbstractType
         $builder->add('code', 'text');
         $builder->add('background_image', 'vich_file');
         $builder->add('flag', 'vich_file');
+        $builder->add('categories', 'entity', array(
+            'class' => 'SiploMediaBundle:Category',
+            'choice_label' => 'title',
+            'expanded'=>true,
+            'multiple' => true,
+        ));
     }
     
     /**

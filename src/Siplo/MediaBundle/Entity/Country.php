@@ -77,6 +77,13 @@ class Country
      */
     private $updatedAt;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="countries")
+     * @ORM\JoinTable(name="countries_categories")
+     **/
+    private $categories;
+
     /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="country")
      **/
@@ -262,6 +269,8 @@ class Country
 
     public function __construct() {
         $this->photos = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**

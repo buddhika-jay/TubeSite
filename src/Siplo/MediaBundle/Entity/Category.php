@@ -5,6 +5,7 @@ namespace Siplo\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -43,6 +44,11 @@ class Category
      * @ORM\OneToMany(targetEntity="Video", mappedBy="category")
      **/
     private $videos;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Country", mappedBy="categories")
+     **/
+    private $countries;
 
 
     /**
@@ -195,7 +201,9 @@ class Category
      */
     public function __construct()
     {
-        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->photos = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->countries = new ArrayCollection();
     }
 
     /**
