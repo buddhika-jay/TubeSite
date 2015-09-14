@@ -1,3 +1,4 @@
+
 siplo_media:
     resource: "@SiploMediaBundle/Controller/"
     type:     annotation

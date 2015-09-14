@@ -42,14 +42,14 @@ class CountryController extends Controller
     }
 
     /**
-     * @Route("/country/create")
+     * @Route("/create/country")
      *
      */
     public function createCountryAction()
     {
         $uploader = new CountryUpload();
         $form = $this->createForm(new CountryUploaderType(), $uploader, array(
-            'action' => '/country/create/save',
+            'action' => '/create/country/save',
         ));
 
         return $this->render(
@@ -60,7 +60,7 @@ class CountryController extends Controller
 
 
     /**
-     * @Route("/country/create/save")
+     * @Route("/create/country/save")
      *
      */
     public function countrySaveAction(Request $request)

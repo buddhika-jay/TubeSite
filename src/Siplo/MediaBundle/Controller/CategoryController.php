@@ -40,14 +40,14 @@ class CategoryController extends Controller
 
 
     /**
-     * @Route("/category/create")
+     * @Route("/create/category")
      *
      */
     public function createCategoryAction()
     {
         $uploader = new CategoryUpload();
         $form = $this->createForm(new CategoryUploaderType(), $uploader, array(
-            'action' => '/category/create/save',
+            'action' => '/create/category/save',
         ));
 
         return $this->render(
@@ -58,7 +58,7 @@ class CategoryController extends Controller
 
 
     /**
-     * @Route("/category/create/save")
+     * @Route("/create/category/save")
      *
      */
     public function catergorySaveAction(Request $request)

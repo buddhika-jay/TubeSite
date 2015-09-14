@@ -77,14 +77,14 @@ class VideoController extends Controller
     }
 
     /**
-     * @Route("/upload")
+     * @Route("/upload/video")
      *
      */
     public function uploadAction()
     {
         $uploader = new Upload();
         $form = $this->createForm(new UploaderType(), $uploader, array(
-            'action' => '/upload/save',
+            'action' => '/upload/video/save',
         ));
 
         return $this->render(
@@ -95,7 +95,7 @@ class VideoController extends Controller
 
 
     /**
-     * @Route("/upload/save")
+     * @Route("/upload/video/save")
      *
      */
     public function saveAction(Request $request)

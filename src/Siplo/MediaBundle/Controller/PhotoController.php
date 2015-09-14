@@ -13,14 +13,14 @@ use Siplo\MediaBundle\Form\Model\PhotoUpload;
 class PhotoController extends Controller
 {
     /**
-     * @Route("/photo/upload")
+     * @Route("/upload/photo")
      *
      */
     public function photoUploadAction()
     {
         $uploader = new PhotoUpload();
         $form = $this->createForm(new PhotoUploaderType(), $uploader, array(
-            'action' => '/photo/upload/save',
+            'action' => '/upload/photo/save',
         ));
 
         return $this->render(
@@ -31,7 +31,7 @@ class PhotoController extends Controller
 
 
     /**
-     * @Route("/photo/upload/save")
+     * @Route("/upload/photo/save")
      *
      */
     public function saveAction(Request $request)
