@@ -1,7 +1,9 @@
 {% extends "@App/menu.html.twig" %}
 
 {% block media_content %}
-    <div style="margin-top: 200px">
+    <div id="contact-us" style="background-attachment: fixed;padding-bottom: 0" >
+    <div  class="container-fluid" style="background: rgba(0,0,0,.46)">
+    <div style="margin-top: 180px;margin-bottom: 50px">
         {% block form_block %}
             <div class="row">
                 <div class="col-md-4"></div>
@@ -13,5 +15,7 @@
                 <div class="col-md-4"></div>
             </div>
         {% endblock form_block %}
+    </div>
+    </div>
     </div>
 {% endblock media_content %}

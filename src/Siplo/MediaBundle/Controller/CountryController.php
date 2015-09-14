@@ -26,9 +26,7 @@ class CountryController extends Controller
             );
 
         if (!$countries) {
-            throw $this->createNotFoundException(
-                'No countries found'
-            );
+            $this->render('AppBundle::emptycontent.html.twig');
         }
 //        $path= $video;//->getVideoFile();//.mozFullPath;
 
