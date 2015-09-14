@@ -87,6 +87,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Siplo\UserBundle\Entity\SiploUser
+
+#IF you change path of the uploding elemen of Vich uploader bundle, You also have to change the relevent base path
+#in easy_admin
+
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
     mappings:
@@ -145,6 +149,18 @@ easy_admin:
         User:
                 class: Siplo\UserBundle\Entity\SiploUser
                 label: 'Users'
+                list:
+                    fields:
+                        - id
+                        - username
+                        - email
+                form:
+                    fields:
+                        - username
+                        - email
+                        - plainPassword
+                        - roles
+                        - enabled
         Country:
                 class: Siplo\MediaBundle\Entity\Country
                 label: 'Countries'
@@ -163,6 +179,11 @@ easy_admin:
         Category:
                 class: Siplo\MediaBundle\Entity\Category
                 label: 'Categories'
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'title'}
+                        - { property: 'backgroundFileName', type: 'image', base_path: '/thumbs/category_backgrounds/' }
                 form:
                     fields:
                         - title
