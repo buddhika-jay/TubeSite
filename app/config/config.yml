@@ -176,6 +176,7 @@ easy_admin:
                         - code
                         - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
                         - { property: 'flag', type: 'file', label: 'Upload Flag', help: 'Select file to upload / change logo'}
+                        - { property: 'categories'}
 
         Category:
                 class: Siplo\MediaBundle\Entity\Category
