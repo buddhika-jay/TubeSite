@@ -16,6 +16,7 @@
             {% set count=1 %}
             {% for Video in videos if count<3%}
                 {% set count = loop.index %}
+                <div>
                   <a
                     href="{{ vich_uploader_asset(Video, 'videoFile') }}"
                     title=""
@@ -23,15 +24,17 @@
                     type="video/webm"
                     data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
                     data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
-                    ></a>
+                    >
 
+                  </a>
+                </div>
             {% endfor %}
         </div>
 
     </div>
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-    <div style="height:635px;padding-top: 0px;padding-bottom:0px;margin-left: 8%;margin-right: 8%;margin-bottom:0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+    <div style="height:450px;width: 800px;padding-top: 0px;padding-bottom:0px;margin-left: 20%;margin-right: 8%;margin-bottom:0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
         <div style="height:inherit" class="slides"></div>
         <h3 class="title"></h3>
         <a class="prev">‹</a>
@@ -55,15 +58,28 @@
         {% endif %}
         {#show category#}
         <div class="col-sm-3 col-lg-4">
-            <a href="">
-                <div id="container">
+            <a href="#" onclick="javascript:play({{ count }})">
+                <div  id="container" >
 
-                    <img id="image" src="{{ vich_uploader_asset(video, 'thumbnail') }}" alt="" />
+                    <img style="width: 300px;height: auto" id="image" src="{{ vich_uploader_asset(video, 'thumbnail') }}" alt="" />
                     {#<div id="inner-container">#}
                         {#<p id="text">#}
                             {#&#123;&#35;{{  }}&#35;&#125;#}
                         {#</p>#}
                     {#</div>#}
+                    {{ count }}
+                    <div id="{{ count }}">
+                    <a
+                            href="{{ vich_uploader_asset(video, 'videoFile') }}"
+                            title=""
+                            {#{{ Video.getVideoTitle() }}#}
+                            type="video/webm"
+                            data-poster="{{ vich_uploader_asset(video, 'thumbnail') }}"
+                            data-sources='[{"href": "{{ vich_uploader_asset(video, 'videoFile') }}", "type": "video/webm"}]'
+                            >
+
+                    </a>
+                    </div>
                 </div>
             </a>
         </div>
@@ -76,13 +92,27 @@
     {{ parent() }}
     <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
     <script>
-        blueimp.Gallery(
+        var gallery;
+        gallery=blueimp.Gallery(
                 document.getElementById('links').getElementsByTagName('a'),
                 {
                     container: '#blueimp-gallery-carousel',
                     carousel: true
                 }
         );
+        function play(id) {
+           // gallery.close();
+//            gallery=blueimp.Gallery(
+//                    document.getElementById(id).getElementsByTagName('a'),
+//                    {
+//                        container: '#blueimp-gallery-carousel',
+//                        carousel: false,
+////                        clearSlides: false
+//                    }
+//            );
+            var count = gallery.getNumber();
+            gallery.slide(id, 0);
+        }
 
     </script>
 {% endblock javascripts %}
