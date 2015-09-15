@@ -7,6 +7,10 @@
     <meta name="author" content="">
     <title>Tourism On Net</title>
     {% block stylesheets %}
+        {#for carasoul#}
+        <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
+        {#end#}
     <link href={{asset ('bundles/app/css/bootstrap.min.css')}}  rel="stylesheet">
     <link href={{asset ('bundles/app/css/animate.min.css')}}  rel="stylesheet">
     <link href={{asset ('bundles/app/css/font-awesome.min.css')}}  rel="stylesheet">
@@ -85,7 +89,8 @@
                 <div id="navbar" class="navbar-collapse collapse"  >
                     <ul id="top-menu" class="nav navbar-nav navbar-right main_nav">
                         {% block menuitems %}
-                        <li class="active"><a href="/">Home</a></li>
+                        <li class="scroll active"><a href="#">Home</a></li>
+                            <li class="scroll"><a href="#content">Countries</a></li>
 
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                 {#<li><a href="/upload">upload</a></li>#}
@@ -116,14 +121,49 @@
     <!-- END MENU -->
 
 {#carousel-start#}
-<div style="height: 100px">
 
+<div style="height: auto">
+    <div id="links">
+        {% set count=1 %}
+        {% for Video in videos if count<3%}
+            {% set count = loop.index %}
+            <div>
+                <a
+                        href="{{ vich_uploader_asset(Video, 'videoFile') }}"
+                        title=""
+                        {#{{ Video.getVideoTitle() }}#}
+                        type="video/webm"
+                        data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
+                        data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
+                        >
+
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
+    <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>
+    <div style="background:rgba(0,0,0,1);height: 550px;overflow: hidden">
+    <div style="height:768px;width:100%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+
+        <div style="height:inherit" class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+    </div>
+    <i class="fa fa-chevron-down"></i>
 </div>
 {#carousel-end#}
+<section id="content" style="background:black;padding: 0 0">
 {% block media_content %}
 
 
 {% endblock %}
+</section>
 <footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="container text-center">
@@ -190,6 +230,20 @@
 
 <!-- Custom js-->
 <script src={{ asset('bundles/app/js/custom.js')}}></script>
+
+    {#for carasol#}
+    <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
+    <script>
+        var gallery;
+        gallery=blueimp.Gallery(
+                document.getElementById('links').getElementsByTagName('a'),
+                {
+                    container: '#blueimp-gallery-carousel',
+                    carousel: true
+                }
+        );
+
+    </script>
 {% endblock %}
 </body>
 </html>

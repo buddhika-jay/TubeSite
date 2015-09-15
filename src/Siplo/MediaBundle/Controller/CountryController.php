@@ -28,6 +28,13 @@ class CountryController extends Controller
         if (!$countries) {
             $this->render('AppBundle::emptycontent.html.twig');
         }
+        $videos = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Video')->findAll();
+
+        if (!$videos) {
+            return $this->render('AppBundle::emptycontent.html.twig'
+            );
+        }
 //        $path= $video;//->getVideoFile();//.mozFullPath;
 
 //        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
@@ -36,7 +43,7 @@ class CountryController extends Controller
 
         //$path = "videos/sample.mp4";
         return $this->render('AppBundle::countries.html.twig',array(
-            'countries' => $countries));
+            'countries' => $countries,'videos'=>$videos));
     }
 
     /**

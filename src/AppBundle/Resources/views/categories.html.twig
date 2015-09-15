@@ -1,4 +1,28 @@
 {% extends '@App/menu.html.twig' %}
+{% block menuitems %}
+    <li class="scroll"><a href="/">Home</a></li>
+    <li class="scroll active"><a href="#content">Categories</a></li>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {#<li><a href="/upload">upload</a></li>#}
+        <li>
+            <a id="dropmenu" href="" class=""  data-toggle="dropdown">upload<b class="caret"></b></a>
+            <ul style="left: 0px" class="dropdown-menu">
+                <li><a style="padding-top:2px;padding-bottom: 2px" href={{ path('siplo_media_photo_upload') }}>photos</a></li>
+                <li><a style="padding-top:2px;padding-bottom: 2px" href={{ path('siplo_media_video_upload') }}>videos</a></li>
+            </ul>
+        </li>
+    {% endif %}
+    <li><a href="#">About us</a></li>
+    <li><a href="#" style="padding-right: 60px">Contact us</a></li>
+
+    {% if not app.user %}
+        <li><a href={{ path('fos_user_security_login') }}><i class="fa fa-sign-in"></i> Login</a></li>
+    {% else %}
+        <li><a href="#"><i class="fa fa-user"></i> {{ app.user }}</a></li>
+        <li><a href={{ path('fos_user_security_logout') }}><i class="fa fa-sign-out"></i> logout</a></li>
+    {% endif %}
+{% endblock %}
 {% block media_content %}
     <div style="background-image: url({{ vich_uploader_asset(country, 'backgroundImage') }})" class="parallax" >
         <div  class="container-fluid" style="background: rgba(0,0,10,.6);padding-bottom: 300px">
