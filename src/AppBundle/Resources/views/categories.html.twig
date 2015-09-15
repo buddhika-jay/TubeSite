@@ -9,34 +9,34 @@
                 {% set count=0 %}
                 {%  for category in categories %}
                     {#create a new row for 3 categories#}
-                    {% if count is divisibleby(3) %}
+                    {% if count is divisibleby(4) %}
                         {% if count>0 %}
                             </div>
                         {% endif %}
                         <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
                     {% endif %}
                     {#show category#}
-                    <div class="col-sm-3 col-lg-4">
+                    <div class="col-sm-2 col-lg-3">
                          {#<a href="{{country.code~'/'~category.code }}">#}
-                            <div id="container">
+                            <div id="category-container">
 
                                 <img id="image" src="{{ vich_uploader_asset(category, 'backgroundImage') }}" alt="{{ category.title }}" />
-                                <div id="inner-container" style="height: 80px">
+                                <div id="category-inner-container" style="height: 80px">
 
-                                    <div class="col-sm-3 col-lg-12 ">
-                                        <h1 id="text-category" style="text-align: center">
+                                    <div>
+                                        <p id="text-category" style="text-align: center">
                                            {{ category.title }}
-                                         </h1>
+                                         </p>
                                     </div>
                                     <div class="row">
-                                    <div style="margin-top: 40px">
-                                        <a href="">
-                                            <div class="col-sm-3 col-lg-6" id>
+                                    <div style="margin-top: 4px">
+                                        <a href="{{'photos'~'/'~ country.code~'/'~category.code }}">
+                                            <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Photos</h4>
                                             </div>
                                         </a>
                                         <a href="{{country.code~'/'~category.code }}">
-                                            <div class="col-sm-3 col-lg-6" id>
+                                            <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Videos</h4>
                                             </div>
                                         </a>

@@ -9,27 +9,31 @@
                 {% set count=0 %}
                 {%  for country in countries|sort %}
                     {#create a new row for 3 countries#}
-                    {% if count is divisibleby(3) %}
+                    {% if count is divisibleby(4) %}
                         {% if count>0 %}
                             </div>
                         {% endif %}
-                        <div class="row" style="padding-left:7%;padding-right:4%;padding-bottom: 4%">
+                        <div class="row" style="padding-left:6%;padding-right:1%;padding-bottom: 2px">
                     {% endif %}
                     {#show country#}
-                    <div class="col-sm-3 col-lg-4">
+                    <div class="col-sm-3 col-lg-3" style="padding-left: 0;padding-right: 0">
                          <a href="{{ country.code }}">
                             <div id="container">
 
                                  <div id="inner-container">
                                     <img id="flag" src="{{ vich_uploader_asset(country, 'flag') }}"/>
+                                    <div>
                                     <p id="text">
                                         {{ country.name }}
                                     </p>
+                                    </div>
                                 </div>
                                 <img id="image" src="{{ vich_uploader_asset(country, 'backgroundImage') }}" alt="{{ country.name }}" />
 
                             </div>
-                         </a>       </div>
+                         </a>
+                          </div>
+
                 {% set count=count+1 %}
                 {% endfor %}
             </div>
@@ -50,6 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
 {% endblock %}
