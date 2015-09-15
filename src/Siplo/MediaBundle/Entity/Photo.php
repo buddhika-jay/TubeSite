@@ -46,6 +46,12 @@ class Photo
     private $photoFileName;
 
     /**
+     * @var bool
+     * @ORM\Column(name="authorised", type="boolean")
+     */
+    private $authorised = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="photos")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      **/
@@ -216,5 +222,28 @@ class Photo
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set authorised
+     *
+     * @param boolean $authorised
+     * @return Photo
+     */
+    public function setAuthorised($authorised)
+    {
+        $this->authorised = $authorised;
+
+        return $this;
+    }
+
+    /**
+     * Get authorised
+     *
+     * @return boolean 
+     */
+    public function getAuthorised()
+    {
+        return $this->authorised;
     }
 }

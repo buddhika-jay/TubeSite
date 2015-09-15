@@ -45,6 +45,12 @@ class Video
     private $VideoTitle;
 
     /**
+     * @var bool
+     * @ORM\Column(name="authorised", type="boolean")
+     */
+    private $authorised = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="videos")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      **/
@@ -67,6 +73,13 @@ class Video
      * @var string
      */
     private $videoName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $thumbName='thumb';
 
 
     /**
@@ -92,12 +105,6 @@ class Video
         $this->VideoTitle = $VideoTitle;
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $thumbName='thumb';
 
     /**
      * @return string
@@ -287,5 +294,28 @@ class Video
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set authorised
+     *
+     * @param boolean $authorised
+     * @return Video
+     */
+    public function setAuthorised($authorised)
+    {
+        $this->authorised = $authorised;
+
+        return $this;
+    }
+
+    /**
+     * Get authorised
+     *
+     * @return boolean 
+     */
+    public function getAuthorised()
+    {
+        return $this->authorised;
     }
 }
