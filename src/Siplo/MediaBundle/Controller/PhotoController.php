@@ -14,6 +14,7 @@ use Siplo\MediaBundle\Entity\Photo;
 
 class PhotoController extends Controller
 {
+
     /**
      * @Route("/upload/photo")
      *
@@ -91,5 +92,44 @@ class PhotoController extends Controller
 
         $response->setContent($content);
         return $response;
+    }
+
+    /**
+     * @Route("/photos/{country}/{category}",requirements={
+     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}"
+     * }))
+     *
+     */
+    public function showPhotosAction($country,$category)
+    {
+
+        //        find country id
+        $countryEntiy=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
+        $countryID=$countryEntiy->getId();
+        $countryName=$countryEntiy->getName();
+
+
+//        find categroy id
+        $categoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category);
+        $categoryID=$categoryEntity->getId();
+
+        $categoryName=$categoryEntity->getTitle();
+
+
+
+        $photos = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Photo')->findBy(
+                array('country' => $countryID,'category' => $categoryID)
+            );;
+
+        if (!$photos) {
+            return $this->render('AppBundle::emptycontent.html.twig'
+            );
+        }
+
+        return $this->render('AppBundle::photos.html.twig',array(
+            'photos' => $photos,'country'=>$countryName,'category'=>$categoryName));
     }
 }
