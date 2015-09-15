@@ -1,6 +1,8 @@
 .checkout
 =========
 
+[![Join the chat at https://gitter.im/buddhika-jay/TubeSite](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/buddhika-jay/TubeSite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A Symfony project created on September 7, 2015, 3:22 pm.
 
 login modal : http://formvalidation.io/examples/modal/
