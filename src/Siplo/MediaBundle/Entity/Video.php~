@@ -63,6 +63,12 @@ class Video
     private $category;
 
     /**
+     * @var int
+     * @ORM\Column(name="rating")
+     */
+    private $rating = 0;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
      **/
     private $user;
@@ -73,6 +79,13 @@ class Video
      * @var string
      */
     private $videoName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $thumbName='thumb';
 
 
     /**
@@ -98,12 +111,6 @@ class Video
         $this->VideoTitle = $VideoTitle;
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $thumbName='thumb';
 
     /**
      * @return string
@@ -293,5 +300,28 @@ class Video
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set authorised
+     *
+     * @param boolean $authorised
+     * @return Video
+     */
+    public function setAuthorised($authorised)
+    {
+        $this->authorised = $authorised;
+
+        return $this;
+    }
+
+    /**
+     * Get authorised
+     *
+     * @return boolean 
+     */
+    public function getAuthorised()
+    {
+        return $this->authorised;
     }
 }

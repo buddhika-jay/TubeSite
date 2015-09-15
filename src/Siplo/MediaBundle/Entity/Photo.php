@@ -46,6 +46,12 @@ class Photo
     private $photoFileName;
 
     /**
+     * @var int
+     * @ORM\Column(name="rating")
+     */
+    private $rating = 0;
+
+    /**
      * @var bool
      * @ORM\Column(name="authorised", type="boolean")
      */
@@ -245,5 +251,28 @@ class Photo
     public function getAuthorised()
     {
         return $this->authorised;
+    }
+
+    /**
+     * Set rating
+     *
+     * @param string $rating
+     * @return Photo
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return string 
+     */
+    public function getRating()
+    {
+        return $this->rating;
     }
 }
