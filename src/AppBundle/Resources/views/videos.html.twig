@@ -7,9 +7,11 @@
 {% endblock %}
 
 {% block media_content %}
-    <div style="background:rgba(0,0,0,.9)">
-    <div style="margin-top: 80px">
-        <h1>{{ country }}</h1>
+
+    <div style="background:#d6e9c6">
+    <div style="background:rgba(0,0,0,.9);height: 80px"></div>
+    <div style="margin-top: 40px">
+        <h1 style="color: #265a88;padding-left: 5%">{{ country }}</h1>
     </div>
     <div>
         <div id="links">
@@ -44,8 +46,8 @@
     </div>
 
     {#video thumbnails#}
-        <div style="background: rgba(55,55,55,.4);height: 50px;width: 200px">
-            <h1>All Videos</h1>
+        <div style="background: rgba(55,55,55,.0);height: 50px;width: 200px;margin-left: 5%">
+            <h1 style="color:#028fcc;">All Videos</h1>
         </div>
     {% set count=0 %}
     {%  for video in videos %}
@@ -112,6 +114,7 @@
 //            );
             var count = gallery.getNumber();
             gallery.slide(id, 0);
+            gallery.carousel=false;
         }
 
     </script>
