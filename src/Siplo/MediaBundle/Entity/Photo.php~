@@ -5,6 +5,7 @@ namespace Siplo\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Siplo\UserBundle\Entity\SiploUser;
 
 /**
  * @ORM\Entity
@@ -56,6 +57,11 @@ class Photo
      **/
     private $category;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
+     **/
+    private $user;
 
 
     /**

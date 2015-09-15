@@ -5,6 +5,7 @@ namespace Siplo\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Siplo\UserBundle\Entity\SiploUser;
 
 /**
  * @ORM\Entity
@@ -56,6 +57,11 @@ class Photo
      **/
     private $category;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
+     **/
+    private $user;
 
 
     /**
@@ -187,5 +193,28 @@ class Photo
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Siplo\UserBundle\Entity\SiploUser $user
+     * @return Photo
+     */
+    public function setUser(\Siplo\UserBundle\Entity\SiploUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Siplo\UserBundle\Entity\SiploUser 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

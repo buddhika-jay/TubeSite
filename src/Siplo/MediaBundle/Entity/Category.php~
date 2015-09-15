@@ -275,4 +275,37 @@ class Category
     public function __toString() {
         return $this->title;
     }
+
+    /**
+     * Add countries
+     *
+     * @param \Siplo\MediaBundle\Entity\Country $countries
+     * @return Category
+     */
+    public function addCountry(\Siplo\MediaBundle\Entity\Country $countries)
+    {
+        $this->countries[] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Remove countries
+     *
+     * @param \Siplo\MediaBundle\Entity\Country $countries
+     */
+    public function removeCountry(\Siplo\MediaBundle\Entity\Country $countries)
+    {
+        $this->countries->removeElement($countries);
+    }
+
+    /**
+     * Get countries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCountries()
+    {
+        return $this->countries;
+    }
 }
