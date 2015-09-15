@@ -196,13 +196,39 @@ section {
 #container {
   -webkit-transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s; /* Safari */
   transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s;
-  margin-left: 2%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 90px;
+  width: 255px;
+  position: relative;
+  overflow: hidden;
+}
+
+#category-container {
+  -webkit-transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s; /* Safari */
+  transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s;
+  margin-left: 0;
+  margin-right: 0;
   height: 180px;
   width: 280px;
   position: relative;
+  overflow: hidden;
 }
 
 #inner-container {
+  -webkit-transition:background 0.5s; /* Safari */
+  transition:background 0.5s;
+  position: absolute;
+  margin-top: 50px;
+  height: 40px;
+  width: inherit;
+  background: rgba(0,0,0,.7);
+  z-index: 100;
+
+}
+
+
+#category-inner-container {
   -webkit-transition:background 0.5s; /* Safari */
   transition:background 0.5s;
   position: absolute;
@@ -211,9 +237,14 @@ section {
   width: inherit;
   background: rgba(0,0,0,.7);
   z-index: 100;
+
 }
 
 #container:hover > #inner-container {
+  background: rgba(0,100,155,.7);
+}
+
+#category-container:hover > #category-inner-container {
   background: rgba(0,100,155,.7);
 }
 
@@ -226,37 +257,40 @@ section {
 
   position:absolute;
   width: inherit;
-  height: inherit;
+  height: auto;
   z-index: 1;
   left: 0;
   top: 0;
+  ;
+
 }
 
 #text {
   -webkit-transition: font-size 0.5s; /* Safari */
   transition: font-size 0.5s;
   z-index: 100;
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
   color: rgba(250,250,255,1);
   font-size: 24px;
   font-weight: bold;
-  left: 100px;
-  top: 5px;
-  margin: 0 auto;
+  /*left: 100px;*/
+  /*top: 5px;*/
+  margin: 7px auto;
+
 }
 #text-category {
   -webkit-transition: font-size 0.5s; /* Safari */
   transition: font-size 0.5s;
   z-index: 100;
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
   color: rgba(250,250,255,1);
   font-size: 24px;
   font-weight: bold;
-  margin: 0 auto;
-  left: 60px;
-  top: 5px;
+  margin: 8px 8px;
+  /*left: 60px;*/
+  /*top: 5px;*/
 }
 #sub-title {
   -webkit-transition: font-size 0.5s; /* Safari */
@@ -284,6 +318,7 @@ section {
   top: 2px;
   width: auto;
   height:35px;
+  max-width: 60px;
   transition-timing-function: ease-out;
 
 }
