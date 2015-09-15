@@ -3,8 +3,8 @@
     <div style="background-image: url({{ vich_uploader_asset(country, 'backgroundImage') }})" class="parallax" >
         <div  class="container-fluid" style="background: rgba(0,0,10,.6);padding-bottom: 300px">
 
-                <div style="margin-left:7%;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;background: rgba(0,23,56,.4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     );width: 200px;margin-bottom: 20px">
-                 <h1>{{ country.name }}</h1>
+                <div style="margin-left:7%;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;width: 200px;margin-bottom: 20px">
+                 {#<h1>{{ country.name }}</h1>#}
                 </div>
                 {% set count=0 %}
                 {%  for category in categories %}
@@ -17,7 +17,7 @@
                     {% endif %}
                     {#show category#}
                     <div class="col-sm-2 col-lg-3">
-                         {#<a href="{{country.code~'/'~category.code }}">#}
+                         <a href="{{country.code~'/'~category.code }}">
                             <div id="category-container">
 
                                 <img id="image" src="{{ vich_uploader_asset(category, 'backgroundImage') }}" alt="{{ category.title }}" />
@@ -28,24 +28,10 @@
                                            {{ category.title }}
                                          </p>
                                     </div>
-                                    <div class="row">
-                                    <div style="margin-top: 4px">
-                                        <a href="{{'photos'~'/'~ country.code~'/'~category.code }}">
-                                            <div class="col-sm-3 col-lg-6">
-                                                <h4 id="sub-title" style="text-align: center">Photos</h4>
-                                            </div>
-                                        </a>
-                                        <a href="{{country.code~'/'~category.code }}">
-                                            <div class="col-sm-3 col-lg-6">
-                                                <h4 id="sub-title" style="text-align: center">Videos</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                        </div>
 
                                 </div>
                             </div>
-                         {#</a>#}
+                         </a>
                      </div>
                 {% set count=count+1 %}
                 {% endfor %}
