@@ -20,7 +20,8 @@ class PhotoController extends Controller
      */
     public function uploadAction()
     {
-        $uploader = new PhotoUpload();
+        $user= $this->get('security.context')->getToken()->getUser();
+        $uploader = new PhotoUpload($user);
         $form = $this->createForm(new PhotoUploaderType(), $uploader, array(
             'action' => '/upload/photo/save',
         ));
@@ -39,8 +40,8 @@ class PhotoController extends Controller
     public function saveAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(new PhotoUploaderType(), new PhotoUpload());
+        $user= $this->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new PhotoUploaderType(), new PhotoUpload($user));
 
         $form->handleRequest($request);
 

@@ -37,6 +37,11 @@ class SiploUser extends BaseUser
      **/
     private $photos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Siplo\MediaBundle\Entity\Video", mappedBy="user")
+     **/
+    private $videos;
+
 
     /**
      * Get id
@@ -74,6 +79,7 @@ class SiploUser extends BaseUser
     public function __construct() {
         parent::__construct();
         $this->photos = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
 
@@ -109,5 +115,38 @@ class SiploUser extends BaseUser
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     * @return SiploUser
+     */
+    public function addVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Siplo\MediaBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Siplo\MediaBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }

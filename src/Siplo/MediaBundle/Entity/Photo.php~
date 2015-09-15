@@ -194,4 +194,27 @@ class Photo
     {
         return $this->category;
     }
+
+    /**
+     * Set user
+     *
+     * @param \Siplo\UserBundle\Entity\SiploUser $user
+     * @return Photo
+     */
+    public function setUser(\Siplo\UserBundle\Entity\SiploUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Siplo\UserBundle\Entity\SiploUser 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
