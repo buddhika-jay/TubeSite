@@ -16,7 +16,8 @@ class CategoryType extends AbstractType
     {
         $builder->add('title', 'text');
         $builder->add('code', 'text');
-        $builder->add('background_image', 'vich_file');
+        $builder->add('backgroundImage', 'vich_file');
+        $builder->add('upload', 'submit');
     }
 
     /**
