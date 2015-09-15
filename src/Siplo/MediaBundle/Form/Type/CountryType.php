@@ -16,7 +16,7 @@ class CountryType extends AbstractType
     {
         $builder->add('name', 'text');
         $builder->add('code', 'text');
-        $builder->add('background_image', 'vich_file');
+        $builder->add('backgroundImage', 'vich_file');
         $builder->add('flag', 'vich_file');
         $builder->add('categories', 'entity', array(
             'class' => 'SiploMediaBundle:Category',
@@ -24,6 +24,7 @@ class CountryType extends AbstractType
             'expanded'=>true,
             'multiple' => true,
         ));
+        $builder->add('upload', 'submit');
     }
     
     /**
