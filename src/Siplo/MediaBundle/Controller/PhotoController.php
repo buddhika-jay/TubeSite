@@ -35,8 +35,6 @@ class PhotoController extends Controller
             $em->persist($photo);
             $em->flush();
 
-            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($photo, 'photo');
             return $this->render('SiploMediaBundle::upload_successful.html.twig');
 
         }

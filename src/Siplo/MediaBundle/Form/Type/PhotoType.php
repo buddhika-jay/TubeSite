@@ -50,6 +50,6 @@ class PhotoType extends AbstractType
      */
     public function getName()
     {
-        return 'siplo_mediabundle_test_photo';
+        return 'siplo_mediabundle_photo';
     }
 }
