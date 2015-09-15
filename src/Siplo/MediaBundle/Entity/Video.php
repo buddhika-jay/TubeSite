@@ -45,6 +45,12 @@ class Video
     private $VideoTitle;
 
     /**
+     * @var bool
+     * @ORM\Column(name="authorised", type="boolean")
+     */
+    private $authorised = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="videos")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      **/
@@ -55,6 +61,33 @@ class Video
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      **/
     private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
+     **/
+    private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $videoName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $thumbName='thumb';
+
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @return string
@@ -72,12 +105,6 @@ class Video
         $this->VideoTitle = $VideoTitle;
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $thumbName='thumb';
 
     /**
      * @return string
@@ -122,20 +149,6 @@ class Video
         }
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $videoName;
-
-
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
-    private $updatedAt;
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -258,5 +271,51 @@ class Video
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Siplo\UserBundle\Entity\SiploUser $user
+     * @return Video
+     */
+    public function setUser(\Siplo\UserBundle\Entity\SiploUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Siplo\UserBundle\Entity\SiploUser 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set authorised
+     *
+     * @param boolean $authorised
+     * @return Video
+     */
+    public function setAuthorised($authorised)
+    {
+        $this->authorised = $authorised;
+
+        return $this;
+    }
+
+    /**
+     * Get authorised
+     *
+     * @return boolean 
+     */
+    public function getAuthorised()
+    {
+        return $this->authorised;
     }
 }

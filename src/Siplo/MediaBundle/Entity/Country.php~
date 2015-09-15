@@ -342,4 +342,37 @@ class Country
     public function __toString() {
         return $this->name;
     }
+
+    /**
+     * Add categories
+     *
+     * @param \Siplo\MediaBundle\Entity\Category $categories
+     * @return Country
+     */
+    public function addCategory(\Siplo\MediaBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Siplo\MediaBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Siplo\MediaBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }

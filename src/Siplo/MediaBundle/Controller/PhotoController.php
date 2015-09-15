@@ -20,7 +20,8 @@ class PhotoController extends Controller
      */
     public function uploadAction()
     {
-        $uploader = new PhotoUpload();
+        $user= $this->get('security.context')->getToken()->getUser();
+        $uploader = new PhotoUpload($user);
         $form = $this->createForm(new PhotoUploaderType(), $uploader, array(
             'action' => '/upload/photo/save',
         ));
@@ -39,8 +40,8 @@ class PhotoController extends Controller
     public function saveAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(new PhotoUploaderType(), new PhotoUpload());
+        $user= $this->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new PhotoUploaderType(), new PhotoUpload($user));
 
         $form->handleRequest($request);
 
@@ -78,12 +79,6 @@ class PhotoController extends Controller
             );
         }
 
-//        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-//        $path = $this->get('kernel')->getRootDir();#.$helper->asset($photo, 'photo');
-//        $path = $this->container->getParameter('vich_uploader.mappings');
-//        $path = $path['uploaded_video'];
-//        $path = $path['upload_destination'];
-//        $path = $path.'dsfasf';
 
         $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
         $path = $this->get('kernel')->getRootDir(). "/../web/".$helper->asset($photo, 'photo');
@@ -96,15 +91,5 @@ class PhotoController extends Controller
 
         $response->setContent($content);
         return $response;
-    }
-
-    /**
-     * @Route("/test/test")
-     *
-     */
-    public function testPhotoAction()
-    {
-        $testPath = $this->container->getParameter('vich_uploader.mappings[uploaded_video]. [uri_prefix]');
-        return $this->render('@SiploMedia/Default/index.html.twig', array('name'=>$testPath));
     }
 }

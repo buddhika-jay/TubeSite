@@ -201,8 +201,17 @@ easy_admin:
                         - { property: 'photoFileName', type: 'image', base_path: '/uploads/photos/' }
                         - { property: 'country'}
                         - { property: 'category'}
+                        - { property: 'authorised'}
         Video:
                 class: Siplo\MediaBundle\Entity\Video
                 label: 'Videos'
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'videoName'}
+                        - { property: 'thumbName', type: 'image', base_path: '/uploads/video_thumbnails/' }
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'authorised'}
 
     site_name: 'Tourism On Net'
