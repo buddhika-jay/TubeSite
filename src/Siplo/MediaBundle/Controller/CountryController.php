@@ -15,7 +15,7 @@ class CountryController extends Controller
 {
 
     /**
-     * @Route("/")
+     *@Route("/")
      *
      */
     public function viewCountryAction()
