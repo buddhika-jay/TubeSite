@@ -1,10 +1,18 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: buddhika
+ * Date: 9/15/15
+ * Time: 7:50 PM
+ */
 
 namespace Siplo\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+
 
 class PhotoType extends AbstractType
 {
@@ -24,8 +32,9 @@ class PhotoType extends AbstractType
             'class' => 'SiploMediaBundle:Category',
             'choice_label' => 'title',
         ));
+        $builder->add('upload', 'submit');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -41,6 +50,6 @@ class PhotoType extends AbstractType
      */
     public function getName()
     {
-        return 'siplo_mediabundle_photo';
+        return 'siplo_mediabundle_test_photo';
     }
 }

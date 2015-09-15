@@ -2,65 +2,52 @@
 
 namespace Siplo\MediaBundle\Controller;
 
+use Siplo\MediaBundle\Form\Type\PhotoType;
+use Siplo\MediaBundle\Form\Type\TestPhotoUpload;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Siplo\MediaBundle\Form\Type\PhotoUploaderType;
-use Siplo\MediaBundle\Form\Model\PhotoUpload;
 use Siplo\MediaBundle\Entity\Photo;
 
 class PhotoController extends Controller
 {
+
     /**
      * @Route("/upload/photo")
      *
      */
-    public function uploadAction()
+    public function uploadAction(Request $request)
     {
-        $user= $this->get('security.context')->getToken()->getUser();
-        $uploader = new PhotoUpload($user);
-        $form = $this->createForm(new PhotoUploaderType(), $uploader, array(
-            'action' => '/upload/photo/save',
-        ));
 
-        return $this->render(
-            'SiploMediaBundle::form.html.twig',
-            array('form' => $form->createView())
-        );
-    }
-
-
-    /**
-     * @Route("/upload/photo/save")
-     *
-     */
-    public function saveAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user= $this->get('security.context')->getToken()->getUser();
-        $form = $this->createForm(new PhotoUploaderType(), new PhotoUpload($user));
-
+        $form = $this->createForm(new PhotoType(), new Photo());
         $form->handleRequest($request);
-
         if ($form->isValid()) {
-            $uploader = $form->getData();
 
-            $em->persist($uploader->getPhoto());
+
+            $photo = $form->getData();
+            $user= $this->get('security.context')->getToken()->getUser();
+            $photo->setUser($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($photo);
             $em->flush();
 
             $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($uploader->getPhoto(), 'photo');
+            $path = $helper->asset($photo, 'photo');
             return $this->render('SiploMediaBundle::upload_successful.html.twig');
+
         }
 
         return $this->render(
-            'SiploMediaBundle::form.html.twig',
+            '@SiploMedia/form.html.twig',
             array('form' => $form->createView())
         );
+
     }
+
 
     /**
      * @Route("/download/photo/{id}")
