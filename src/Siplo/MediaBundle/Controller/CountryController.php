@@ -30,7 +30,10 @@ class CountryController extends Controller
             $this->render('AppBundle::emptycontent.html.twig');
         }
         $videos = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Video')->findAll();
+            ->getRepository('SiploMediaBundle:Video')->findBy(
+                array(),
+                array('rating' => 'DESC')
+            );
 
         if (!$videos) {
             return $this->render('AppBundle::emptycontent.html.twig'

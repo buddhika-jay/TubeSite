@@ -32,6 +32,7 @@ class CategoryController extends Controller
                 'No categories found'
             );
         }
+
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findAll();
         if (!$videos) {
@@ -40,7 +41,6 @@ class CategoryController extends Controller
         }
         return $this->render('AppBundle::categories.html.twig',array(
             'categories' => $categories,'country'=>$countryEntity,'videos'=>$videos));
-
     }
 
 

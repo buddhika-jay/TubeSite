@@ -1,5 +1,28 @@
 {% extends '@App/mediapagelayout.html.twig' %}
+{% block menuitems %}
+    <li class="scroll active"><a href="/">Home</a></li>
+    {#<li class="scroll"><a href="#content">Countries</a></li>#}
 
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {#<li><a href="/upload">upload</a></li>#}
+        <li>
+            <a id="dropmenu" href="" class=""  data-toggle="dropdown">upload<b class="caret"></b></a>
+            <ul style="left: 0px" class="dropdown-menu">
+                <li><a style="padding-top:2px;padding-bottom: 2px" href={{ path('siplo_media_photo_upload') }}>photos</a></li>
+                <li><a style="padding-top:2px;padding-bottom: 2px" href={{ path('siplo_media_video_upload') }}>videos</a></li>
+            </ul>
+        </li>
+    {% endif %}
+    <li><a href="#">About us</a></li>
+    <li><a href="#" style="padding-right: 60px">Contact us</a></li>
+
+    {% if not app.user %}
+        <li><a href={{ path('fos_user_security_login') }}><i class="fa fa-sign-in"></i> Login</a></li>
+    {% else %}
+        <li><a href="#"><i class="fa fa-user"></i> {{ app.user }}</a></li>
+        <li><a href={{ path('fos_user_security_logout') }}><i class="fa fa-sign-out"></i> logout</a></li>
+    {% endif %}
+{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
     <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.css')}}">
@@ -8,60 +31,64 @@
 
 {% block media_content %}
 
-    <div style="background:#d6e9c6">
-    <div style="background:rgba(0,0,0,.9);height: 80px"></div>
-    <div style="margin-top: 40px">
-        <h1 style="color: #265a88;padding-left: 5%">{{ country }}</h1>
-    </div>
-    <div>
-        <div id="links">
-            {% set count=1 %}
-            {% for Video in videos if count<3%}
-                {% set count = loop.index %}
-                <div>
-                  <a
-                    href="{{ vich_uploader_asset(Video, 'videoFile') }}"
-                    title=""
-                    {#{{ Video.getVideoTitle() }}#}
-                    type="video/webm"
-                    data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
-                    data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
-                    >
+    {#<div style="background:#d6e9c6">#}
+    {#<div style="background:rgba(0,0,0,.9);height: 80px"></div>#}
+    <div id="content" style="padding-top: 80px;background: black">
+        {#<h1 style="color: #265a88;padding-left: 5%">{{ country }}</h1>#}
 
-                  </a>
-                </div>
-            {% endfor %}
-        </div>
+    {#<div>#}
+        {#<div id="links">#}
+            {#{% set count=1 %}#}
+            {#{% for Video in videos if count<3%}#}
+                {#{% set count = loop.index %}#}
+                {#<div>#}
+                  {#<a#}
+                    {#href="{{ vich_uploader_asset(Video, 'videoFile') }}"#}
+                    {#title=""#}
+                    {#&#123;&#35;{{ Video.getVideoTitle() }}&#35;&#125;#}
+                    {#type="video/webm"#}
+                    {#data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"#}
+                    {#data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'#}
+                    {#>#}
 
-    </div>
+                  {#</a>#}
+                {#</div>#}
+            {#{% endfor %}#}
+        {#</div>#}
+
+    {#</div>#}
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-    <div style="height:450px;width: 800px;padding-top: 0px;padding-bottom:0px;margin-left: 20%;margin-right: 8%;margin-bottom:0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
-        <div style="height:inherit" class="slides"></div>
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>
-        <a class="next">›</a>
-        <a class="play-pause"></a>
-        <ol class="indicator"></ol>
-    </div>
+    {#<div style="height:450px;width: 800px;padding-top: 0px;padding-bottom:0px;margin-left: 20%;margin-right: 8%;margin-bottom:0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">#}
+        {#<div style="height:inherit" class="slides"></div>#}
+        {#<h3 class="title"></h3>#}
+        {#<a class="prev">‹</a>#}
+        {#<a class="next">›</a>#}
+        {#<a class="play-pause"></a>#}
+        {#<ol class="indicator"></ol>#}
+    {#</div>#}
 
     {#video thumbnails#}
-        <div style="background: rgba(55,55,55,.0);height: 50px;width: 200px;margin-left: 5%">
-            <h1 style="color:#028fcc;">All Videos</h1>
+        <div style="background: rgba(55,55,55,.0);margin-left: 5%;margin-right:5%;text-align: center;text-justify:inter-word;margin-bottom: 15px">
+            <h3 style="color: white">Universal Studios Singapore</h3>
+            <p style="color:white;">Universal Studios Singapore (simplified Chinese: 新加坡环球影城; traditional Chinese: 新加坡環球影城; pinyin: Xīnjiāpō Huánqíu Yǐngchéng; Tamil: யுனிவர்சல் ஸ்டுடியோஸ், சிங்கப்பூர்) is a theme park located within Resorts World Sentosa on Sentosa Island, Singapore. It was a key component of Genting's bid for the right to build Singapore's second integrated resort. On 8 December 2006, the Singapore government announced that the consortium had won the bid. Construction of the theme park and the rest of the resort started on 19 April 2007. It is the second Universal Studios theme park to open in Asia (Japan being the first), and the first in Southeast Asia. The official plans for the park were unveiled to the public when Universal Studios Singapore released a park map to the public on 20 October 2009.[1] Universal Studios Singapore has since attracted more than 2 million visitors in the 9 months from its opening.[2]
+
+Universal Parks & Resorts markets the park as a "one-of-its-kind theme park in Asia" and promises that the park will be the only one of its kind in Southeast Asia for the next 30 years.[3]</p>
+        <a href="/more/234">More Details</a>
         </div>
     {% set count=0 %}
     {%  for video in videos %}
         {#create a new row for 3 categories#}
-        {% if count is divisibleby(3) %}
+        {% if count is divisibleby(4) %}
             {% if count>0 %}
                 </div>
             {% endif %}
             <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
         {% endif %}
         {#show category#}
-        <div class="col-sm-3 col-lg-4">
+        <div class="col-sm-3 col-lg-3">
             <a href="#" onclick="javascript:play({{ count }})">
-                <div  id="container" >
+                <div  id="category-container" >
 
                     <img style="width: 300px;height:169px" id="image" src="{{ vich_uploader_asset(video, 'thumbnail') }}" alt="" />
                     {#<div id="inner-container">#}
@@ -88,6 +115,7 @@
         {% set count=count+1 %}
     {% endfor %}
     </div>
+     </div>
 {% endblock media_content %}
 
 {% block javascripts %}

@@ -14,12 +14,12 @@ use Siplo\MediaBundle\Entity\Video;
 class VideoController extends Controller
 {
     /**
-     * @Route("/{country}/{category}",requirements={
-     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}"
+     * @Route("/{country}/{category}/{subcategory}",requirements={
+     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}","subcategory":"^[A-Z]{2}"
      * }))
      *
      */
-    public function showVideosAction($country,$category)
+    public function showVideosAction($country,$category,$subcategory)
     {
 
         //        find country id

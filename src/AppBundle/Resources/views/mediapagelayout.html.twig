@@ -130,32 +130,33 @@
             <div>
                 <a
                         href="{{ vich_uploader_asset(Video, 'videoFile') }}"
-                        title=""
-                        {#{{ Video.getVideoTitle() }}#}
+                        title="jhhhu"
+                        {#{{ Viddeo.getVideoTitle() }}#}
                         type="video/webm"
                         data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
                         data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
                         >
 
                 </a>
+
             </div>
         {% endfor %}
     </div>
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
     <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>
-    <div style="background:rgba(0,0,0,1);height: 550px;overflow: hidden">
-        <div style="top:-100px;height:768px;width:100%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+    <div style="background:rgba(0,0,0,1);height: 550px">
+        <div style="top:-190px;height:768px;width:100%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
 
             <div style="height:inherit" class="slides"></div>
             <h3 class="title"></h3>
             <a class="prev">‹</a>
             <a class="next">›</a>
             <a class="play-pause"></a>
-            <ol class="indicator"></ol>
+            <ol class="indicator" ></ol>
         </div>
     </div>
-    <div style="background: black;text-align: center"> <a href="#content"> <i class="fa fa-chevron-down fa-4x"></i></a></div>
+    <div style="position:inherit;z-index:10;background: black;text-align: center"> <a href="#content"> <i class="fa fa-chevron-down fa-4x"></i></a></div>
 </div>
 {#carousel-end#}
 <section style="background:black;padding: 0 0">
