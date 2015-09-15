@@ -12,10 +12,12 @@ class Upload
      * @Assert\Valid()
      */
     protected $Video;
+    private $user;
 
 
     public function setVideo(Video $video)
     {
+        $video->setUser($this->user);
         $this->Video = $video;
     }
 
@@ -24,5 +26,7 @@ class Upload
         return $this->Video;
     }
 
-
+    public function __construct($user){
+        $this->user=$user;
+    }
 }

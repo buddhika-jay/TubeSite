@@ -83,7 +83,8 @@ class VideoController extends Controller
      */
     public function uploadAction()
     {
-        $uploader = new Upload();
+        $user= $this->get('security.context')->getToken()->getUser();
+        $uploader = new Upload($user);
         $form = $this->createForm(new UploaderType(), $uploader, array(
             'action' => '/upload/save',
         ));
@@ -102,8 +103,8 @@ class VideoController extends Controller
     public function saveAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(new UploaderType(), new Upload());
+        $user= $this->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new UploaderType(), new Upload($user));
 
         $form->handleRequest($request);
 
