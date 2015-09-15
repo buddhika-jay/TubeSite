@@ -92,7 +92,8 @@
     {{ parent() }}
     <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
     <script>
-        blueimp.Gallery(
+        var gallery;
+        gallery=blueimp.Gallery(
                 document.getElementById('links').getElementsByTagName('a'),
                 {
                     container: '#blueimp-gallery-carousel',
@@ -100,16 +101,17 @@
                 }
         );
         function play(id) {
-            var gallery=blueimp.Gallery(
-                    document.getElementById(id).getElementsByTagName('a'),
-                    {
-                        container: '#blueimp-gallery-carousel',
-                        carousel: false,
-                        clearSlides: false
-                    }
-            );
+           // gallery.close();
+//            gallery=blueimp.Gallery(
+//                    document.getElementById(id).getElementsByTagName('a'),
+//                    {
+//                        container: '#blueimp-gallery-carousel',
+//                        carousel: false,
+////                        clearSlides: false
+//                    }
+//            );
             var count = gallery.getNumber();
-            gallery.slide(count-1, 0);
+            gallery.slide(id, 0);
         }
 
     </script>
