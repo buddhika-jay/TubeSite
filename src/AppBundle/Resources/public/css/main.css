@@ -76,7 +76,7 @@ h3 {
 .navbar-nav li a:focus {
   outline:none;
   outline-offset: 0;
-  text-decoration:none;  
+  text-decoration:none;
   background: transparent;
 }
 
@@ -125,7 +125,9 @@ section {
   display: inline-block;
 }
 
-
+#dropmenu{
+  background: transparent;
+}
 /*************************
 ********Home CSS**********
 **************************/
