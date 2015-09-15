@@ -8,8 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Siplo\MediaBundle\Form\Type\UploaderType;
-use Siplo\MediaBundle\Form\Model\Upload;
+use Siplo\MediaBundle\Form\Type\VideoType;
+use Siplo\MediaBundle\Entity\Video;
 
 class VideoController extends Controller
 {
@@ -77,53 +77,36 @@ class VideoController extends Controller
             'path' => $path));
     }
 
-    /**
-     * @Route("/upload")
-     *
-     */
-    public function uploadAction()
-    {
-        $user= $this->get('security.context')->getToken()->getUser();
-        $uploader = new Upload($user);
-        $form = $this->createForm(new UploaderType(), $uploader, array(
-            'action' => '/upload/save',
-        ));
-
-        return $this->render(
-            'SiploMediaBundle::form.html.twig',
-            array('form' => $form->createView())
-        );
-    }
-
 
     /**
-     * @Route("/upload/save")
+     * @Route("/upload/video")
      *
      */
-    public function saveAction(Request $request)
+    public function uploadAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $user= $this->get('security.context')->getToken()->getUser();
-        $form = $this->createForm(new UploaderType(), new Upload($user));
 
+        $form = $this->createForm(new VideoType(), new Video());
         $form->handleRequest($request);
-
         if ($form->isValid()) {
-            $uploader = $form->getData();
 
-            $em->persist($uploader->getVideo());
+
+            $video = $form->getData();
+            $user= $this->get('security.context')->getToken()->getUser();
+            $video->setUser($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($video);
             $em->flush();
 
-            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($uploader->getVideo(), 'videoFile');
-//            return $this->redirectToRoute('play');
             return $this->render('SiploMediaBundle::upload_successful.html.twig');
+
         }
 
         return $this->render(
-            'SiploMediaBundle::form.html.twig',
+            '@SiploMedia/form.html.twig',
             array('form' => $form->createView())
         );
+
     }
 
     /**

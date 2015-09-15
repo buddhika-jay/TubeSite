@@ -3,12 +3,10 @@
 namespace Siplo\MediaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
-use Siplo\MediaBundle\Form\Type\CategoryUploaderType;
-use Siplo\MediaBundle\Form\Model\CategoryUpload;
+use Siplo\MediaBundle\Form\Type\CategoryType;
+use Siplo\MediaBundle\Entity\Category;
 
 class CategoryController extends Controller
 {
@@ -49,48 +47,28 @@ class CategoryController extends Controller
      * @Route("/create/category")
      *
      */
-    public function createCategoryAction()
+    public function createAction(Request $request)
     {
-        $uploader = new CategoryUpload();
-        $form = $this->createForm(new CategoryUploaderType(), $uploader, array(
-            'action' => '/create/category/save',
-        ));
 
-        return $this->render(
-            'SiploMediaBundle::form.html.twig',
-            array('form' => $form->createView())
-        );
-    }
-
-
-    /**
-     * @Route("/create/category/save")
-     *
-     */
-    public function catergorySaveAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(new CategoryUploaderType(), new CategoryUpload());
-
+        $form = $this->createForm(new CategoryType(), new Category());
         $form->handleRequest($request);
-
         if ($form->isValid()) {
-            $uploader = $form->getData();
 
-            $em->persist($uploader->getCategory());
+
+            $category = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
             $em->flush();
 
-            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($uploader->getCategory(), 'backgroundImage');
-//            return $this->redirectToRoute('play');
-            return $this->render('SiploMediaBundle::videoplayer.html.twig',array(
-                'path' => $path));
+            return $this->render('SiploMediaBundle::upload_successful.html.twig');
+
         }
 
         return $this->render(
-            'SiploMediaBundle::form.html.twig',
+            '@SiploMedia/form.html.twig',
             array('form' => $form->createView())
         );
+
     }
 }
