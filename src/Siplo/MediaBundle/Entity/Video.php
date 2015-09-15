@@ -63,6 +63,12 @@ class Video
     private $category;
 
     /**
+     * @var int
+     * @ORM\Column(name="rating")
+     */
+    private $rating = 0;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
      **/
     private $user;
@@ -317,5 +323,28 @@ class Video
     public function getAuthorised()
     {
         return $this->authorised;
+    }
+
+    /**
+     * Set rating
+     *
+     * @param string $rating
+     * @return Video
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return string 
+     */
+    public function getRating()
+    {
+        return $this->rating;
     }
 }
