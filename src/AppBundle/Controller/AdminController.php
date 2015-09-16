@@ -36,4 +36,12 @@ class AdminController extends  BaseAdminController
             'video' => $video,
         ));
     }
+
+    public function previewAction(){
+        $id = $this->request->query->get('id');
+        $video = $this->em->getRepository('SiploMediaBundle:Photo')->find($id);
+        return $this->render('AppBundle::photo_preview.html.twig', array(
+            'video' => $video,
+        ));
+    }
 }
