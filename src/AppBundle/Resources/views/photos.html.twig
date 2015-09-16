@@ -9,7 +9,7 @@
 
 
 <div style="background: #080808;height: 80px"></div>
-<div style="margin-top: 10px;margin-left: 2%;margin-right: 2%")>
+<div style="background: #080808;margin-top: 10px;margin-left: 2%;margin-right: 2%;">
     <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-carousel">
         <div class="slides"></div>
@@ -21,24 +21,30 @@
         <ol class="indicator"></ol>
     </div>
 
-<div style="padding-bottom: 10%">
+<div style="padding-bottom: 50%">
    <div style="margin-top: 10px">
-       <p style="color:white;">{{ subcategory.description|raw }}</p>
+       <p style="color:white">{{ subcategory.description|raw }}</p>
+       <div style="text-align: right">
        <a href="{{ '/more/'~subcategory.Id }}">More Details</a>
+       </div>
     </div>
 
-
+        <div id="links">
         {% for photo in photos%}
-            <div id="links">
+            <div class="col-lg-3" style="overflow: hidden;">
+            <p>
             <a href="{{ vich_uploader_asset(photo, 'photo') }}" title="{{ photo.title }}">
-                <img style="height: 250px" src="{{ vich_uploader_asset(photo, 'photo') }}"alt="tst">
+                <img style="height: 250px;width: auto" src="{{ vich_uploader_asset(photo, 'photo') }}"alt="tst">
 
             </a>
+            </p>
+
+            {#<a href={{ '/download/photo/'~photo.Id}}>Download</a>#}
             </div>
-            <a href={{ '/download/photo/'~photo.Id}}>Download</a>
         {% endfor %}
+         </div>
 
-
+</div>
 </div>
 {% endblock media_content %}
 
@@ -69,7 +75,7 @@
         };
 
         blueimp.Gallery(
-                document.getElementById('links').getElementsByTagName('a'),
+                document.getElementById('links').getElementsByTagName('p'),
                 {
                     container: '#blueimp-gallery-carousel',
                     carousel: true
