@@ -108,7 +108,9 @@
 
                     </a>
                     </div>
+
                 </div>
+                <a href={{ '/download/video/'~video.Id}}>Download</a>
                 {% set count=count+1 %}
             </a>
             {% else %}
@@ -116,6 +118,8 @@
                 <a href= {{'/youtube/'~ link[1] }}>
                      <img width="300px" height="169px" src="{{ vich_uploader_asset(video, 'thumbnail') }}">
                 </a>
+                {% set downlink =  video.getYoutubeLink()|split('.',2) %}
+                 <a href={{'//ss'~downlink[1]}}>Download</a>
         {% endif %}
         </div>
 

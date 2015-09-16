@@ -131,7 +131,7 @@
             <div>
                 <a
                         href="{{ vich_uploader_asset(Video, 'videoFile') }}"
-                        title="jhhhu"
+                        title=""
                         {#{{ Viddeo.getVideoTitle() }}#}
                         type="video/webm"
                         data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
@@ -148,9 +148,12 @@
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
     <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>
     <div style="background:rgba(0,0,0,1);height: 550px">
-        <div style="top:-190px;height:768px;width:100%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+    {#<div style="background:rgba(0,0,0,1);height: 440px;overflow: hidden">#}
+        
+        {#<div style="align-content:center;top:-80px;height:468px;width:80%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">#}
+        <div style="align-content:center;top:-190px;height:768px;width:100%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
 
-            <div style="height:inherit" class="slides"></div>
+        <div style="height:inherit" class="slides"></div>
             <h3 class="title"></h3>
             <a class="prev">‹</a>
             <a class="next">›</a>

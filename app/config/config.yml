@@ -182,7 +182,7 @@ easy_admin:
                         - { property: 'id'}
                         - { property: 'name'}
                         - { property: 'backgroundImageFileName', label: 'Background Image', type: 'image', base_path: '/thumbs/country_backgrounds/' }
-                    actions: ['-edit']
+
                 form:
                     fields:
                         - name
@@ -199,7 +199,7 @@ easy_admin:
                         - { property: 'id'}
                         - { property: 'title'}
                         - { property: 'backgroundFileName', label: 'Background Image',type: 'image', base_path: '/thumbs/category_backgrounds/' }
-                    actions: ['-edit']
+
                 form:
                     fields:
                         - title
@@ -214,7 +214,7 @@ easy_admin:
                         - { property: 'id'}
                         - { property: 'title'}
                         - { property: 'backgroundFileName', label: 'Background Image', type: 'image', base_path: '/thumbs/sub_category_backgrounds/' }
-                    actions: ['-edit']
+
                 form:
                     fields:
                         - title
@@ -236,7 +236,7 @@ easy_admin:
                         - { property: 'category'}
                         - { property: 'subCategory'}
                         - { property: 'authorised'}
-                    actions: ['-edit', 'preview']
+                    actions: ['preview']
         Video:
                 class: Siplo\MediaBundle\Entity\Video
                 label: 'Videos'
@@ -249,6 +249,6 @@ easy_admin:
                         - { property: 'category'}
                         - { property: 'subCategory'}
                         - { property: 'authorised'}
-                    actions: ['-edit', 'play']
+                    actions: ['play']
 
     site_name: 'Tourism On Net'
