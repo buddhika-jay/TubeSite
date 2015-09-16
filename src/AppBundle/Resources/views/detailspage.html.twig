@@ -1,8 +1,9 @@
 {% extends '@App/menu.html.twig' %}
 {% block media_content %}
+    <div style="background: black;height: 100px"></div>
     {% for detail in details %}
-    <div style="background: rgba(55,55,55,.0);margin-left: 5%;margin-right:5%;text-align: center;text-justify:inter-word;margin-bottom: 15px">
-        <p style="color:white;">{{ detail.body|raw }}</p>
+    <div style="background:black;margin-left: 5%;margin-right:5%;text-align: center;text-justify:inter-word;padding-bottom: 20px">
+        {{ detail.body|raw }}
     </div>
     {% endfor %}
 {% endblock %}
