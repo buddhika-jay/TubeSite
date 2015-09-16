@@ -355,4 +355,8 @@ class SubCategory
     {
         return $this->backgroundImage;
     }
+
+    public function __toString() {
+        return $this->title;
+    }
 }

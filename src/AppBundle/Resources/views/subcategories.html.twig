@@ -24,14 +24,14 @@
 {% endif %}
 {% endblock %}
 {% block media_content %}
-    <div id="content" style="background-image: url({{ vich_uploader_asset(country, 'backgroundImage') }})" class="parallax" >
+    <div id="content" style="background-image: url({{ vich_uploader_asset(category, 'backgroundImage') }})" class="parallax" >
         <div  class="container-fluid" style="background: rgba(0,0,10,.6);padding-bottom: 300px">
 
                 <div style="margin-left:7%;padding-top:5px;padding-bottom:5px;padding-left:5px;margin-top: 80px;width: 200px;margin-bottom: 20px">
                  {#<h1>{{ country.name }}</h1>#}
                 </div>
                 {% set count=0 %}
-                {%  for category in categories %}
+                {%  for subcategory in subCategories %}
                     {#create a new row for 3 categories#}
                     {% if count is divisibleby(4) %}
                         {% if count>0 %}
@@ -44,22 +44,22 @@
                          {#<a href="{{country.code~'/'~category.code }}">#}
                             <div id="category-container" style="overflow: visible;margin-bottom: 40px">
 
-                                <img id="image" src="{{ vich_uploader_asset(category, 'backgroundImage') }}" alt="{{ category.title }}" />
+                                <img id="image" src="{{ vich_uploader_asset(subcategory, 'backgroundImage') }}" alt="{{ subcategory.title }}" />
                                 <div id="category-inner-container" style="height: 100px">
 
                                     <div>
                                         <p id="text-category" style="text-align: center">
-                                           {{ category.title }}
+                                           {{ subcategory.title }}
                                          </p>
                                     </div>
                                     <div class="row">
                                     <div style="margin-top: 14px">
-                                        <a href="{{category.code~'/AA' }}">
+                                        <a href="{{category.code~'/'~subcategory.code }}">
                                             <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Photos</h4>
                                             </div>
                                         </a>
-                                        <a href="{{category.code~'/AA' }}">
+                                        <a href="{{category.code~'/'~subcategory.code }}">
                                             <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Videos</h4>
                                             </div>

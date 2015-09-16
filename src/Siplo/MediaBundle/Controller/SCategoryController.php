@@ -23,17 +23,19 @@ class SCategoryController extends Controller
     {
         $countryEntity = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
-        $categories = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Category')->findAll();
 
-        if (!$categories) {
-            throw $this->createNotFoundException(
-                'No categories found'
-            );
+        $categoryEntity = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category);
+
+        $subCategories = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:SubCategory')->findAll();
+
+        if (!$subCategories) {
+            $this->render('AppBundle::emptycontent.html.twig');
         }
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array(),
+                array('country'=>$countryEntity->getId(),'category'=>$categoryEntity->getId()),
                 array('rating' => 'DESC')
             );
         if (!$videos) {
@@ -41,7 +43,7 @@ class SCategoryController extends Controller
             );
         }
         return $this->render('AppBundle::subcategories.html.twig', array(
-            'categories' => $categories, 'country' => $countryEntity, 'videos' => $videos));
+            'subCategories' => $subCategories, 'country' => $countryEntity,'category'=>$categoryEntity,'videos' => $videos));
 
     }
     /**
