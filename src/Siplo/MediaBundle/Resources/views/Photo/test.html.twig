@@ -1,0 +1,57 @@
+<form name="siplo_mediabundle_photo" method="post" action="" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label required" for="siplo_mediabundle_photo_country">Country</label>
+        <select id="siplo_mediabundle_photo_country" name="siplo_mediabundle_photo[country]" class="form-control">
+            <option value="1" >Sri Lanka</option>
+            <option value="2" >Malaysia</option>
+            <option value="3" >Thailand</option>
+            <option value="4" >Singapore</option></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label required" for="siplo_mediabundle_photo_category">Category</label>
+        <select id="siplo_mediabundle_photo_category" name="siplo_mediabundle_photo[category]" required="required" class="form-control">
+            <option value="" selected="selected"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label required" for="siplo_mediabundle_photo_title">Title</label>
+        <input type="text" id="siplo_mediabundle_photo_title" name="siplo_mediabundle_photo[title]" required="required" maxlength="255" class="form-control" />
+    </div><div class="form-group">
+        <label class="control-label required">Photo</label>
+        <div id="siplo_mediabundle_photo_photo"><div class="form-group">
+                <label class="control-label required" for="siplo_mediabundle_photo_photo_file">File</label>
+                <input type="file" id="siplo_mediabundle_photo_photo_file" name="siplo_mediabundle_photo[photo][file]" required="required" />
+            </div></div></div><div class="form-group">
+        <label class="control-label required" for="siplo_mediabundle_photo_subCategory">Sub category</label>
+        <select id="siplo_mediabundle_photo_subCategory" name="siplo_mediabundle_photo[subCategory]" class="form-control">
+            <option value="1" >SubCategory</option></select>
+    </div><div class="form-group">
+        <button type="submit" id="siplo_mediabundle_photo_upload" name="siplo_mediabundle_photo[upload]" class="btn-default btn">Upload</button>
+    </div><input type="hidden" id="siplo_mediabundle_photo__token" name="siplo_mediabundle_photo[_token]" class="form-control" value="xcJHKBRej8a_3jgVDIj8CntMv-CJjyLY9ChJ5XyWjQg" />
+</form>
+
+<script>
+    var $country = $('#siplo_mediabundle_photo_country');
+    // When sport gets selected ...
+    $country.change(function() {
+        // ... retrieve the corresponding form.
+        var $form = $(this).closest('form');
+        // Simulate form data, but only include the selected sport value.
+        var data = {};
+        data[$country.attr('title')] = $country.val();
+        // Submit data via AJAX to the form's action path.
+        $.ajax({
+            url : $form.attr('action'),
+            type: $form.attr('method'),
+            data : data,
+            success: function(html) {
+                // Replace current position field ...
+                $('#siplo_mediabundle_photo_category').replaceWith(
+                        // ... with the returned one from the AJAX response.
+                        $(html).find('#siplo_mediabundle_photo_category')
+                );
+                // Position field now displays the appropriate positions.
+            }
+        });
+    });
+</script>

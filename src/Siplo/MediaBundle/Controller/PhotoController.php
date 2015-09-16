@@ -25,10 +25,51 @@ class PhotoController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
 
-
             $photo = $form->getData();
             $user= $this->get('security.context')->getToken()->getUser();
             $photo->setUser($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($photo);
+            $em->flush();
+
+            return $this->render('SiploMediaBundle::upload_successful.html.twig');
+
+        }
+
+        return $this->render(
+            '@SiploMedia/form.html.twig',
+            array('form' => $form->createView())
+        );
+
+    }
+
+    /**
+     * @Route("/edit/photo/{id}")
+     *
+     */
+    public function editAction($id)
+    {
+        $request = $this->get('request');
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $photo = $em->getRepository('SiploMediaBundle:Photo')->find($id);
+
+        $form = $this->createForm(new PhotoType(), $photo);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $photo = $form->getData();
+
+            //go to second form
+
+            $categories = $photo->getCountry()->getCategories();
+            $subCategories = $photo->getCountry()->getSubCategories();
+
+            $form2 = $this->createForm(new PhotoType(), $photo);
+            $form2->handleRequest($request);
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);
