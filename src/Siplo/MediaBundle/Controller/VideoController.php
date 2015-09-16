@@ -59,7 +59,7 @@ class VideoController extends Controller
      */
     public function youtubeVideosAction($link)
     {
-        $link='https://www.youtube.com/watch?v='.$link;
+//        $link='https://www.youtube.com/watch?v='.$link;
         return $this->render('AppBundle::youtubeplayer.html.twig',array('link'=>$link));
     }
     /**

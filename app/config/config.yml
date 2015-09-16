@@ -198,6 +198,24 @@ easy_admin:
                         - title
                         - code
                         - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
+
+        SubCategory:
+                class: Siplo\MediaBundle\Entity\SubCategory
+                label: 'Sub Categories'
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'title'}
+                        - { property: 'backgroundFileName', type: 'image', base_path: '/thumbs/sub_category_backgrounds/' }
+                form:
+                    fields:
+                        - title
+                        - code
+                        - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'country'}
+                        - { property: 'description'}
         Photo:
                 class: Siplo\MediaBundle\Entity\Photo
                 label: 'Photos'
