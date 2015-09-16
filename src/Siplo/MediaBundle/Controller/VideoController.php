@@ -14,7 +14,7 @@ use Siplo\MediaBundle\Entity\Video;
 class VideoController extends Controller
 {
     /**
-     * @Route("/{country}/{category}/{subcategory}",requirements={
+     * @Route("/{country}/{category}/videos/{subcategory}",requirements={
      *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}","subcategory":"^[A-Z]{2}"
      * }))
      *
