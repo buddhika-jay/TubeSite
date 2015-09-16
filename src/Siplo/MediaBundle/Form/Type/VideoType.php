@@ -21,6 +21,10 @@ class VideoType extends AbstractType
             'class' => 'SiploMediaBundle:Category',
             'choice_label' => 'title',
         ));
+        $builder->add('subCategory', 'entity', array(
+            'class' => 'SiploMediaBundle:SubCategory',
+            'choice_label' => 'title',
+        ));
         $builder->add('upload', 'submit');
 
     }
