@@ -67,4 +67,31 @@ class FurtherDetails
     {
         return $this->body;
     }
+
+    /**
+     * Set subCategory
+     *
+     * @param string $subCategory
+     * @return FurtherDetails
+     */
+    public function setSubCategory($subCategory)
+    {
+        $this->subCategory = $subCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subCategory
+     *
+     * @return string 
+     */
+    public function getSubCategory()
+    {
+        return $this->subCategory;
+    }
+
+    public function __toString() {
+        return $this->body;
+    }
 }

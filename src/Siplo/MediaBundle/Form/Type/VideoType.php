@@ -9,23 +9,22 @@ class VideoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('videoFile', 'vich_file',array('required'    => false));
-//        $builder->add('VideoName', 'text');
-        $builder->add('youtubeLink', 'text',array('required'    => false));
         $builder->add('VideoTitle', 'text');
+        $builder->add('videoFile', 'vich_file',array('required'    => false));
+        $builder->add('youtubeLink', 'text',array('required'    => false));
         $builder->add('thumbnail', 'vich_file');
         $builder->add('country', 'entity', array(
             'class' => 'SiploMediaBundle:Country',
             'choice_label' => 'name',
         ));
-        $builder->add('category', 'entity', array(
-            'class' => 'SiploMediaBundle:Category',
-            'choice_label' => 'title',
-        ));
-        $builder->add('subCategory', 'entity', array(
-            'class' => 'SiploMediaBundle:SubCategory',
-            'choice_label' => 'title',
-        ));
+//        $builder->add('category', 'entity', array(
+//            'class' => 'SiploMediaBundle:Category',
+//            'choice_label' => 'title',
+//        ));
+//        $builder->add('subCategory', 'entity', array(
+//            'class' => 'SiploMediaBundle:SubCategory',
+//            'choice_label' => 'title',
+//        ));
         $builder->add('upload', 'submit');
 
     }

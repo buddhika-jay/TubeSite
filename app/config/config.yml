@@ -222,8 +222,18 @@ easy_admin:
                         - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
                         - { property: 'country'}
                         - { property: 'category'}
-                        - { property: 'country'}
                         - { property: 'description'}
+
+        FurtherDetails:
+                class: Siplo\MediaBundle\Entity\FurtherDetails
+                label: 'Further Details'
+                list:
+                    fields:
+                        - { property: 'id'}
+                form:
+                    fields:
+                        - body
+                        - { property: 'subCategory'}
         Photo:
                 class: Siplo\MediaBundle\Entity\Photo
                 label: 'Photos'

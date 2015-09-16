@@ -4,8 +4,9 @@
  * User: buddhika
  * Date: 9/15/15
  * Time: 7:50 PM
- */
 
+ */
+//this formtype is a the step two of photo submission
 namespace Siplo\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -17,7 +18,7 @@ use Symfony\Component\Form\FormEvents;
 use Siplo\MediaBundle\Entity\Country;
 use Siplo\MediaBundle\Entity\Category;
 
-class Photo2Type extends AbstractType
+class PhotoCategorizeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -25,15 +26,16 @@ class Photo2Type extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $country = $builder->getData()->getCountry();
 
         $builder->add('category', 'entity', array(
             'class' => 'SiploMediaBundle:Category',
-            'choice_label' => 'title',
+            'choices' => $builder->getData()->getCountry()->getCategories(),
+            'required' => 'true',
         ));
         $builder->add('subCategory', 'entity', array(
             'class' => 'SiploMediaBundle:SubCategory',
-            'choice_label' => 'title',
+            'choices' => $builder->getData()->getCountry()->getSubCategories(),
+            'required' => 'true',
         ));
 
 

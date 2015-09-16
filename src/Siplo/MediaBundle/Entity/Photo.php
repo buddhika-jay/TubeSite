@@ -66,13 +66,11 @@ class Photo
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="photos")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * @ORM\Column(nullable=true)
      **/
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="SubCategory", inversedBy="photos")
-     * @ORM\Column(nullable=true)
      **/
     private $subCategory;
 

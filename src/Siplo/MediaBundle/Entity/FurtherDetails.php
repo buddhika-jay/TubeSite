@@ -23,7 +23,6 @@ class FurtherDetails
 
     /**
      * @ORM\ManyToOne(targetEntity="SubCategory", inversedBy="furtherDetails")
-     * @ORM\Column(nullable=true)
      **/
     private $subCategory;
 
@@ -89,5 +88,9 @@ class FurtherDetails
     public function getSubCategory()
     {
         return $this->subCategory;
+    }
+
+    public function __toString() {
+        return $this->body;
     }
 }

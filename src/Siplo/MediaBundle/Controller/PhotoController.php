@@ -2,6 +2,7 @@
 
 namespace Siplo\MediaBundle\Controller;
 
+use Siplo\MediaBundle\Form\Type\PhotoCategorizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -29,11 +30,17 @@ class PhotoController extends Controller
             $user= $this->get('security.context')->getToken()->getUser();
             $photo->setUser($user);
 
+//            Following two lines are added to avoid the categoty and sub category fields being null.
+//            If they are nullable Admin pannel will not suggest them
+            $photo->setCategory($this->getDoctrine()->getRepository('SiploMediaBundle:Category')->find(1));
+            $photo->setSubCategory($this->getDoctrine()->getRepository('SiploMediaBundle:SubCategory')->find(1));
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);
             $em->flush();
 
-            return $this->render('SiploMediaBundle::upload_successful.html.twig');
+//            return $this->render('SiploMediaBundle::upload_successful.html.twig');
+            return $this->redirect("/upload/photo/categorize/".$photo->getId());
 
         }
 
@@ -45,7 +52,7 @@ class PhotoController extends Controller
     }
 
     /**
-     * @Route("/edit/photo/{id}")
+     * @Route("/upload/photo/categorize/{id}")
      *
      */
     public function editAction($id)
@@ -55,22 +62,12 @@ class PhotoController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $photo = $em->getRepository('SiploMediaBundle:Photo')->find($id);
 
-        $form = $this->createForm(new PhotoType(), $photo);
+        $form = $this->createForm(new PhotoCategorizeType(), $photo);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
             $photo = $form->getData();
-
-            //go to second form
-
-//            $categories = $photo->getCountry()->getCategories();
-//            $subCategories = $photo->getCountry()->getSubCategories();
-
-            $form2 = $this->createForm(new PhotoType(), $photo);
-            $form2->handleRequest($request);
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);
             $em->flush();

@@ -2,6 +2,8 @@
 
 namespace Siplo\MediaBundle\Controller;
 
+use Siplo\MediaBundle\Form\Type\Video2Type;
+use Siplo\MediaBundle\Form\Type\VideoCategorizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -108,6 +110,42 @@ class VideoController extends Controller
             $user= $this->get('security.context')->getToken()->getUser();
             $video->setUser($user);
 
+//            Following two lines are added to avoid the categoty and sub category fields being null.
+//            If they are nullable Admin pannel will not suggest them
+            $video->setCategory($this->getDoctrine()->getRepository('SiploMediaBundle:Category')->find(1));
+            $video->setSubCategory($this->getDoctrine()->getRepository('SiploMediaBundle:SubCategory')->find(1));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($video);
+            $em->flush();
+
+            return $this->redirect("/upload/video/categorize/".$video->getId());
+
+        }
+
+        return $this->render(
+            '@SiploMedia/form.html.twig',
+            array('form' => $form->createView())
+        );
+
+    }
+
+    /**
+     * @Route("/upload/video/categorize/{id}")
+     *
+     */
+    public function upload2Action($id)
+    {
+        $request = $this->get('request');
+        $em = $this->getDoctrine()->getEntityManager();
+        $video = $em->getRepository('SiploMediaBundle:Video')->find($id);
+
+        $form = $this->createForm(new VideoCategorizeType(), $video);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $video = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
