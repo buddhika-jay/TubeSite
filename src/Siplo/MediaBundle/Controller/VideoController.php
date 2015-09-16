@@ -51,6 +51,17 @@ class VideoController extends Controller
         return $this->render('AppBundle::videos.html.twig',array(
             'videos' => $videos,'country'=>$countryName,'category'=>$categoryName));
     }
+
+    /**
+     * @Route("/youtube/{link}")
+     *
+     *
+     */
+    public function youtubeVideosAction($link)
+    {
+        $link='https://www.youtube.com/watch?v='.$link;
+        return $this->render('AppBundle::youtubeplayer.html.twig',array('link'=>$link));
+    }
     /**
      * @Route("/play/{id}")
      * @Template()

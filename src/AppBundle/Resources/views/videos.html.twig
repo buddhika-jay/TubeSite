@@ -78,15 +78,17 @@ Universal Parks & Resorts markets the park as a "one-of-its-kind theme park in A
         </div>
     {% set count=0 %}
     {%  for video in videos %}
+
         {#create a new row for 3 categories#}
-        {% if count is divisibleby(4) %}
-            {% if count>0 %}
-                </div>
+            {% if count is divisibleby(4) %}
+                {% if count>0 %}
+                    </div>
+                {% endif %}
+                <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
             {% endif %}
-            <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
-        {% endif %}
-        {#show category#}
+            {#show category#}
         <div class="col-sm-3 col-lg-3">
+          {% if video.getVideoName()!='link' %}
             <a href="#" onclick="javascript:play({{ count }})">
                 <div  id="category-container" >
 
@@ -110,9 +112,18 @@ Universal Parks & Resorts markets the park as a "one-of-its-kind theme park in A
                     </a>
                     </div>
                 </div>
+                {% set count=count+1 %}
             </a>
+            {% else %}
+                {% set link =  video.getYoutubeLink()|split('=') %}
+                <a href= {{'/youtube/'~ link[1] }}>
+                     <img width="300px" src="{{ vich_uploader_asset(video, 'thumbnail') }}">
+                </a>
+        {% endif %}
         </div>
-        {% set count=count+1 %}
+
+
+
     {% endfor %}
     </div>
      </div>

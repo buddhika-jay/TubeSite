@@ -78,7 +78,7 @@ class Video
      *
      * @var string
      */
-    private $videoName;
+    private $videoName='link';
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -87,6 +87,28 @@ class Video
      */
     private $thumbName='thumb';
 
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     *
+     * @var string
+     */
+    private $youtubeLink;
+
+    /**
+     * @return string
+     */
+    public function getYoutubeLink()
+    {
+        return $this->youtubeLink;
+    }
+
+    /**
+     * @param string $youtubeLink
+     */
+    public function setYoutubeLink($youtubeLink)
+    {
+        $this->youtubeLink = $youtubeLink;
+    }
 
     /**
      * @ORM\Column(type="datetime")
