@@ -69,6 +69,11 @@ class Photo
      **/
     private $category;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="SubCategory", inversedBy="photos")
+     **/
+    private $subCategory;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Siplo\UserBundle\Entity\SiploUser", inversedBy="photos")
@@ -274,5 +279,28 @@ class Photo
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * Set subCategory
+     *
+     * @param \Siplo\MediaBundle\Entity\SubCategory $subCategory
+     * @return Photo
+     */
+    public function setSubCategory(\Siplo\MediaBundle\Entity\SubCategory $subCategory = null)
+    {
+        $this->subCategory = $subCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subCategory
+     *
+     * @return \Siplo\MediaBundle\Entity\SubCategory 
+     */
+    public function getSubCategory()
+    {
+        return $this->subCategory;
     }
 }

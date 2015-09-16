@@ -85,6 +85,11 @@ class Country
     private $categories;
 
     /**
+     * @ORM\OneToMany(targetEntity="SubCategory", mappedBy="country")
+     **/
+    private $subCategories;
+
+    /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="country")
      **/
     private $photos;
@@ -271,6 +276,7 @@ class Country
         $this->photos = new ArrayCollection();
         $this->videos = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->subCategories = new ArrayCollection();
     }
 
     /**
@@ -374,5 +380,38 @@ class Country
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add subCategories
+     *
+     * @param \Siplo\MediaBundle\Entity\SubCategory $subCategories
+     * @return Country
+     */
+    public function addSubCategory(\Siplo\MediaBundle\Entity\SubCategory $subCategories)
+    {
+        $this->subCategories[] = $subCategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove subCategories
+     *
+     * @param \Siplo\MediaBundle\Entity\SubCategory $subCategories
+     */
+    public function removeSubCategory(\Siplo\MediaBundle\Entity\SubCategory $subCategories)
+    {
+        $this->subCategories->removeElement($subCategories);
+    }
+
+    /**
+     * Get subCategories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubCategories()
+    {
+        return $this->subCategories;
     }
 }
