@@ -118,12 +118,12 @@ class PhotoController extends Controller
     }
 
     /**
-     * @Route("/photos/{country}/{category}",requirements={
+     * @Route("/{country}/{category}/photos/{subcategory}",requirements={
      *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}"
      * }))
      *
      */
-    public function showPhotosAction($country,$category)
+    public function showPhotosAction($country,$category,$subcategory)
     {
 
         //        find country id
@@ -140,7 +140,10 @@ class PhotoController extends Controller
 
         $categoryName=$categoryEntity->getTitle();
 
-
+//        get subcategory entity
+        $subcategoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:SubCategory')->findOneByCode($subcategory);
+        $subcategoryID=$subcategoryEntity->getId();
 
         $photos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Photo')->findBy(
@@ -153,6 +156,6 @@ class PhotoController extends Controller
         }
 
         return $this->render('AppBundle::photos.html.twig',array(
-            'photos' => $photos,'country'=>$countryName,'category'=>$categoryName));
+            'photos' => $photos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity));
     }
 }

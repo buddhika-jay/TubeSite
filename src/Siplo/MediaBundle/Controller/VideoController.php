@@ -14,7 +14,7 @@ use Siplo\MediaBundle\Entity\Video;
 class VideoController extends Controller
 {
     /**
-     * @Route("/{country}/{category}/{subcategory}",requirements={
+     * @Route("/{country}/{category}/videos/{subcategory}",requirements={
      *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}","subcategory":"^[A-Z]{2}"
      * }))
      *
@@ -35,12 +35,15 @@ class VideoController extends Controller
         $categoryID=$categoryEntity->getId();
 
         $categoryName=$categoryEntity->getTitle();
-
+//        get subcategory entity
+        $subcategoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:SubCategory')->findOneByCode($subcategory);
+        $subcategoryID=$subcategoryEntity->getId();
 
 
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('country' => $countryID,'category' => $categoryID)
+                array('country' => $countryID,'category' => $categoryID,'subCategory'=>$subcategoryID)
             );;
 
         if (!$videos) {
@@ -49,7 +52,18 @@ class VideoController extends Controller
         }
 
         return $this->render('AppBundle::videos.html.twig',array(
-            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName));
+            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity));
+    }
+
+    /**
+     * @Route("/youtube/{link}")
+     *
+     *
+     */
+    public function youtubeVideosAction($link)
+    {
+//        $link='https://www.youtube.com/watch?v='.$link;
+        return $this->render('AppBundle::youtubeplayer.html.twig',array('link'=>$link));
     }
     /**
      * @Route("/play/{id}")

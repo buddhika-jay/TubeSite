@@ -1,4 +1,4 @@
-{% extends '@App/mediapagelayout.html.twig' %}
+{% extends '@App/menu.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -21,22 +21,41 @@
         <ol class="indicator"></ol>
     </div>
 
-    <div>
-        <h3>title</h3>
-        <p>text</p></div>
-
-    <div id="links">
-        {% for photo in photos%}
-            <a href="{{ vich_uploader_asset(photo, 'photo') }}" title="testti">
-                <img style="height: 250px" src="{{ vich_uploader_asset(photo, 'photo') }}"alt="tst">
-            </a>
-        {% endfor %}
+<div style="padding-bottom: 10%">
+   <div style="margin-top: 10px">
+       <p style="color:white;">{{ subcategory.description|raw }}</p>
+       <a href="{{ '/more/'~subcategory.Id }}">More Details</a>
     </div>
+
+
+        {% for photo in photos%}
+            <div id="links">
+            <a href="{{ vich_uploader_asset(photo, 'photo') }}" title="{{ photo.title }}">
+                <img style="height: 250px" src="{{ vich_uploader_asset(photo, 'photo') }}"alt="tst">
+
+            </a>
+            </div>
+            <a href={{ '/download/photo/'~photo.Id}}>Download</a>
+        {% endfor %}
+
+
 </div>
 {% endblock media_content %}
 
 {% block javascripts %}
+
     {{ parent() }}
+{#<script>#}
+    {#function launchFullScreen(element) {#}
+        {#if(element.requestFullScreen) {#}
+        {#element.requestFullScreen();#}
+        {#} else if(element.mozRequestFullScreen) {#}
+        {#element.mozRequestFullScreen();#}
+        {#} else if(element.webkitRequestFullScreen) {#}
+        {#element.webkitRequestFullScreen();#}
+        {#}#}
+    {#}#}
+{#</script>#}
     <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
 
     <script>

@@ -27,4 +27,13 @@ class AdminController extends  BaseAdminController
     {
         $this->container->get('fos_user.user_manager')->updateUser($user, false);
     }
+
+//    Action to play video when admin requested
+    public function playAction(){
+        $id = $this->request->query->get('id');
+        $video = $this->em->getRepository('SiploMediaBundle:Video')->find($id);
+        return $this->render('AppBundle::video_preview.html.twig', array(
+            'video' => $video,
+        ));
+    }
 }

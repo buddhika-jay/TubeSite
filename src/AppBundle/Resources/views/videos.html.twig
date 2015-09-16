@@ -70,23 +70,22 @@
 
     {#video thumbnails#}
         <div style="background: rgba(55,55,55,.0);margin-left: 5%;margin-right:5%;text-align: center;text-justify:inter-word;margin-bottom: 15px">
-            <h3 style="color: white">Universal Studios Singapore</h3>
-            <p style="color:white;">Universal Studios Singapore (simplified Chinese: 新加坡环球影城; traditional Chinese: 新加坡環球影城; pinyin: Xīnjiāpō Huánqíu Yǐngchéng; Tamil: யுனிவர்சல் ஸ்டுடியோஸ், சிங்கப்பூர்) is a theme park located within Resorts World Sentosa on Sentosa Island, Singapore. It was a key component of Genting's bid for the right to build Singapore's second integrated resort. On 8 December 2006, the Singapore government announced that the consortium had won the bid. Construction of the theme park and the rest of the resort started on 19 April 2007. It is the second Universal Studios theme park to open in Asia (Japan being the first), and the first in Southeast Asia. The official plans for the park were unveiled to the public when Universal Studios Singapore released a park map to the public on 20 October 2009.[1] Universal Studios Singapore has since attracted more than 2 million visitors in the 9 months from its opening.[2]
-
-Universal Parks & Resorts markets the park as a "one-of-its-kind theme park in Asia" and promises that the park will be the only one of its kind in Southeast Asia for the next 30 years.[3]</p>
-        <a href="/more/234">More Details</a>
+            <p style="color:white;">{{ subcategory.description|raw }}</p>
+            <a href="{{ '/more/'~subcategory.Id }}">More Details</a>
         </div>
     {% set count=0 %}
     {%  for video in videos %}
+
         {#create a new row for 3 categories#}
-        {% if count is divisibleby(4) %}
-            {% if count>0 %}
-                </div>
+            {% if count is divisibleby(4) %}
+                {% if count>0 %}
+                    </div>
+                {% endif %}
+                <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
             {% endif %}
-            <div class="row" style="padding-left:7%;padding-right:5%;padding-bottom: 2%">
-        {% endif %}
-        {#show category#}
+            {#show category#}
         <div class="col-sm-3 col-lg-3">
+          {% if video.getVideoName()!='link' %}
             <a href="#" onclick="javascript:play({{ count }})">
                 <div  id="category-container" >
 
@@ -110,9 +109,18 @@ Universal Parks & Resorts markets the park as a "one-of-its-kind theme park in A
                     </a>
                     </div>
                 </div>
+                {% set count=count+1 %}
             </a>
+            {% else %}
+                {% set link =  video.getYoutubeLink()|split('=') %}
+                <a href= {{'/youtube/'~ link[1] }}>
+                     <img width="300px" height="169px" src="{{ vich_uploader_asset(video, 'thumbnail') }}">
+                </a>
+        {% endif %}
         </div>
-        {% set count=count+1 %}
+
+
+
     {% endfor %}
     </div>
      </div>

@@ -126,7 +126,8 @@
     <div id="links">
         {% set count=1 %}
         {% for Video in videos if count<3%}
-            {% set count = loop.index %}
+          {% if Video.getVideoName()!='link' %}
+            {% set count = count+1 %}
             <div>
                 <a
                         href="{{ vich_uploader_asset(Video, 'videoFile') }}"
@@ -140,6 +141,7 @@
                 </a>
 
             </div>
+        {% endif %}
         {% endfor %}
     </div>
 
