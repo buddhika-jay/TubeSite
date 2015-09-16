@@ -123,6 +123,7 @@
 {#carousel-start#}
 
 <div style="height: auto">
+    {% block carousel_links %}
     <div id="links">
         {% set count=1 %}
         {% for Video in videos if count<3%}
@@ -144,6 +145,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    {% endblock carousel_links %}
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
     <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>

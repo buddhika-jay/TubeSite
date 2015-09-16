@@ -144,7 +144,7 @@ class PhotoController extends Controller
 
         $photos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Photo')->findBy(
-                array('country' => $countryID,'category' => $categoryID)
+                array('authorised'=>true,'country' => $countryID,'category' => $categoryID,'subCategory'=>$subcategoryID)
             );;
 
         if (!$photos) {

@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('country'=>$countryEntity->getId()),
+                array('authorised'=>true,'country'=>$countryEntity->getId()),
                 array('rating' => 'DESC')
             );
         if (!$videos) {

@@ -45,7 +45,8 @@ class VideoController extends Controller
 
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('country' => $countryID,'category' => $categoryID,'subCategory'=>$subcategoryID)
+                array('authorised'=>true,'country' => $countryID,'category' => $categoryID,'subCategory'=>$subcategoryID),
+                array('rating' => 'DESC')
             );;
 
         if (!$videos) {
