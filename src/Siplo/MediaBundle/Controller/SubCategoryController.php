@@ -97,7 +97,7 @@ class SubCategoryController extends Controller
         }
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('country'=>$countryEntity->getId(),'category'=>$categoryEntity->getId()),
+                array('authorised'=>true,'country'=>$countryEntity->getId(),'category'=>$categoryEntity->getId()),
                 array('rating' => 'DESC')
             );
         if (!$videos) {

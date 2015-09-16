@@ -31,7 +31,7 @@ class CountryController extends Controller
         }
         $videos = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('youtubeLink'=>NULL),
+                array('authorised'=>true,'youtubeLink'=>NULL),
                 array('rating' => 'DESC')
 
             );

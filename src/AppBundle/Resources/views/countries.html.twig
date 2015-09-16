@@ -6,7 +6,7 @@
                 {#</div>#}
             <div class="col-sm-10 col-lg-10">
                 {% set count=0 %}
-                {%  for country in countries|sort %}
+                {%  for country in countries|sort if count<20%}
                     {#create a new row for 3 countries#}
                     {% if count is divisibleby(4) %}
                         {% if count>0 %}
@@ -38,7 +38,7 @@
             </div>
             </div>
             <div class="col-sm-2 col-lg-2">
-                <div id="country_list" class="list-group">
+                <div id="country_list" class="list-group " style="max-height: 500px;overflow: scroll">
                     {%  for country in countries %}
                         <a href="{{ country.code }}" id="country_list_item" class="list-group-item">
 

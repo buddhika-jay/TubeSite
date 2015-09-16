@@ -31,6 +31,31 @@
 
 {% block media_content %}
 
+   {% block carousel_links %}
+    <div id="links">
+        {% set count=1 %}
+        {% for Video in videos%}
+          {% if Video.getVideoName()!='link' %}
+            {% set count = count+1 %}
+            <div>
+                <a
+                        href="{{ vich_uploader_asset(Video, 'videoFile') }}"
+                        title=""
+                        {#{{ Viddeo.getVideoTitle() }}#}
+                        type="video/webm"
+                        data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
+                        data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
+                        >
+
+                </a>
+
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endblock carousel_links %}
+
+
     {#<div style="background:#d6e9c6">#}
     {#<div style="background:rgba(0,0,0,.9);height: 80px"></div>#}
     <div id="content" style="padding-top: 80px;background: black">
@@ -73,6 +98,7 @@
             <p style="color:white;">{{ subcategory.description|raw }}</p>
             <a href="{{ '/more/'~subcategory.Id }}">More Details</a>
         </div>
+
     {% set count=0 %}
     {%  for video in videos %}
 
@@ -103,7 +129,8 @@
                             {#{{ Video.getVideoTitle() }}#}
                             type="video/webm"
                             data-poster="{{ vich_uploader_asset(video, 'thumbnail') }}"
-                            data-sources='[{"href": "{{ vich_uploader_asset(video, 'videoFile') }}", "type": "video/webm"}]'
+                            data-sources='[{"href": "{{ vich_uploader_asset(video, 'videoFile') }}", "type": "video/webm"},
+                                          {"href": "{{ vich_uploader_asset(video, 'videoFile') }}", "type": "video/mp4"}]'
                             >
 
                     </a>
