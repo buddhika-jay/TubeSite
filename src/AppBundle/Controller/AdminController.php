@@ -32,6 +32,8 @@ class AdminController extends  BaseAdminController
     public function playAction(){
         $id = $this->request->query->get('id');
         $video = $this->em->getRepository('SiploMediaBundle:Video')->find($id);
-        return $this->render('homepage.html.twig');
+        return $this->render('AppBundle::video_preview.html.twig', array(
+            'video' => $video,
+        ));
     }
 }

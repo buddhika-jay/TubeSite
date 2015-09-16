@@ -1,5 +1,5 @@
 {#This template previes the video when admin requested from admin pannel#}
-
+{% extends 'AppBundle::menu.html.twig' %}
 {% block vedio_preview %}
 
 {% endblock vedio_preview %}
@@ -21,18 +21,25 @@
 
 
     {% block media_content %}
-        {{ path }}
-        <div class = "vid-container">
+        {% if video.getVideoName()!='link' %}
+        <div style="padding-left: 25%;padding-top: 10%;padding-bottom: 10%">
+
             <video id="video" class="video-js vjs-default-skin" controls preload="none" width="640" height="450"
                    poster=" "
                    data-setup="{}">
-                <source src="{{ asset(path)}}" type='video/mp4' />
-                <source src="{{ asset(path)}}" type='video/webm' />
+                <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type='video/mp4' />
+                <source src="{{ vich_uploader_asset(video, 'videoFile') }}" type='video/webm' />
                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
             </video>
             {#<video controls="" autoplay="" name="media"><source src="file:///home/me/PhpstormProjects/videoSite/videosite/web/test.mp4" type="video/mp4"></video>#}
 
         </div>
+        {% else %}
+            {% set link =  video.getYoutubeLink()|split('=') %}
+            <div style="text-align: center">
+                <iframe src="{{'http://www.youtube.com/embed/'~link[1] }}" width=60% height="450px" style="margin-top: 10%;margin-bottom: 10%"></iframe>
+            </div>
+        {% endif %}
 
     {% endblock %}
 
