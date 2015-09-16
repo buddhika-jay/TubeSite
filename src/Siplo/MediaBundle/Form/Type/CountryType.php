@@ -24,6 +24,12 @@ class CountryType extends AbstractType
             'expanded'=>true,
             'multiple' => true,
         ));
+        $builder->add('subCategories', 'entity', array(
+            'class' => 'SiploMediaBundle:SubCategory',
+            'choice_label' => 'title',
+            'expanded'=>true,
+            'multiple' => true,
+        ));
         $builder->add('upload', 'submit');
     }
     
