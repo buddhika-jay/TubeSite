@@ -36,14 +36,14 @@ class PhotoType extends AbstractType
             //'choice_label' => 'name',
             'placeholder' => '',
         ));
-        $builder->add('category', 'entity', array(
-            'class' => 'SiploMediaBundle:Category',
-            'choice_label' => 'title',
-        ));
-        $builder->add('subCategory', 'entity', array(
-            'class' => 'SiploMediaBundle:SubCategory',
-            'choice_label' => 'title',
-        ));
+//        $builder->add('category', 'entity', array(
+//            'class' => 'SiploMediaBundle:Category',
+//            'choice_label' => 'title',
+//        ));
+//        $builder->add('subCategory', 'entity', array(
+//            'class' => 'SiploMediaBundle:SubCategory',
+//            'choice_label' => 'title',
+//        ));
 
 //        $formModifier = function (FormInterface $form, Country $country=null) {
 //            $categories = null === $country ? array() : $country->getCategories();

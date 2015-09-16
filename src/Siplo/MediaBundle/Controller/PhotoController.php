@@ -64,8 +64,8 @@ class PhotoController extends Controller
 
             //go to second form
 
-            $categories = $photo->getCountry()->getCategories();
-            $subCategories = $photo->getCountry()->getSubCategories();
+//            $categories = $photo->getCountry()->getCategories();
+//            $subCategories = $photo->getCountry()->getSubCategories();
 
             $form2 = $this->createForm(new PhotoType(), $photo);
             $form2->handleRequest($request);

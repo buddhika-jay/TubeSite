@@ -84,10 +84,16 @@ class SubCategory
      **/
     private $videos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FurtherDetails", mappedBy="subCategory")
+     **/
+    private $furtherDetails;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->furtherDetails = new ArrayCollection();
     }
 
 
@@ -358,5 +364,38 @@ class SubCategory
 
     public function __toString() {
         return $this->title;
+    }
+
+    /**
+     * Add furtherDetails
+     *
+     * @param \Siplo\MediaBundle\Entity\FurtherDetails $furtherDetails
+     * @return SubCategory
+     */
+    public function addFurtherDetail(\Siplo\MediaBundle\Entity\FurtherDetails $furtherDetails)
+    {
+        $this->furtherDetails[] = $furtherDetails;
+
+        return $this;
+    }
+
+    /**
+     * Remove furtherDetails
+     *
+     * @param \Siplo\MediaBundle\Entity\FurtherDetails $furtherDetails
+     */
+    public function removeFurtherDetail(\Siplo\MediaBundle\Entity\FurtherDetails $furtherDetails)
+    {
+        $this->furtherDetails->removeElement($furtherDetails);
+    }
+
+    /**
+     * Get furtherDetails
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFurtherDetails()
+    {
+        return $this->furtherDetails;
     }
 }
