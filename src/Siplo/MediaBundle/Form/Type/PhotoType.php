@@ -11,8 +11,7 @@ namespace Siplo\MediaBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\FormInterface;;
-
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Siplo\MediaBundle\Entity\Country;
@@ -26,11 +25,16 @@ class PhotoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+//        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+//            $event->stopPropagation();
+//        }, 900);
         $builder->add('title');
         $builder->add('photo', 'vich_file');
         $builder->add('country', 'entity', array(
             'class' => 'SiploMediaBundle:Country',
-            'choice_label' => 'name',
+            //'choice_label' => 'name',
+            'placeholder' => '',
         ));
         $builder->add('category', 'entity', array(
             'class' => 'SiploMediaBundle:Category',
@@ -63,16 +67,16 @@ class PhotoType extends AbstractType
 //            }
 //        );
 //
-//        $builder->get('photo')->addEventListener(
-//            FormEvents::PRE_SUBMIT,
+//        $builder->get('country')->addEventListener(
+//            FormEvents::POST_SUBMIT,
 //            function (FormEvent $event) use ($formModifier) {
 //                // It's important here to fetch $event->getForm()->getData(), as
 //                // $event->getData() will get you the client data (that is, the ID)
-//                $photo = $event->getForm()->getData();
+//                $country = $event->getForm()->getData();
 //
 //                // since we've added the listener to the child, we'll have to pass on
 //                // the parent to the callback functions!
-//                $formModifier($event->getForm()->getParent(), $photo->getCountry());
+//                $formModifier($event->getForm()->getParent(), $country);
 //            }
 //        );
 
