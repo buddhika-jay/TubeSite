@@ -1,7 +1,36 @@
-.checkout
+.Tourism On Net
 =========
 
-A Symfony project created on September 7, 2015, 3:22 pm.
+Project Started on September 7, 2015, 3:22 pm.
+
+Setting Up
+==========
+
+Entities
+=========
+
+Country
+Category
+SubCategory
+FurtherDetails
+Photo
+Video
+
+setting up database
+run : php app/console doctrine:database:drop --force
+    : php app/console doctrine:database:create
+    : php app/console doctrine:schema:update --force
+
+1. First Create an admin using fos user bundle command line tool 
+    run : php app/console fos:user:create adminuser --super-
+2. Now start the the server
+    run : php app/console server:run
+3. Before anythin you have to setup categories. ! Be careful...Choose the 'Code' of the category in a way that it is a unique for each category.
+4. Then create countires. Add one or more categories to country from the 'Categories Menu' by selecting multiple categories using 'CTRL' key.
+5. Now you can setup sub categories for countries. Create a sub category named 'general' and add it to all countries.
+
+References
+==========
 
 login modal : http://formvalidation.io/examples/modal/
 Entity as an input : http://symfony.com/doc/current/reference/forms/types/entity.html
@@ -14,12 +43,4 @@ Dynamic Forms : https://www.adayinthelifeof.nl/2014/03/19/dynamic-form-modificat
                :http://devlog.rolandow.com/2014/11/symfony-forms-dependent-selectboxes/
 
 
-
-Setting Up
-
- Follow Symfony Deploying steps
-http://symfony.com/doc/current/cookbook/deployment/tools.html
-
-1. First Create an admin using fos user bundle command line tool : <php app/console fos:user:create adminuser --super-admin
->
 <li>http://symfony.com/doc/current/bundles/FOSUserBundle/command_line_tools.html</li>
