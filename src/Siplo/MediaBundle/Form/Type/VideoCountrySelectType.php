@@ -14,9 +14,10 @@ class VideoCountrySelectType extends AbstractType
 
         $builder->add('country', 'entity', array(
             'class' => 'SiploMediaBundle:Country',
+            'label' => 'Please Select A Country',
             'choice_label' => 'name',
         ));
-        $builder->add('upload', 'submit');
+        $builder->add('upload', 'submit', array('label' => 'Next'));
 
     }
 

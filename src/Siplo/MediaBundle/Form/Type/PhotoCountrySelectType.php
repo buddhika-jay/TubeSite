@@ -31,11 +31,12 @@ class PhotoCountrySelectType extends AbstractType
 
         $builder->add('country', 'entity', array(
             'class' => 'SiploMediaBundle:Country',
-            //'choice_label' => 'name',
+            'choice_label' => 'name',
+            'label' => 'Please Select A Country',
             'placeholder' => '',
         ));
 
-        $builder->add('upload', 'submit');
+        $builder->add('upload', 'submit', array('label' => 'Next'));
     }
 
     /**
