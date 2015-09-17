@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormEvents;
 use Siplo\MediaBundle\Entity\Country;
 use Siplo\MediaBundle\Entity\Category;
 
-class PhotoCategorizeType extends AbstractType
+class PhotoCountrySelectType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,17 +27,13 @@ class PhotoCategorizeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('category', 'entity', array(
-            'class' => 'SiploMediaBundle:Category',
-            'choices' => $builder->getData()->getCountry()->getCategories(),
-            'required' => 'true',
-        ));
-        $builder->add('subCategory', 'entity', array(
-            'class' => 'SiploMediaBundle:SubCategory',
-            'choices' => $builder->getData()->getCountry()->getSubCategories(),
-            'required' => 'true',
-        ));
 
+
+        $builder->add('country', 'entity', array(
+            'class' => 'SiploMediaBundle:Country',
+            //'choice_label' => 'name',
+            'placeholder' => '',
+        ));
 
         $builder->add('upload', 'submit');
     }

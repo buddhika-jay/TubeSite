@@ -7,18 +7,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class VideoCategorizeType extends AbstractType
+class VideoCountrySelectType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('category', 'entity', array(
-            'class' => 'SiploMediaBundle:Category',
-            'choice_label' => 'title',
-        ));
-        $builder->add('subCategory', 'entity', array(
-            'class' => 'SiploMediaBundle:SubCategory',
-            'choice_label' => 'title',
+        $builder->add('country', 'entity', array(
+            'class' => 'SiploMediaBundle:Country',
+            'choice_label' => 'name',
         ));
         $builder->add('upload', 'submit');
 

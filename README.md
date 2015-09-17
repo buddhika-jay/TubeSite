@@ -17,4 +17,9 @@ Dynamic Forms : https://www.adayinthelifeof.nl/2014/03/19/dynamic-form-modificat
 
 Setting Up
 
-1. Create Category
+ Follow Symfony Deploying steps
+http://symfony.com/doc/current/cookbook/deployment/tools.html
+
+1. First Create an admin using fos user bundle command line tool : <php app/console fos:user:create adminuser --super-admin
+>
+<li>http://symfony.com/doc/current/bundles/FOSUserBundle/command_line_tools.html</li>

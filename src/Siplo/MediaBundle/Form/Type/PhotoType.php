@@ -26,59 +26,24 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-//        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
-//            $event->stopPropagation();
-//        }, 900);
-        $builder->add('title');
-        $builder->add('photo', 'vich_file');
         $builder->add('country', 'entity', array(
             'class' => 'SiploMediaBundle:Country',
             //'choice_label' => 'name',
             'placeholder' => '',
+            'read_only' => 'true,'
         ));
-//        $builder->add('category', 'entity', array(
-//            'class' => 'SiploMediaBundle:Category',
-//            'choice_label' => 'title',
-//        ));
-//        $builder->add('subCategory', 'entity', array(
-//            'class' => 'SiploMediaBundle:SubCategory',
-//            'choice_label' => 'title',
-//        ));
-
-//        $formModifier = function (FormInterface $form, Country $country=null) {
-//            $categories = null === $country ? array() : $country->getCategories();
-////            $categories = $country->getCategories();
-//
-//            $form->add('category', 'entity', array(
-//                'class'       => 'SiploMediaBundle:Category',
-//                'placeholder' => '',
-//                'choices'     => $categories,
-//            ));
-//        };
-//
-//        $builder->addEventListener(
-//            FormEvents::PRE_SET_DATA,
-//            function (FormEvent $event) use ($formModifier) {
-//                // this would be your entity, i.e. SportMeetup
-//                $data = $event->getData();
-//
-////                $formModifier($event->getForm(), $data->getCountry());
-//                $formModifier($event->getForm(), $data->getCountry());
-//            }
-//        );
-//
-//        $builder->get('country')->addEventListener(
-//            FormEvents::POST_SUBMIT,
-//            function (FormEvent $event) use ($formModifier) {
-//                // It's important here to fetch $event->getForm()->getData(), as
-//                // $event->getData() will get you the client data (that is, the ID)
-//                $country = $event->getForm()->getData();
-//
-//                // since we've added the listener to the child, we'll have to pass on
-//                // the parent to the callback functions!
-//                $formModifier($event->getForm()->getParent(), $country);
-//            }
-//        );
+        $builder->add('title');
+        $builder->add('photo', 'vich_file');
+        $builder->add('category', 'entity', array(
+            'class' => 'SiploMediaBundle:Category',
+            'choices' => $builder->getData()->getCountry()->getCategories(),
+            'required' => 'true',
+        ));
+        $builder->add('subCategory', 'entity', array(
+            'class' => 'SiploMediaBundle:SubCategory',
+            'choices' => $builder->getData()->getCountry()->getSubCategories(),
+            'required' => 'true',
+        ));
 
         $builder->add('upload', 'submit');
     }

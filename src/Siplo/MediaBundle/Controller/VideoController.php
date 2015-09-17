@@ -2,8 +2,6 @@
 
 namespace Siplo\MediaBundle\Controller;
 
-use Siplo\MediaBundle\Form\Type\Video2Type;
-use Siplo\MediaBundle\Form\Type\VideoCategorizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -11,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Siplo\MediaBundle\Form\Type\VideoType;
+use Siplo\MediaBundle\Form\Type\VideoCountrySelectType;
 use Siplo\MediaBundle\Entity\Video;
 
 class VideoController extends Controller
@@ -102,25 +101,12 @@ class VideoController extends Controller
     public function uploadAction(Request $request)
     {
 
-        $form = $this->createForm(new VideoType(), new Video());
+        $form = $this->createForm(new VideoCountrySelectType(), new Video());
         $form->handleRequest($request);
         if ($form->isValid()) {
 
-
             $video = $form->getData();
-            $user= $this->get('security.context')->getToken()->getUser();
-            $video->setUser($user);
-
-//            Following two lines are added to avoid the categoty and sub category fields being null.
-//            If they are nullable Admin pannel will not suggest them
-            $video->setCategory($this->getDoctrine()->getRepository('SiploMediaBundle:Category')->find(1));
-            $video->setSubCategory($this->getDoctrine()->getRepository('SiploMediaBundle:SubCategory')->find(1));
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($video);
-            $em->flush();
-
-            return $this->redirect("/upload/video/categorize/".$video->getId());
+            return $this->redirect("/upload/video/".$video->getCountry()->getId());
 
         }
 
@@ -132,16 +118,20 @@ class VideoController extends Controller
     }
 
     /**
-     * @Route("/upload/video/categorize/{id}")
+     * @Route("/upload/video/{countryId}")
      *
      */
-    public function upload2Action($id)
+    public function upload2Action($countryId)
     {
         $request = $this->get('request');
+        //get selected country in previeouse form and set it in video object
         $em = $this->getDoctrine()->getEntityManager();
-        $video = $em->getRepository('SiploMediaBundle:Video')->find($id);
+        $country = $em->getRepository('SiploMediaBundle:Country')->find($countryId);
 
-        $form = $this->createForm(new VideoCategorizeType(), $video);
+        $video = new Video();
+        $video->setCountry($country);
+
+        $form = $this->createForm(new VideoType(), $video);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
