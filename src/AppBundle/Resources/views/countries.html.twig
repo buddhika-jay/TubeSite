@@ -1,7 +1,10 @@
 {% extends '@App/mediapagelayout.html.twig' %}
 {% block media_content %}
+
+    {%  set padding_top = 5 %}
+
     <div id="content" class="parallax" style="padding-bottom: 0;">
-        <div   class="container-fluid"style="background: rgba(0,0,0,.46);padding-top: 5px">
+        <div   class="container-fluid"style="background: rgba(0,0,0,.46);padding-top:{{ padding_top|raw }}px">
             {#<div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" style="padding-top: 1px" data-wow-duration="1000ms" data-wow-delay="300ms">#}
                 {#</div>#}
             <div class="col-sm-10 col-lg-10">
