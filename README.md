@@ -27,7 +27,7 @@ run : php app/console doctrine:database:drop --force
     run : php app/console server:run
 3. Before anythin you have to setup categories. ! Be careful...Choose the 'Code' of the category in a way that it is a unique for each category.
 4. Then create countires. Remember to add a uniqe code for each country(Follow international conventions). Add one or more categories to country from the 'Categories Menu' by selecting multiple categories using 'CTRL' key.
-5. Now you can setup sub categories for countries. There must be at least one sub category for each country to start to upload photos/videos. Therefor create a sub category named 'general' for each country.
+5. Now you can setup sub-categories for countries. There must be at least one sub category for each country to start to upload photos/videos. Therefor create a sub category named 'general' for each country.
 You should use HTML to add the description field.
 6. For each sub category you can add a further details section.
 7. Now users can upload photos and videos to available countries, categories and sub categories.
