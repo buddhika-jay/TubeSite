@@ -232,8 +232,8 @@ easy_admin:
                         - { property: 'id'}
                 form:
                     fields:
-                        - body
                         - { property: 'subCategory'}
+                        - body
         Photo:
                 class: Siplo\MediaBundle\Entity\Photo
                 label: 'Photos'
