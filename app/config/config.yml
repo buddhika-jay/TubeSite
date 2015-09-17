@@ -247,6 +247,13 @@ easy_admin:
                         - { property: 'subCategory'}
                         - { property: 'authorised'}
                     actions: ['preview']
+                form:
+                    fields:
+                        - { property: 'title'}
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'subCategory'}
+                        - { property: 'photo', type: 'file', label: 'Change Photo', help: 'Select file to upload / change photo'}
         Video:
                 class: Siplo\MediaBundle\Entity\Video
                 label: 'Videos'
@@ -260,5 +267,13 @@ easy_admin:
                         - { property: 'subCategory'}
                         - { property: 'authorised'}
                     actions: ['play']
+                form:
+                    fields:
+                        - { property: 'VideoTitle'}
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'subCategory'}
+                        - { property: 'videoFile', type: 'file', label: 'Change Photo', help: 'Select file to upload / change video'}
+                        - { property: 'thumbnail', type: 'file', label: 'Change Thumbnail', help: 'Select file to upload / change thumbnail'}
 
     site_name: 'Tourism On Net'
