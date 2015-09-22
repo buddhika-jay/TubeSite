@@ -42,10 +42,11 @@
                     {#show category#}
                     <div class="col-sm-2 col-lg-3">
                          {#<a href="{{country.code~'/'~category.code }}">#}
-                            <div id="category-container" style="overflow: visible;margin-bottom: 40px">
-
-                                <img id="image" src="{{ vich_uploader_asset(subcategory, 'backgroundImage') }}" alt="{{ subcategory.title }}" />
-                                <div id="category-inner-container" style="height: 100px">
+                            <div id="category-container" style="height:210px;width: 280px;overflow: visible;margin-bottom: 40px">
+                               <div style="overflow: hidden;height: inherit;position: relative;z-index: 100;width: inherit">
+                                <img style="height: inherit;width: auto" id="image" src="{{ vich_uploader_asset(subcategory, 'backgroundImage') }}" alt="{{ subcategory.title }}" />
+                               </div>
+                                   <div id="category-inner-container" style="margin-top:-40px;height: 100px">
 
                                     <div>
                                         <p id="text-category" style="text-align: center">
