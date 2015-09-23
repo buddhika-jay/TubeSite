@@ -165,8 +165,7 @@ easy_admin:
                         - id
                         - username
                         - email
-                        - locked
-                    actions: ['-edit']
+                        - { property: 'locked'}
                 form:
                     fields:
                         - username
