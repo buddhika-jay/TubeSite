@@ -22,7 +22,7 @@ run : php app/console doctrine:database:drop --force
     : php app/console doctrine:schema:update --force
 
 1. First Create an admin using fos user bundle command line tool 
-    run : php app/console fos:user:create adminuser --super-
+    run : php app/console fos:user:create adminuser --super-admin
 2. Now start the the server
     run : php app/console server:run
 3. Before anythin you have to setup categories. ! Be careful...Choose the 'Code' of the category in a way that it is a unique for each category.

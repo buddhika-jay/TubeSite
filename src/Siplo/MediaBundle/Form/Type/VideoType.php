@@ -20,11 +20,13 @@ class VideoType extends AbstractType
         $builder->add('thumbnail', 'vich_file');
         $builder->add('category', 'entity', array(
             'class' => 'SiploMediaBundle:Category',
-            'choice_label' => 'title',
+            'choices' => $builder->getData()->getCountry()->getCategories(),
+            'required' => 'true',
         ));
         $builder->add('subCategory', 'entity', array(
             'class' => 'SiploMediaBundle:SubCategory',
-            'choice_label' => 'title',
+            'choices' => $builder->getData()->getCountry()->getSubCategories(),
+            'required' => 'true',
         ));
         $builder->add('upload', 'submit');
 
