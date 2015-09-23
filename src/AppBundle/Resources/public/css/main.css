@@ -209,8 +209,8 @@ section {
   transition: height 0.5s, width 0.5s,background 0.5s,font-size 0.5s;
   margin-left: 0;
   margin-right: 0;
-  height: 180px;
-  width: 280px;
+  height: 250px;
+  width: 380px;
   position: relative;
   overflow: hidden;
 }
@@ -232,7 +232,7 @@ section {
   -webkit-transition:background 0.5s; /* Safari */
   transition:background 0.5s;
   position: absolute;
-  margin-top: 140px;
+  margin-top: 210px;
   height: 40px;
   width: inherit;
   background: rgba(0,0,0,.7);
