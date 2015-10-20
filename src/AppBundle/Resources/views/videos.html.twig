@@ -137,8 +137,8 @@
                     </div>
 
                 </div>
-                <a href={{ '/download/video/'~video.Id}}>Download</a>
-                <div data-href="https://www.tourismonnet.com" data-layout="button_count"></div>
+                <a href={{ '/download/video/'~video.Id}}>Downloads</a>
+                <div data-href="https://www.tourismonnet.com" data-layout="button_count">Like</div>
                 {% set count=count+1 %}
             </a>
             {% else %}
@@ -149,7 +149,6 @@
                 {% set downlink =  video.getYoutubeLink()|split('.',2) %}
                 <div style="margin-top: 4%">
                  <a  href={{'//ss'~downlink[1]}}>Download</a>
-                 <div data-href="https://www.tourismonnet.com" data-layout="button_count"></div>
               </div>
         {% endif %}
         </div>
@@ -189,6 +188,7 @@
         }
 
     </script>
+
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
