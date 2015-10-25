@@ -320,5 +320,3 @@ liip_imagine:
                     quality: 75
                     filters:
                         thumbnail: { size: [30, 15], mode: outbound }
-web_profiler:
-    intercept_redirects: false
