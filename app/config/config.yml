@@ -283,17 +283,16 @@ easy_admin:
     site_name: 'Tourism On Net'
 
 liip_imagine:
-
     resolvers:
-        default:
-            web_path:
-                web_root: %kernel.root_dir%/../web
-                cache_prefix: media/cache
+            default:
+                web_path:
+                    web_root: %kernel.root_dir%/../web
+                    cache_prefix: media/cache
 
     loaders:
         default:
             filesystem:
-                data_root: %kernel.root_dir%/../web/
+                data_root:   %kernel.root_dir%/../web/
 
     driver:               gd
     cache:                default
@@ -302,6 +301,7 @@ liip_imagine:
     controller:
         filter_action:         liip_imagine.controller:filterAction
         filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+
     filter_sets:
         cache: ~
         my_thumb:
