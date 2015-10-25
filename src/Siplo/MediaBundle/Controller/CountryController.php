@@ -18,38 +18,37 @@ class CountryController extends Controller
      *@Route("/")
      *
      */
-    public function viewCountryAction()
-    {
-        $countries = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findBy(
-                array(),
-                array('name' => 'ASC')
-            );
-
-        if (!$countries) {
-            $this->render('AppBundle::emptycontent.html.twig');
-        }
-        $videos = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Video')->findBy(
-                array('authorised'=>true,'youtubeLink'=>NULL),
-                array('rating' => 'DESC')
-
-            );
-
-        if (!$videos) {
-            return $this->render('AppBundle::emptycontent.html.twig'
-            );
-        }
-//        $path= $video;//->getVideoFile();//.mozFullPath;
-
-//        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-//        $path = $helper->asset($countries, 'videoFile');
-
-
-        //$path = "videos/sample.mp4";
-        return $this->render('AppBundle::countries.html.twig',array(
-            'countries' => $countries,'videos'=>$videos));
+    public function viewCountryAction(){
+        return $this->render('@App/default/site_under_maintenance.html.twig');
     }
+//    public function viewCountryAction()
+//    {
+//        $countries = $this->getDoctrine()
+//            ->getRepository('SiploMediaBundle:Country')->findBy(
+//                array(),
+//                array('name' => 'ASC')
+//            );
+//
+//        if (!$countries) {
+//            $this->render('AppBundle::emptycontent.html.twig');
+//        }
+//        $videos = $this->getDoctrine()
+//            ->getRepository('SiploMediaBundle:Video')->findBy(
+//                array('authorised'=>true,'youtubeLink'=>NULL),
+//                array('rating' => 'DESC')
+//
+//            );
+//
+//        if (!$videos) {
+//            return $this->render('AppBundle::emptycontent.html.twig'
+//            );
+//        }
+//
+//
+//        //$path = "videos/sample.mp4";
+//        return $this->render('AppBundle::countries.html.twig',array(
+//            'countries' => $countries,'videos'=>$videos));
+//    }
 
     /**
      * @Route("/create/country")
