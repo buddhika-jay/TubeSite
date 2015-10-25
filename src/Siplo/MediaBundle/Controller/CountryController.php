@@ -18,37 +18,42 @@ class CountryController extends Controller
      *@Route("/")
      *
      */
-    public function viewCountryAction(){
+    public function maintenanceAction(){
         return $this->render('@App/default/site_under_maintenance.html.twig');
     }
-//    public function viewCountryAction()
-//    {
-//        $countries = $this->getDoctrine()
-//            ->getRepository('SiploMediaBundle:Country')->findBy(
-//                array(),
-//                array('name' => 'ASC')
-//            );
-//
-//        if (!$countries) {
-//            $this->render('AppBundle::emptycontent.html.twig');
-//        }
-//        $videos = $this->getDoctrine()
-//            ->getRepository('SiploMediaBundle:Video')->findBy(
-//                array('authorised'=>true,'youtubeLink'=>NULL),
-//                array('rating' => 'DESC')
-//
-//            );
-//
-//        if (!$videos) {
-//            return $this->render('AppBundle::emptycontent.html.twig'
-//            );
-//        }
-//
-//
-//        //$path = "videos/sample.mp4";
-//        return $this->render('AppBundle::countries.html.twig',array(
-//            'countries' => $countries,'videos'=>$videos));
-//    }
+
+    /**
+     *@Route("/test")
+     *
+     */
+    public function viewCountryAction()
+    {
+        $countries = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findBy(
+                array(),
+                array('name' => 'ASC')
+            );
+
+        if (!$countries) {
+            $this->render('AppBundle::emptycontent.html.twig');
+        }
+        $videos = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Video')->findBy(
+                array('authorised'=>true,'youtubeLink'=>NULL),
+                array('rating' => 'DESC')
+
+            );
+
+        if (!$videos) {
+            return $this->render('AppBundle::emptycontent.html.twig'
+            );
+        }
+
+
+        //$path = "videos/sample.mp4";
+        return $this->render('AppBundle::countries.html.twig',array(
+            'countries' => $countries,'videos'=>$videos));
+    }
 
     /**
      * @Route("/create/country")
