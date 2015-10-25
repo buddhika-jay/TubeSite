@@ -281,3 +281,27 @@ easy_admin:
                         - { property: 'authorised'}
 
     site_name: 'Tourism On Net'
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        my_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [60, 35], mode: outbound }
+        home_country_background:
+                    quality: 75
+                    filters:
+                        thumbnail: { size: [160, 120], mode: outbound }
+        home_country_flag:
+                    quality: 75
+                    filters:
+                        thumbnail: { size: [60, 30], mode: outbound }
+        home_sidebar_country_flag:
+                    quality: 75
+                    filters:
+                        thumbnail: { size: [30, 15], mode: outbound }

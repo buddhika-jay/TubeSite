@@ -40,3 +40,6 @@ easy_admin_bundle:
 #upload_save:
 #    path:     /upload/save
 #    defaults: { _controller: Siplo/MediaBundle:Upload:save}
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

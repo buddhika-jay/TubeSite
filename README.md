@@ -32,6 +32,13 @@ You should use HTML to add the description field.
 6. For each sub category you can add a further details section.
 7. Now users can upload photos and videos to available countries, categories and sub categories.
 
+8. apache config
+- sudo apt-get install libapache2-mod-php5
+-php app/console cache:clear --env=prod --no-debug
+-sudo chmod -R 777 app/cache app/logs
+-a2ensite tourismonnet.conf
+
+
 
 References
 ==========
