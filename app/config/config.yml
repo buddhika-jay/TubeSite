@@ -251,6 +251,7 @@ easy_admin:
                 form:
                     fields:
                         - { property: 'title'}
+                        - { property: 'authorised'}
                         - { property: 'country'}
                         - { property: 'category'}
                         - { property: 'subCategory'}
