@@ -55,7 +55,7 @@ class VideoController extends Controller
 
         return $this->render('AppBundle::videos.html.twig',array(
 //            App:videos requires a video id to play by default. Id of the first video is sent to it
-            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity, 'videoId'=>1));
+            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity, 'videoId'=>2));
     }
 
     /**
