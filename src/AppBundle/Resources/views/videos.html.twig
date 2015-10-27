@@ -155,9 +155,15 @@
                 </a>
                 {% set downlink =  video.getYoutubeLink()|split('.',2) %}
                 <div style="margin-top: 4%">
-                 <a  href={{'//ss'~downlink[1]}}>Download</a>
-
-                 <div class="fb-like" data-href={{vich_uploader_asset(video, 'thumbnail')}} data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {#<div class="fb-like" data-href={{vich_uploader_asset(video, 'thumbnail')}} data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>#}
+                            <div class="fb-like" data-href={{vich_uploader_asset(video, 'thumbnail')}} data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <a href={{ '/download/video/'~video.Id}}>Downloads</a>
+                        </div>
+                    </div>
               </div>
         {% endif %}
         </div>
