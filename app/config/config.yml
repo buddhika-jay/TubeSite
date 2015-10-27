@@ -320,3 +320,7 @@ liip_imagine:
                     quality: 75
                     filters:
                         thumbnail: { size: [30, 15], mode: outbound }
+        carousel_image:
+                    quality: 75
+                    filters:
+                        thumbnail: { size: [640, 360], mode: outbound }
