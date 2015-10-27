@@ -1,5 +1,6 @@
 {% extends '@App/menu.html.twig' %}
-
+{#Calculate the link to this page#}
+{% set link_to_page = 'http://tourismonnet.com/'~subcategory.getCountry().getId()~'/'~subcategory.getCategory().getId()~'/photos/'~subcategory.getId()%}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/siplomedia/css/blueimp-gallery.min.css')}}">
@@ -38,8 +39,16 @@
 
             </a>
             </p>
-
-            {#<a href={{ '/download/photo/'~photo.Id}}>Download</a>#}
+            <div class="row">
+                <div class="col-md-6">
+                    {#<div class="fb-like" data-href={{vich_uploader_asset(video, 'thumbnail')}} data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>#}
+                    <div class="fb-like" data-href={{link_to_page}} data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <a href={{ '/download/photo/'~photo.Id}}><span class="label label-primary">Download</span></a>
+                </div>
+            </div>
             </div>
         {% endfor %}
          </div>
