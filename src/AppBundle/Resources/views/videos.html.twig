@@ -138,7 +138,7 @@
 
                 </div>
                 <a href={{ '/download/video/'~video.Id}}>Downloads</a>
-                <div class="fb-like" data-href={{"https://developers.facebook.com/docs/plugins/"}} data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                <div class="fb-like" data-href={{vich_uploader_asset(video, 'thumbnail')}} data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                 {#<div class="fb-share-button" data-href="http://www.your-domain.com/your-page.html" data-layout="button_count"></div>#}
                 {% set count=count+1 %}
             </a>
