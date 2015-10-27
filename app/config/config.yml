@@ -186,7 +186,7 @@ easy_admin:
                         form:
                             fields:
                                 - title
-                                - code
+#                                - code
                                 - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
 
         Country:
@@ -201,7 +201,7 @@ easy_admin:
                 form:
                     fields:
                         - name
-                        - code
+#                        - code
                         - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
                         - { property: 'flag', type: 'file', label: 'Upload Flag', help: 'Select file to upload / change logo'}
                         - { property: 'categories'}
@@ -219,7 +219,7 @@ easy_admin:
                 form:
                     fields:
                         - title
-                        - code
+#                        - code
                         - { property: 'backgroundImage', type: 'file', label: 'Upload Background', help: 'Select file to upload / change logo'}
                         - { property: 'country'}
                         - { property: 'category'}
