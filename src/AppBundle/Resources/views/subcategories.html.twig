@@ -41,7 +41,7 @@
                     {% endif %}
                     {#show category#}
                     <div class="col-sm-2 col-lg-3">
-                         {#<a href="{{country.code~'/'~category.code }}">#}
+                         {#<a href="{{country.id~'/'~category.id }}">#}
                             <div id="category-container" style="height:210px;width: 280px;overflow: visible;margin-bottom: 40px">
                                <div style="overflow: hidden;height: inherit;position: relative;z-index: 100;width: inherit">
                                 <img style="height: inherit;width: auto" id="image" src="{{ vich_uploader_asset(subcategory, 'backgroundImage') }}" alt="{{ subcategory.title }}" />
@@ -55,12 +55,12 @@
                                     </div>
                                     <div class="row">
                                     <div style="margin-top: 14px">
-                                        <a href="{{category.code~'/photos/'~subcategory.code }}">
+                                        <a href="{{category.id~'/photos/'~subcategory.id }}">
                                             <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Photos</h4>
                                             </div>
                                         </a>
-                                        <a href="{{category.code~'/videos/'~subcategory.code }}">
+                                        <a href="{{category.id~'/videos/'~subcategory.id }}">
                                             <div class="col-sm-3 col-lg-6">
                                                 <h4 id="sub-title" style="text-align: center">Videos</h4>
                                             </div>

@@ -13,17 +13,18 @@ use Siplo\MediaBundle\Entity\Category;
 class CategoryController extends Controller
 {
 
-
+//country is a integer, hence regx used
     /**
      * @Route("/{country}",requirements={
-     *     "country": "^[A-Z]{2}"
+     *     "country": "(?<![-.])\b[0-9]+\b(?!\.[0-9])"
      * }))
      *
      */
+
     public function viewCategoryAction($country)
     {
         $countryEntity=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
+            ->getRepository('SiploMediaBundle:Country')->findOneById($country);
         $categories = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:Category')->findAll();
 

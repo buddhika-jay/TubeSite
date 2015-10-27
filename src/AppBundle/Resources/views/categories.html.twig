@@ -41,7 +41,7 @@
                     {% endif %}
                     {#show category#}
                     <div class="col-sm-2 col-lg-4">
-                         <a href="{{country.code~'/'~category.code }}">
+                         <a href="{{country.id~'/'~category.id }}">
                             <div id="category-container">
 
                                 <img style="height: inherit;width: auto" id="image" src="{{ vich_uploader_asset(category, 'backgroundImage') }}" alt="{{ category.title }}" />

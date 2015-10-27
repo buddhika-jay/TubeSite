@@ -77,17 +77,17 @@ class SubCategoryController extends Controller
 
     /**
      * @Route("/{country}/{category}",requirements={
-     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}"
+     *     "country": "(?<![-.])\b[0-9]+\b(?!\.[0-9])","category":"(?<![-.])\b[0-9]+\b(?!\.[0-9])"
      * }))
      *
      */
     public function viewSCategoryAction($country,$category)
     {
         $countryEntity = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
+            ->getRepository('SiploMediaBundle:Country')->findOneById($country);
 
         $categoryEntity = $this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category);
+            ->getRepository('SiploMediaBundle:Category')->findOneById($category);
 
         $subCategories = $this->getDoctrine()
             ->getRepository('SiploMediaBundle:SubCategory')->findBy(array('country'=>$countryEntity->getId(),'category'=>$categoryEntity->getId()));

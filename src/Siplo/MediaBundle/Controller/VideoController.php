@@ -16,7 +16,7 @@ class VideoController extends Controller
 {
     /**
      * @Route("/{country}/{category}/videos/{subcategory}",requirements={
-     *     "country": "^[A-Z]{2}","category":"^[A-Z]{2}","subcategory":"^[A-Z]{2}"
+     *     "country": "(?<![-.])\b[0-9]+\b(?!\.[0-9])","category":"(?<![-.])\b[0-9]+\b(?!\.[0-9])","subcategory":"(?<![-.])\b[0-9]+\b(?!\.[0-9])"
      * }))
      *
      */
@@ -25,20 +25,20 @@ class VideoController extends Controller
 
         //        find country id
         $countryEntiy=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Country')->findOneByCode($country);
+            ->getRepository('SiploMediaBundle:Country')->findOneById($country);
         $countryID=$countryEntiy->getId();
         $countryName=$countryEntiy->getName();
 
 
 //        find categroy id
         $categoryEntity=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:Category')->findOneByCode($category);
+            ->getRepository('SiploMediaBundle:Category')->findOneById($category);
         $categoryID=$categoryEntity->getId();
 
         $categoryName=$categoryEntity->getTitle();
 //        get subcategory entity
         $subcategoryEntity=$this->getDoctrine()
-            ->getRepository('SiploMediaBundle:SubCategory')->findOneByCode($subcategory);
+            ->getRepository('SiploMediaBundle:SubCategory')->findOneById($subcategory);
         $subcategoryID=$subcategoryEntity->getId();
 
 
