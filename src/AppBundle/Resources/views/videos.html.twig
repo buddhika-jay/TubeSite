@@ -1,6 +1,6 @@
 {% extends '@App/mediapagelayout.html.twig' %}
 {#Calculate the link to this page#}
-{% set link_to_page = 'tourismonnet.com/'~subcategory.getCountry().getId()~'/'~subcategory.getCategory().getId()~'/videos/'~subcategory.getId()%}
+{% set link_to_page = 'http://tourismonnet.com/'~subcategory.getCountry().getId()~'/'~subcategory.getCategory().getId()~'/videos/'~subcategory.getId()%}
 {% block menuitems %}
     <li class="scroll active"><a href="/">Home</a></li>
     {#<li class="scroll"><a href="#content">Countries</a></li>#}
