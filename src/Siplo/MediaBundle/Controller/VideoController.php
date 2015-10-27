@@ -54,7 +54,52 @@ class VideoController extends Controller
         }
 
         return $this->render('AppBundle::videos.html.twig',array(
-            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity));
+//            App:videos requires a video id to play by default. Id of the first video is sent to it
+            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity, 'videoId'=>1));
+    }
+
+    /**
+     * @Route("/{country}/{category}/videos/{subcategory}/{videoId}",requirements={
+     *     "country": "(?<![-.])\b[0-9]+\b(?!\.[0-9])","category":"(?<![-.])\b[0-9]+\b(?!\.[0-9])","subcategory":"(?<![-.])\b[0-9]+\b(?!\.[0-9])"
+     * }))
+     *
+     */
+    public function playByUrlAction($country,$category,$subcategory, $videoId)
+    {
+//        This Action is used to play a video when it get shared on facebook.
+
+        //        find country id
+        $countryEntiy=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Country')->findOneById($country);
+        $countryID=$countryEntiy->getId();
+        $countryName=$countryEntiy->getName();
+
+
+//        find categroy id
+        $categoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Category')->findOneById($category);
+        $categoryID=$categoryEntity->getId();
+
+        $categoryName=$categoryEntity->getTitle();
+//        get subcategory entity
+        $subcategoryEntity=$this->getDoctrine()
+            ->getRepository('SiploMediaBundle:SubCategory')->findOneById($subcategory);
+        $subcategoryID=$subcategoryEntity->getId();
+
+
+        $videos = $this->getDoctrine()
+            ->getRepository('SiploMediaBundle:Video')->findBy(
+                array('authorised'=>true,'country' => $countryID,'category' => $categoryID,'subCategory'=>$subcategoryID),
+                array('rating' => 'DESC')
+            );;
+
+        if (!$videos) {
+            return $this->render('AppBundle::emptycontent.html.twig'
+            );
+        }
+
+        return $this->render('AppBundle::videos.html.twig',array(
+            'videos' => $videos,'country'=>$countryName,'category'=>$categoryName,'subcategory'=>$subcategoryEntity, 'videoId'=>$videoId));
     }
 
     /**
