@@ -14,16 +14,16 @@ use Symfony\Component\Validator\Constraints\Count;
 class CountryController extends Controller
 {
 
-    /**
-     *@Route("/")
-     *
-     */
-    public function maintenanceAction(){
-        return $this->render('@App/default/site_under_maintenance.html.twig');
-    }
+//    /**
+//     *@Route("/")
+//     *
+//     */
+//    public function maintenanceAction(){
+//        return $this->render('@App/default/site_under_maintenance.html.twig');
+//    }
 
     /**
-     *@Route("/test")
+     *@Route("/")
      *
      */
     public function viewCountryAction()
