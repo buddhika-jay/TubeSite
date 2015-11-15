@@ -123,19 +123,19 @@
 
 <div style="height: auto">
     {% block carousel_links %}
-    <div id="links">
+    <div id = "links" >
         {% set count=0 %}
         {% for Video in videos if count<3%}
           {% if Video.getVideoName()!='link' %}
             {% set count = count+1 %}
-            <div>
-                <a
-                        href="{{ vich_uploader_asset(Video, 'videoFile') }}"
+            <div id = {{ count }}>
+                <a onclick= "loadvideo()"
+                        {#href="{{ vich_uploader_asset(Video, 'videoFile') }}"#}
                         title=""
                         {#{{ Viddeo.getVideoTitle() }}#}
                         type="video/webm"
                         data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}"
-                        data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'
+                        {#data-sources='[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]'#}
                         >
 
                 </a>
@@ -144,6 +144,8 @@
         {% endif %}
         {% endfor %}
     </div>
+
+
     {% endblock carousel_links %}
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
@@ -203,6 +205,43 @@
     {#</div>#}
 </footer>
 {% block javascripts %}
+     {#load carousel with videos after the page fully loaded#}
+    <script>
+        window.onload=function(){
+            document.getElementById("links").innerHTML = {% set count=0 %}
+            {% for Video in videos if count<3%}
+            {% if Video.getVideoName()!='link' %}
+            {% set count = count+1 %}
+                    {% if count==1 %}
+                        '<div id = {{ count }}> '
+            {% else %}
+            +'<div id = {{ count }}> '
+            {% endif %}
+            +'<a '
+            +'href="{{ vich_uploader_asset(Video, 'videoFile') }}" '
+            +'title="" '
+            +'{{ Video.getVideoTitle() }} '
+            +'type="video/webm" '
+            +'data-poster="{{ vich_uploader_asset(Video, 'thumbnail') }}" '
+                   +'data-sources=\'[{"href": "{{ vich_uploader_asset(Video, 'videoFile') }}", "type": "video/webm"}]\' '
+                    +'> '
+
+                    +'</a> '
+
+                    +'</div> '
+            {% endif %}
+            {% endfor %};
+
+            var gallery;
+            gallery=blueimp.Gallery(
+                    document.getElementById('links').getElementsByTagName('a'),
+                    {
+                        container: '#blueimp-gallery-carousel',
+                        carousel: true
+                    }
+            );
+        }
+    </script>
     <script type="text/javascript" src={{ asset('bundles/app/js/jquery.js')}}></script>
     <script type="text/javascript" src={{ asset('bundles/app/js/bootstrap.min.js')}}></script>
     {#<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>#}
@@ -218,7 +257,7 @@
         ================================================== -->
 
     <!-- initialize jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
     <!-- Google map -->
     {#<script src="https://maps.googleapis.com/maps/api/js"></script>#}
     {#<script src={{ asset('bundles/app/js/jquery.ui.map.js')}}></script>#}
