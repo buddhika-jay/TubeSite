@@ -260,25 +260,26 @@ easy_admin:
         Video:
                 class: Siplo\MediaBundle\Entity\Video
                 label: 'Videos'
-#                list:
-#                    fields:
-#                        - { property: 'id'}
-#                        - { property: 'videoName'}
-#                        - { property: 'thumbName', label: 'Preview', type: 'image', base_path: '/uploads/video_thumbnails/' }
-#                        - { property: 'country'}
-#                        - { property: 'category'}
-#                        - { property: 'subCategory'}
-#                        - { property: 'authorised'}
-#                    actions: ['play']
-#                form:
-#                    fields:
-#                        - { property: 'VideoTitle'}
-#                        - { property: 'country'}
-#                        - { property: 'category'}
-#                        - { property: 'subCategory'}
-#                        - { property: 'rating'}
-#                        - { property: 'videoFile', type: 'file', label: 'Change Video', help: 'Select file to upload / change video'}
-#                        - { property: 'thumbnail', type: 'file', label: 'Change Thumbnail', help: 'Select file to upload / change thumbnail'}
+                list:
+                    fields:
+                        - { property: 'id'}
+                        - { property: 'videoName'}
+                        - { property: 'thumbName', label: 'Preview', type: 'image', base_path: '/uploads/video_thumbnails/' }
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'subCategory'}
+                        - { property: 'authorised'}
+                    actions: ['play']
+                form:
+                    fields:
+                        - { property: 'VideoTitle'}
+                        - { property: 'authorised'}
+                        - { property: 'country'}
+                        - { property: 'category'}
+                        - { property: 'subCategory'}
+                        - { property: 'rating'}
+                        - { property: 'videoFile', type: 'file', label: 'Change Video', help: 'Select file to upload / change video'}
+                        - { property: 'thumbnail', type: 'file', label: 'Change Thumbnail', help: 'Select file to upload / change thumbnail'}
 
     site_name: 'Tourism On Net'
 
