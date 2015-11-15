@@ -52,8 +52,8 @@
                 <div id="country_list" class="list-group " style="max-height: 500px;overflow: scroll">
                     {%  for country in countries %}
                         <a href="{{ country.id }}" id="country_list_item" class="list-group-item">
-                            <img id="flag_list" src="{{ vich_uploader_asset(country, 'flag') | imagine_filter('home_sidebar_country_flag')}}"/>
-                            {#<img id="flag_list" src="{{ vich_uploader_asset(country, 'flag')}}"/>#}
+                            {#<img id="flag_list" src="{{ vich_uploader_asset(country, 'flag') | imagine_filter('home_sidebar_country_flag')}}"/>#}
+                            <img id="flag_list" src="{{ vich_uploader_asset(country, 'flag')}}"/>
                             <ul style="padding-left: 22%">{{ country.name }}</ul>
                         </a>
                     {% endfor %}
