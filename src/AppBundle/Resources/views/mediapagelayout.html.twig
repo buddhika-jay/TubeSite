@@ -122,12 +122,15 @@
 {#carousel-start#}
 
 <div style="height: auto">
+
     {% block carousel_links %}
     <div id = "links" >
+
         {% set count=0 %}
         {% for Video in videos if count<1%}
           {% if Video.getVideoName()!='link' %}
-            {% set count = count+1 %}
+
+              {% set count = count+1 %}
             <div id = {{ count }}>
                 <a onclick= "loadvideo()"
                         href="{{ vich_uploader_asset(Video, 'videoFile') }}"
@@ -145,12 +148,12 @@
         {% endfor %}
     </div>
 
-
     {% endblock carousel_links %}
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
     <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>
-    <div style="background:rgba(0,0,0,1);height: 450px;overflow: hidden">
+    {% if videos[0].getVideoName()!='link' %}
+    <div  style="background:rgba(0,0,0,1);height: 450px;overflow: hidden">
     {#<div style="background:rgba(0,0,0,1);height: 440px;overflow: hidden">#}
 
         {#<div style="align-content:center;top:-80px;height:468px;width:80%;padding-top: 0px;padding-bottom:0px;margin:0 0" id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">#}
@@ -165,11 +168,25 @@
         </div>
     </div>
     <div style="position:inherit;z-index:10;background: black;text-align: center"> <a href="#content"> <i class="fa fa-chevron-down fa-3x"></i></a></div>
-</div>
+{% endif %}
 {#carousel-end#}
+<div>
+
+
+    {#<script>#}
+        {#var parent = document.getElementById("outer");#}
+        {#var child = document.getElementById("inner");#}
+        {#var child2 = document.getElementById("godown");#}
+        {#parent.removeChild(child);#}
+        {#parent.removeChild(child2);#}
+    {#</script>#}
+    {#{% endif %}#}
+
+
+
+</div>
 <section style="background:black;padding: 0 0">
     {% block media_content %}
-
 
     {% endblock %}
 </section>
@@ -280,6 +297,7 @@
     {#for carasol#}
     <script src="{{ asset('bundles/siplomedia/js/blueimp-gallery.min.js') }}"></script>
     <script>
+        {#{% if avaliable == 0 %}#}
         var gallery;
         gallery=blueimp.Gallery(
                 document.getElementById('links').getElementsByTagName('a'),
@@ -288,7 +306,7 @@
                     carousel: true
                 }
         );
-
+        {#{% endif %}#}
     </script>
     {#facebook buttons#}
     <div id="fb-root"></div>
