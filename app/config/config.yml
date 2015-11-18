@@ -285,45 +285,61 @@ easy_admin:
     site_name: 'Tourism On Net'
 
 #Liip imagine
+#liip_imagine:
+#    resolvers:
+#            default:
+#                web_path:
+#                    web_root: %kernel.root_dir%/../web
+#                    cache_prefix: media/cache
+#
+#    loaders:
+#        default:
+#            filesystem:
+#                data_root:   %kernel.root_dir%/../web/
+#
+#    driver:               gd
+#    cache:                default
+#    data_loader:          default
+#    default_image:        null
+#    controller:
+#        filter_action:         liip_imagine.controller:filterAction
+#        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+#
+#    filter_sets:
+#        cache: ~
+#        my_thumb:
+#            quality: 75
+#            filters:
+#                thumbnail: { size: [60, 35], mode: outbound }
+#        home_country_background:
+#                    quality: 75
+#                    filters:
+#                        thumbnail: { size: [160, 120], mode: outbound }
+#        home_country_flag:
+#                    quality: 75
+#                    filters:
+#                        thumbnail: { size: [60, 30], mode: outbound }
+#        home_sidebar_country_flag:
+#                    quality: 75
+#                    filters:
+#                        thumbnail: { size: [30, 15], mode: outbound }
+#        carousel_image:
+#                    quality: 75
+#                    filters:
+#                        thumbnail: { size: [640, 360], mode: outbound }
+
 liip_imagine:
     resolvers:
-            default:
-                web_path:
-                    web_root: %kernel.root_dir%/../web
-                    cache_prefix: media/cache
-
-    loaders:
-        default:
-            filesystem:
-                data_root:   %kernel.root_dir%/../web/
-
-    driver:               gd
-    cache:                default
-    data_loader:          default
-    default_image:        null
-    controller:
-        filter_action:         liip_imagine.controller:filterAction
-        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+       default:
+          web_path: ~
 
     filter_sets:
         cache: ~
-        my_thumb:
+        image_medium:
             quality: 75
             filters:
-                thumbnail: { size: [60, 35], mode: outbound }
-        home_country_background:
-                    quality: 75
-                    filters:
-                        thumbnail: { size: [160, 120], mode: outbound }
-        home_country_flag:
-                    quality: 75
-                    filters:
-                        thumbnail: { size: [60, 30], mode: outbound }
+                thumbnail: { size: [120, 120], mode: inset }
         home_sidebar_country_flag:
                     quality: 75
                     filters:
-                        thumbnail: { size: [30, 15], mode: outbound }
-        carousel_image:
-                    quality: 75
-                    filters:
-                        thumbnail: { size: [640, 360], mode: outbound }
+                        thumbnail: { size: [30, 30], mode: inset }
