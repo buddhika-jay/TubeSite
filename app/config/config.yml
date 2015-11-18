@@ -278,6 +278,7 @@ easy_admin:
                         - { property: 'category'}
                         - { property: 'subCategory'}
                         - { property: 'rating'}
+                        - {property: 'youtubeLink'}
                         - { property: 'videoFile', type: 'file', label: 'Change Video', help: 'Select file to upload / change video'}
                         - { property: 'thumbnail', type: 'file', label: 'Change Thumbnail', help: 'Select file to upload / change thumbnail'}
 
