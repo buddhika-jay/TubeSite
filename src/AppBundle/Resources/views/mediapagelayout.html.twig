@@ -152,7 +152,14 @@
 
     <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
     <div style="background:rgba(0,0,0,1);height: 80px;overflow: hidden"></div>
-    {% if videos[0].getVideoName()!='link' %}
+    {% set avaliable = false %}
+    {% for Video in videos if avaliable==false%}
+        {% if Video.getVideoName()!='link' %}
+            {% set avaliable=true %}
+        {% endif %}
+    {% endfor %}
+
+    {% if avaliable==true %}
     <div  style="background:rgba(0,0,0,1);height: 450px;overflow: hidden">
     {#<div style="background:rgba(0,0,0,1);height: 440px;overflow: hidden">#}
 
